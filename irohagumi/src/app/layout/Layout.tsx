@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import { Link, NavLink, Outlet } from "react-router";
+import { Link, NavLink, Outlet, useNavigate } from "react-router";
 import { Menu, X } from "lucide-react";
+import logoImg from "../../imports/logo.png";
 
 const NAV_ITEMS = [
   { label: "ホーム", to: "/" },
   { label: "会社概要", to: "/company" },
+  { label: "事業内容", to: "/business" },
   { label: "工事実績", to: "/works" },
   { label: "採用", to: "/recruit" },
   { label: "お問い合わせ", to: "/contact" },
@@ -13,6 +15,7 @@ const NAV_ITEMS = [
 export default function Layout() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -29,57 +32,56 @@ export default function Layout() {
       {/* ── HEADER ─────────────────────────────────────────────── */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-white/95 backdrop-blur-sm shadow-sm" : "bg-transparent"
+          scrolled ? "bg-white/98 shadow-sm" : "bg-white/90 backdrop-blur-sm"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2">
-            <span
-              className={`text-xs font-medium tracking-widest transition-colors duration-300 ${
-                scrolled ? "text-muted-foreground" : "text-white/70"
-              }`}
-            >
-              株式会社
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <button
+            onClick={() => {
+              navigate("/");
+              setMenuOpen(false);
+            }}
+            className="flex flex-col items-start"
+          >
+            <span className="text-[10px] font-bold tracking-[0.2em] text-accent leading-none mb-1">
+              機器設置工事のプロ集団
             </span>
-            <span
-              className={`text-xl font-black tracking-tight transition-colors duration-300 ${
-                scrolled ? "text-foreground" : "text-white"
-              }`}
-            >
-              いろは組
-            </span>
-          </Link>
+            <img src={logoImg} alt="株式会社いろは組" className="h-9 w-auto" />
+          </button>
 
           <nav className="hidden md:flex items-center gap-8">
-            {NAV_ITEMS.slice(0, -1).map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                className={({ isActive }) =>
-                  `text-sm font-medium transition-colors duration-200 hover:opacity-70 ${
-                    scrolled ? "text-foreground" : "text-white"
-                  } ${isActive ? "opacity-100 underline underline-offset-4" : ""}`
-                }
-              >
-                {item.label}
-              </NavLink>
-            ))}
-            <Link
-              to="/contact"
-              className="ml-4 px-5 py-2 rounded-full text-sm font-bold text-white bg-accent hover:bg-green-800 transition-colors duration-200"
-            >
-              お問い合わせ
-            </Link>
+            {NAV_ITEMS.map((item) =>
+              item.to === "/contact" ? (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className="ml-2 px-6 py-2.5 rounded-full text-base font-bold text-white bg-accent hover:bg-green-800 transition-colors duration-200"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  end={item.to === "/"}
+                  className={({ isActive }) =>
+                    `text-base font-bold text-foreground transition-colors duration-200 hover:text-accent ${
+                      isActive ? "border-b-2 border-accent pb-0.5 text-accent" : ""
+                    }`
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              )
+            )}
           </nav>
 
           <button
-            className={`md:hidden transition-colors duration-300 ${
-              scrolled ? "text-foreground" : "text-white"
-            }`}
+            className="md:hidden text-foreground"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="メニュー"
           >
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            {menuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
 
@@ -89,7 +91,16 @@ export default function Layout() {
               <NavLink
                 key={item.to}
                 to={item.to}
-                className="text-sm font-medium text-foreground hover:text-accent transition-colors"
+                end={item.to === "/"}
+                className={({ isActive }) =>
+                  `text-base font-bold text-left transition-colors ${
+                    item.to === "/contact"
+                      ? "text-accent"
+                      : isActive
+                      ? "text-accent"
+                      : "text-foreground hover:text-accent"
+                  }`
+                }
                 onClick={() => setMenuOpen(false)}
               >
                 {item.label}

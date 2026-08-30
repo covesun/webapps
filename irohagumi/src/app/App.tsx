@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import Layout from "./layout/Layout";
 import Home from "./pages/Home";
 import Company from "./pages/Company";
+import Business from "./pages/Business";
 import Works from "./pages/Works";
 import Recruit from "./pages/Recruit";
 import Contact from "./pages/Contact";
@@ -13,6 +14,7 @@ export default function App() {
         <Route element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="company" element={<Company />} />
+          <Route path="business" element={<Business />} />
           <Route path="works" element={<Works />} />
           <Route path="recruit" element={<Recruit />} />
           <Route path="contact" element={<Contact />} />

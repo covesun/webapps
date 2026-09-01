@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
 import { ArrowRight, Phone, ChevronDown, Settings, Weight, Truck, Package } from "lucide-react";
-
-import heroImg from "../../imports/DSCF3142.jpg";
-import warehouseImg from "../../imports/Position_trucks_around_warehouse_2K_202608101551.jpeg";
+import ContactBand from "../components/ContactBand";
+import heroImg from "../../imports/DSCF3142_2K.jpg";
+import warehouseImg from "../../imports/Position_trucks_around_warehouse_2K_202608101551.jpg";
 import truckImg from "../../imports/IMG_9515.jpeg";
 import work1Img from "../../imports/suetuke.jpg";
 import work2Img from "../../imports/IMG_9329.jpeg";
-import work3Img from "../../imports/IMG_0350.jpg";
+import work3Img from "../../imports/IMG_0350_2K.jpeg";
 import work4Img from "../../imports/DSCF3225.jpg";
 import officeImg from "../../imports/IMG_6008.jpg";
 
@@ -78,11 +78,11 @@ const PAGE_LINKS = [
 ];
 
 const HERO_SLIDES = [
-  { img: warehouseImg, pos: "object-center" },
-  { img: heroImg, pos: "object-[center_30%]" },
-  { img: work1Img, pos: "object-center" },
-  { img: truckImg, pos: "object-center" },
-  { img: work3Img, pos: "object-center" },
+  { img: warehouseImg, pos: "object-[25%_30%]" },
+  { img: heroImg, pos: "object-[35%_30%]" },
+  { img: work1Img, pos: "object-[30%_center]" },
+  { img: truckImg, pos: "object-[0%_5%]" },
+  { img: work3Img, pos: "object-[30%_center]" },
 ];
 
 export default function Home() {
@@ -111,14 +111,14 @@ export default function Home() {
           />
         ))}
         <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-yellow-400 z-10" />
-        <div className="absolute inset-x-0 z-10 top-28 md:top-32">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="max-w-lg">
-              <h1 className="font-black tracking-tight leading-snug mb-6">
+        <div className="absolute inset-0 z-10 flex items-center">
+          <div className="w-full max-w-7xl mx-auto px-6">
+            <div className="max-w-2xl">
+              <h1 className="font-black tracking-tight leading-snug mb-10 text-halo">
                 <span className="text-2xl md:text-3xl block mb-3 text-foreground/70 font-bold tracking-[0.2em]">
                   運ぶ、吊るす、据える
                 </span>
-                <span className="text-4xl md:text-6xl block leading-tight text-foreground">
+                <span className="text-[2.75rem] md:text-6xl block leading-tight text-foreground/90">
                   すべての始まりは
                   <br />
                   <span className="text-accent">『いろは』</span>から
@@ -154,7 +154,7 @@ export default function Home() {
             />
           ))}
         </div>
-        <div className="absolute bottom-8 right-8 z-10 flex flex-col items-center gap-1 text-white/40">
+        <div className="absolute bottom-8 right-8 z-10 flex flex-col items-center gap-1 text-white/75">
           <span className="text-[10px] tracking-widest uppercase">Scroll</span>
           <ChevronDown size={14} className="animate-bounce" />
         </div>
@@ -295,28 +295,30 @@ export default function Home() {
       </section>
 
       {/* ── 採用ダイジェスト ─────────────────────────────── */}
-      <section className="bg-[#0c1f12] py-14 md:py-20 relative overflow-hidden">
-        <img
+      <section className="bg-background py-14 md:py-20">
+        {/* <img
           src={heroImg}
           alt=""
           aria-hidden
           className="absolute inset-0 w-full h-full object-cover object-[center_30%] opacity-15"
-        />
+        /> */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-4xl md:text-5xl font-black text-white leading-snug mb-5 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug mb-6">
               未経験から、
               <br />
               一人前の技術者へ。
             </h2>
-            <p className="text-white/70 text-lg leading-relaxed font-medium mb-6">
-              年齢・経験不問。先輩社員が丁寧にサポートし、資格取得・技術習得をバックアップします。大阪を拠点に、全国で活躍できる職人を募集しています。
-            </p>
+            <div className="space-y-4 text-lg leading-relaxed text-muted-foreground font-medium mb-3">
+              <p>
+                年齢・経験不問。先輩社員が丁寧にサポートし、資格取得・技術習得をバックアップします。大阪を拠点に、全国で活躍できる職人を募集しています。
+              </p>
+            </div>
             <div className="flex flex-wrap gap-2 mb-8">
               {["機械据付工", "仕上工", "鍛冶工", "土木作業員"].map((r) => (
                 <span
                   key={r}
-                  className="px-3 py-1.5 rounded-full border border-yellow-400/40 text-yellow-300 text-xs font-bold"
+                  className="px-3 py-1.5 rounded-full border border-accent/40 text-accent text-xs font-bold"
                 >
                   {r}
                 </span>
@@ -335,9 +337,9 @@ export default function Home() {
               { num: "年2回", label: "賞与" },
               { num: "OJT", label: "研修制度" },
             ].map(({ num, label }) => (
-              <div key={label} className="bg-white/5 border border-white/10 rounded-2xl p-5 text-center">
-                <p className="text-3xl font-black text-yellow-400 leading-none mb-2">{num}</p>
-                <p className="text-white/70 text-xs font-bold">{label}</p>
+              <div key={label} className="bg-secondary rounded-2xl p-5 text-center">
+                <p className="text-3xl font-black text-accent leading-none mb-2">{num}</p>
+                <p className="text-muted-foreground text-xs font-bold">{label}</p>
               </div>
             ))}
             <div className="col-span-3 aspect-[16/7] rounded-2xl overflow-hidden bg-zinc-800">
@@ -348,7 +350,7 @@ export default function Home() {
       </section>
 
       {/* ── サイトメニュー（全ページへのナビ） ──────────── */}
-      <section className="bg-secondary py-10 md:py-14">
+      {/* <section className="bg-secondary py-10 md:py-14">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-10">各ページへのご案内</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -380,10 +382,11 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ── お問い合わせ CTA ─────────────────────────────── */}
-      <section className="bg-[#0c1f12] py-10 px-6">
+      <ContactBand copy="お気軽にお問い合わせください。" />
+      {/* <section className="bg-[#0c1f12] py-10 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-xs font-bold tracking-[0.3em] text-yellow-400 mb-4 uppercase">Contact</p>
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4">まず相談だけでもかまいません。</h2>
@@ -405,7 +408,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

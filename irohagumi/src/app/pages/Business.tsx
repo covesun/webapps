@@ -72,7 +72,7 @@ export default function Business() {
                     {item.icon}
                   </div>
                   <div>
-                    <p className="text-xs font-bold tracking-[0.25em] text-accent uppercase">{item.en}</p>
+                    <p className="text-xs font-bold tracking-[0.25em] text-accent uppercase hidden">{item.en}</p>
                     <h2 className="text-3xl md:text-4xl font-black text-foreground tracking-tight">{item.ja}</h2>
                   </div>
                 </div>

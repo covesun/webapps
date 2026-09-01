@@ -1,7 +1,7 @@
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import PageHero from "../components/PageHero";
 import ContactBand from "../components/ContactBand";
-import officeImg from "../../imports/IMG_6008.jpg";
+import officeImg from "../../imports/ph_company.jpg";
 import truckImg from "../../imports/IMG_9515.jpeg";
 import greetingImg from "../../imports/Creating_company_website_greetin__202608101712-1.jpeg";
 import signatureImg from "../../imports/__________2026-08-10_14.59.28-1.png";
@@ -38,7 +38,7 @@ const YARDS = [
 export default function Company() {
   return (
     <>
-      <PageHero img={officeImg} en="" ja="会社概要" objectPos="center 40%" />
+      <PageHero img={officeImg} en="About" ja="会社概要" objectPos="center 72%" />
 
       {/* ── 代表メッセージ ───────────────────────────────── */}
       <section className="bg-background py-14 md:py-20">
@@ -67,13 +67,15 @@ export default function Company() {
             </p>
           </div>
 
-          <div className="mt-10 pt-8 border-t border-border flex flex-col items-end gap-2">
-            <p className="text-sm text-muted-foreground font-medium">株式会社いろは組　代表取締役</p>
-            <img
-              src={signatureImg}
-              alt="代表取締役 阿部 眞一郎"
-              className="h-16 md:h-30 w-auto object-contain"
-            />
+          <div className="mt-10 pt-8 border-t border-border flex flex-col items-end">
+            <div className="flex flex-col items-start w-fit gap-2">
+              <p className="text-sm text-muted-foreground font-medium">株式会社いろは組　代表取締役</p>
+              <img
+                src={signatureImg}
+                alt="代表取締役 阿部 眞一郎"
+                className="h-16 md:h-30 w-auto object-contain"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -91,7 +93,7 @@ export default function Company() {
                 }`}
               >
                 <div className="bg-accent px-5 py-5 flex items-center">
-                  <span className="text-xs font-black text-white tracking-wide">{label}</span>
+                  <span className="text-s font-black text-white tracking-wide">{label}</span>
                 </div>
                 <div className="bg-card px-6 py-5 flex items-center">
                   <p className="text-base text-foreground font-medium leading-relaxed">{value}</p>

@@ -14,7 +14,8 @@ import {
   Plus,
   Minus,
 } from "lucide-react";
-import heroImg from "../../imports/DSCF3142.jpg";
+// import heroImg from "../../imports/DSCF3142.jpg";
+import heroImg from "../../imports/ph_recruit.jpg";
 import truckImg from "../../imports/IMG_9515.jpeg";
 import work1Img from "../../imports/suetuke.jpg";
 import work2Img from "../../imports/IMG_9329.jpeg";
@@ -117,12 +118,12 @@ export default function Recruit() {
         <img
           src={heroImg}
           alt="現場で働くスタッフ"
-          className="absolute inset-0 w-full h-full object-cover object-[center_30%]"
+          className="absolute inset-0 w-full h-full object-cover object-[40%_45%]"
         />
         <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-white/95 via-white/60 to-transparent" />
         <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-yellow-400" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pb-14 md:pb-20">
-          <h1 className="text-4xl md:text-5xl font-black text-foreground tracking-tight leading-tight mb-3">
+          <h1 className="text-4xl md:text-6xl font-black text-foreground/95 tracking-tight leading-tight mb-3 text-halo">
             未経験から、
             <br />
             一人前の技術者へ。
@@ -138,6 +139,7 @@ export default function Recruit() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
             <div>
+              <p className="text-xs font-bold tracking-[0.25em] text-accent mb-4 uppercase hidden">Message</p>
               <h2 className="text-4xl md:text-5xl font-black leading-snug tracking-tight mb-6">
                 明るくて、
                 <br />
@@ -203,16 +205,17 @@ export default function Recruit() {
       {/* ── 「いろは」の１日 ──────────────────────────── */}
       <section className="bg-background py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-6">
+          <p className="text-xs font-bold tracking-[0.25em] text-accent mb-4 uppercase hidden">A Day in Irohagumi</p>
           <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug mb-6 md:mb-9">「いろは」の１日</h2>
           <div className="relative">
-            <div className="absolute left-[5.5rem] md:left-36 top-3 bottom-3 w-px bg-border hidden sm:block" />
+            <div className="absolute left-[7.375rem] md:left-[10.375rem] top-3 bottom-3 w-px bg-border hidden sm:block" />
             <div className="flex flex-col gap-5">
               {SCHEDULE.map((item) => (
                 <div key={item.time} className="flex gap-4 sm:gap-8 items-start">
-                  <div className="flex-shrink-0 w-20 md:w-32 text-right pr-4 pt-1">
+                  <div className="flex-shrink-0 w-20 md:w-32 text-right pr-4 pt-4">
                     <span className="text-lg font-black text-foreground tabular-nums">{item.time}</span>
                   </div>
-                  <div className="hidden sm:flex flex-col items-center flex-shrink-0 pt-1">
+                  <div className="hidden sm:flex flex-col items-center flex-shrink-0 pt-6">
                     <div className="w-3 h-3 rounded-full border-2 border-accent bg-white z-10" />
                   </div>
                   <div className="flex-1 flex gap-4 items-start">
@@ -264,7 +267,7 @@ export default function Recruit() {
                 }`}
               >
                 <div className="bg-accent px-5 py-5 flex items-start">
-                  <span className="text-xs font-black text-white tracking-wide whitespace-nowrap">{label}</span>
+                  <span className="text-s font-black text-white tracking-wide whitespace-nowrap">{label}</span>
                 </div>
                 <div className="px-6 py-5">
                   {value.split("\n").map((line, j) => (

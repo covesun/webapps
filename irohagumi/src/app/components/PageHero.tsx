@@ -21,11 +21,11 @@ export default function PageHero({
       <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-yellow-400" />
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pb-10 md:pb-14">
         {en && (
-          <p className="text-xs font-bold tracking-[0.35em] text-accent mb-2 uppercase">
+          <p className="text-xs font-bold tracking-[0.35em] text-accent mb-2 uppercase hidden">
             {en}
           </p>
         )}
-        <h1 className="text-4xl md:text-5xl font-black text-foreground tracking-tight">
+        <h1 className="text-4xl md:text-6xl font-black text-foreground/90 tracking-tight text-halo">
           {ja}
         </h1>
       </div>

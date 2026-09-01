@@ -119,6 +119,10 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+@utility text-halo {
+  text-shadow: 1px 0 0 #fffffff0, -1px 0 0 #fffffff0, 0 1px 0 #fffffff0, 0 -1px 0 #fffffff0;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, NavLink, Outlet, useNavigate } from "react-router";
+import { Link, NavLink, Outlet, useLocation, useNavigate } from "react-router";
 import { Menu, X } from "lucide-react";
 import logoImg from "../../imports/logo.png";
 
@@ -11,6 +11,16 @@ const NAV_ITEMS = [
   { label: "採用", to: "/recruit" },
   { label: "お問い合わせ", to: "/contact" },
 ];
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+  }, [pathname]);
+
+  return null;
+}
 
 export default function Layout() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -29,6 +39,8 @@ export default function Layout() {
       className="min-h-screen bg-background text-foreground"
       style={{ fontFamily: "'Noto Sans JP', 'Inter', sans-serif" }}
     >
+      <ScrollToTop />
+
       {/* ── HEADER ─────────────────────────────────────────────── */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${

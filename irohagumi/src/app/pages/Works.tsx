@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { ArrowRight, X, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import PageHero from "../components/PageHero";
@@ -228,6 +228,10 @@ export default function Works() {
     setActiveCategory(cat);
     setCurrentPageNum(1);
   };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [currentPageNum]);
 
   return (
     <>

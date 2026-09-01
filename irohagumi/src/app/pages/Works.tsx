@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, type TouchEvent } from "react";
 import { Link } from "react-router";
 import { ArrowRight, X, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import PageHero from "../components/PageHero";
@@ -18,8 +18,7 @@ const CATEGORIES: Category[] = ["すべて", "プラント工事", "重量物据
 const WORKS_DATA = [
   {
     id: 1,
-    img: work1Img,
-    img2: work2Img,
+    imgs: [work1Img, work2Img],
     category: "プラント工事" as Category,
     title: "△△化学工場　大型架構・鉄骨据付工事",
     date: "2024年11月",
@@ -29,8 +28,7 @@ const WORKS_DATA = [
   },
   {
     id: 2,
-    img: work2Img,
-    img2: work3Img,
+    imgs: [work2Img, work3Img],
     category: "重量物据付" as Category,
     title: "○○食品プラント　大口径配管据付工事",
     date: "2024年09月",
@@ -40,8 +38,7 @@ const WORKS_DATA = [
   },
   {
     id: 3,
-    img: work3Img,
-    img2: work1Img,
+    imgs: [work3Img, work1Img, work4Img],
     category: "重量物据付" as Category,
     title: "□□製薬工場　大型タンク搬入・精密据付",
     date: "2024年06月",
@@ -51,8 +48,7 @@ const WORKS_DATA = [
   },
   {
     id: 4,
-    img: work4Img,
-    img2: work1Img,
+    imgs: [work4Img],
     category: "プラント工事" as Category,
     title: "◇◇設備　鉄骨切断・溶接仕上げ工事",
     date: "2024年03月",
@@ -62,8 +58,7 @@ const WORKS_DATA = [
   },
   {
     id: 5,
-    img: heroImg,
-    img2: work4Img,
+    imgs: [heroImg, work4Img],
     category: "クレーン作業" as Category,
     title: "△△重工　大型ボックス揚重・据付工事",
     date: "2023年12月",
@@ -73,8 +68,7 @@ const WORKS_DATA = [
   },
   {
     id: 6,
-    img: truckImg,
-    img2: heroImg,
+    imgs: [truckImg, heroImg],
     category: "クレーン作業" as Category,
     title: "○○港湾施設　ラフタークレーン揚重",
     date: "2023年10月",
@@ -84,8 +78,7 @@ const WORKS_DATA = [
   },
   {
     id: 7,
-    img: work1Img,
-    img2: work3Img,
+    imgs: [work1Img, work3Img],
     category: "プラント工事" as Category,
     title: "□□電力　プラント架台・支持架構組立",
     date: "2023年08月",
@@ -95,8 +88,7 @@ const WORKS_DATA = [
   },
   {
     id: 8,
-    img: work3Img,
-    img2: work2Img,
+    imgs: [work3Img, work2Img],
     category: "重量物据付" as Category,
     title: "◇◇産業　重量プレス機移設・据付工事",
     date: "2023年05月",
@@ -106,8 +98,7 @@ const WORKS_DATA = [
   },
   {
     id: 9,
-    img: work2Img,
-    img2: work4Img,
+    imgs: [work2Img, work4Img],
     category: "プラント工事" as Category,
     title: "△△石油化学　配管・反応槽据付工事",
     date: "2023年02月",
@@ -117,8 +108,7 @@ const WORKS_DATA = [
   },
   {
     id: 10,
-    img: work2Img,
-    img2: work4Img,
+    imgs: [work2Img, work4Img],
     category: "プラント工事" as Category,
     title: "△△石油化学　配管・反応槽据付工事",
     date: "2023年02月",
@@ -137,6 +127,76 @@ const TAG_COLOR: Record<Category, string> = {
   クレーン作業: "bg-sky-50 text-sky-700",
 };
 
+function PhotoCarousel({ images, alt }: { images: string[]; alt: string }) {
+  const [index, setIndex] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+
+  const goTo = (i: number) => setIndex((i + images.length) % images.length);
+  const showArrows = images.length > 1;
+
+  const onTouchStart = (e: TouchEvent<HTMLDivElement>) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e: TouchEvent<HTMLDivElement>) => {
+    if (touchStartX.current === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(deltaX) > 40) {
+      goTo(deltaX < 0 ? index + 1 : index - 1);
+    }
+    touchStartX.current = null;
+  };
+
+  return (
+    <div
+      className="relative aspect-[3/2] rounded-t-2xl overflow-hidden bg-zinc-200 touch-pan-y"
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
+    >
+      {images.map((src, i) => (
+        <img
+          key={src + i}
+          src={src}
+          alt={i === 0 ? alt : `${alt}（${i + 1}）`}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+            i === index ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      ))}
+
+      {showArrows && (
+        <>
+          <button
+            onClick={() => goTo(index - 1)}
+            aria-label="前の写真"
+            className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-sm shadow-md text-white flex items-center justify-center transition-colors"
+          >
+            <ChevronLeft size={18} />
+          </button>
+          <button
+            onClick={() => goTo(index + 1)}
+            aria-label="次の写真"
+            className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-sm shadow-md text-white flex items-center justify-center transition-colors"
+          >
+            <ChevronRight size={18} />
+          </button>
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goTo(i)}
+                aria-label={`写真 ${i + 1}`}
+                className={`rounded-full shadow-sm transition-all duration-300 ${
+                  i === index ? "w-6 h-1.5 bg-white" : "w-1.5 h-1.5 bg-white/70 hover:bg-white/90"
+                }`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 function WorkModal({ work, onClose }: { work: WorkItem; onClose: () => void }) {
   return (
     <div
@@ -150,19 +210,12 @@ function WorkModal({ work, onClose }: { work: WorkItem; onClose: () => void }) {
         <button
           onClick={onClose}
           aria-label="閉じる"
-          className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/10 hover:bg-black/20 flex items-center justify-center transition-colors"
+          className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-sm shadow-md flex items-center justify-center transition-colors"
         >
-          <X size={18} className="text-foreground" />
+          <X size={18} className="text-white" />
         </button>
 
-        <div className="grid grid-cols-2 h-52 md:h-72 rounded-t-2xl overflow-hidden">
-          <div className="overflow-hidden bg-zinc-200">
-            <img src={work.img} alt={work.title} className="w-full h-full object-cover" />
-          </div>
-          <div className="overflow-hidden bg-zinc-300 border-l-2 border-white">
-            <img src={work.img2} alt={`${work.title}（2）`} className="w-full h-full object-cover" />
-          </div>
-        </div>
+        <PhotoCarousel images={work.imgs} alt={work.title} />
 
         <div className="p-6 md:p-8">
           <div className="flex items-start gap-3 mb-4 flex-wrap">
@@ -235,7 +288,9 @@ export default function Works() {
 
   return (
     <>
-      {selectedWork && <WorkModal work={selectedWork} onClose={() => setSelectedWork(null)} />}
+      {selectedWork && (
+        <WorkModal key={selectedWork.id} work={selectedWork} onClose={() => setSelectedWork(null)} />
+      )}
 
       <PageHero img={work1Img} en="Works" ja="工事実績" />
 
@@ -270,7 +325,7 @@ export default function Works() {
               >
                 <div className="aspect-square overflow-hidden bg-zinc-200 relative">
                   <img
-                    src={work.img}
+                    src={work.imgs[0]}
                     alt={work.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />

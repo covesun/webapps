@@ -42,7 +42,7 @@ export default function Business() {
       <section className="bg-background py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug mb-6">
-            4つの専門領域で
+            2つの専門領域で
             <br />
             現場を支えます。
           </h2>

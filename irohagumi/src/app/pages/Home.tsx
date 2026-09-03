@@ -1,6 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
-import { ArrowRight, Phone, ChevronDown, Settings, Weight, Truck, Package } from "lucide-react";
+import {
+  ArrowRight,
+  Phone,
+  ChevronDown,
+  Settings,
+  Weight,
+  Truck,
+  Package,
+  Instagram,
+} from "lucide-react";
 import ContactBand from "../components/ContactBand";
 import heroImg from "../../imports/DSCF3142_2K.jpg";
 import warehouseImg from "../../imports/Position_trucks_around_warehouse_2K_202608101551.jpg";
@@ -10,6 +19,35 @@ import work2Img from "../../imports/IMG_9329.jpeg";
 import work3Img from "../../imports/IMG_0350_2K.jpeg";
 import work4Img from "../../imports/DSCF3225.jpg";
 import officeImg from "../../imports/IMG_6008.jpg";
+import ig1Img from "../../imports/624845661_18122467930497151_6060076425127914825_n.jpg_2K_202608310427.jpeg";
+import ig2Img from "../../imports/662384918_18399784525196815_3165667921936231691_n.jpg_2K_202608310604.jpeg";
+import phCompanyImg from "../../imports/ph_company.jpg";
+import phRecruitImg from "../../imports/ph_recruit.jpg";
+
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+const IG_POOL = [
+  { src: work1Img, alt: "プラント設備工事" },
+  { src: work2Img, alt: "大型配管据付" },
+  { src: work3Img, alt: "重量物搬入" },
+  { src: work4Img, alt: "溶接施工" },
+  { src: heroImg, alt: "クレーン作業" },
+  { src: warehouseImg, alt: "重機・トラック" },
+  { src: truckImg, alt: "自社クレーン車" },
+  { src: officeImg, alt: "事務所" },
+  { src: ig1Img, alt: "現場写真" },
+  { src: ig2Img, alt: "現場写真" },
+  { src: phCompanyImg, alt: "会社" },
+  { src: phRecruitImg, alt: "採用" },
+];
+const IG_COUNT = 5;
 
 const BUSINESSES = [
   {
@@ -24,18 +62,18 @@ const BUSINESSES = [
     img: work3Img,
     desc: "数トン〜数十トン規模の大型機器・タンクの搬入・吊込み・精密据付。難しい条件下でも確実に仕上げます。",
   },
-  {
-    icon: <Truck size={28} strokeWidth={1.5} />,
-    label: "クレーン作業",
-    img: heroImg,
-    desc: "ラフタークレーン・カーゴクレーンを自社保有。高所揚重・狭小現場への対応力が強みです。",
-  },
-  {
-    icon: <Package size={28} strokeWidth={1.5} />,
-    label: "機材レンタル",
-    img: truckImg,
-    desc: "保有する重機・クレーン車のレンタルにも対応。※詳細はお問い合わせください。",
-  },
+  // {
+  //   icon: <Truck size={28} strokeWidth={1.5} />,
+  //   label: "クレーン作業",
+  //   img: heroImg,
+  //   desc: "ラフタークレーン・カーゴクレーンを自社保有。高所揚重・狭小現場への対応力が強みです。",
+  // },
+  // {
+  //   icon: <Package size={28} strokeWidth={1.5} />,
+  //   label: "機材レンタル",
+  //   img: truckImg,
+  //   desc: "保有する重機・クレーン車のレンタルにも対応。※詳細はお問い合わせください。",
+  // },
 ];
 
 const HOME_WORKS = [
@@ -70,11 +108,41 @@ const HOME_WORKS = [
 ];
 
 const PAGE_LINKS = [
-  { to: "/company", label: "会社概要", en: "About", img: officeImg, desc: "代表メッセージ・会社情報・アクセス" },
-  { to: "/business", label: "事業内容", en: "Business", img: work1Img, desc: "プラント工事・重量物据付・クレーン・機材レンタル" },
-  { to: "/works", label: "工事実績", en: "Works", img: work3Img, desc: "近畿・全国 300件以上の施工事例" },
-  { to: "/recruit", label: "採用情報", en: "Recruit", img: heroImg, desc: "未経験歓迎・キャリアステップ・福利厚生" },
-  { to: "/contact", label: "お問い合わせ", en: "Contact", img: warehouseImg, desc: "見積もり・ご相談・エントリーはこちら" },
+  {
+    to: "/company",
+    label: "会社概要",
+    en: "About",
+    img: officeImg,
+    desc: "代表メッセージ・会社情報・アクセス",
+  },
+  {
+    to: "/business",
+    label: "事業内容",
+    en: "Business",
+    img: work1Img,
+    desc: "プラント工事・重量物据付・クレーン・機材レンタル",
+  },
+  {
+    to: "/works",
+    label: "工事実績",
+    en: "Works",
+    img: work3Img,
+    desc: "近畿・全国 300件以上の施工事例",
+  },
+  {
+    to: "/recruit",
+    label: "採用情報",
+    en: "Recruit",
+    img: heroImg,
+    desc: "未経験歓迎・キャリアステップ・福利厚生",
+  },
+  {
+    to: "/contact",
+    label: "お問い合わせ",
+    en: "Contact",
+    img: warehouseImg,
+    desc: "見積もり・ご相談・エントリーはこちら",
+  },
 ];
 
 const HERO_SLIDES = [
@@ -88,11 +156,28 @@ const HERO_SLIDES = [
 export default function Home() {
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [igPhotos, setIgPhotos] = useState(() =>
+    shuffle(IG_POOL).slice(0, IG_COUNT),
+  );
+  const [igVisible, setIgVisible] = useState(true);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+      setCurrentSlide(
+        (prev) => (prev + 1) % HERO_SLIDES.length,
+      );
     }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIgVisible(false);
+      setTimeout(() => {
+        setIgPhotos(shuffle(IG_POOL).slice(0, IG_COUNT));
+        setIgVisible(true);
+      }, 600);
+    }, 4500);
     return () => clearInterval(timer);
   }, []);
 
@@ -121,7 +206,10 @@ export default function Home() {
                 <span className="text-[2.75rem] md:text-6xl block leading-tight text-foreground/90">
                   すべての始まりは
                   <br />
-                  <span className="text-accent">『いろは』</span>から
+                  <span className="text-accent">
+                    『いろは』
+                  </span>
+                  から
                 </span>
               </h1>
               <div className="flex flex-wrap gap-3">
@@ -149,13 +237,17 @@ export default function Home() {
               onClick={() => setCurrentSlide(i)}
               aria-label={`スライド ${i + 1}`}
               className={`rounded-full transition-all duration-300 ${
-                i === currentSlide ? "w-8 h-2 bg-accent" : "w-2 h-2 bg-white/50 hover:bg-white/80"
+                i === currentSlide
+                  ? "w-8 h-2 bg-accent"
+                  : "w-2 h-2 bg-white/50 hover:bg-white/80"
               }`}
             />
           ))}
         </div>
         <div className="absolute bottom-8 right-8 z-10 flex flex-col items-center gap-1 text-white/75">
-          <span className="text-[10px] tracking-widest uppercase">Scroll</span>
+          <span className="text-[10px] tracking-widest uppercase">
+            Scroll
+          </span>
           <ChevronDown size={14} className="animate-bounce" />
         </div>
       </section>
@@ -172,8 +264,12 @@ export default function Home() {
               />
             </div>
             <div className="absolute -bottom-5 -right-3 md:-right-8 bg-yellow-400 text-[#0c1f12] px-6 py-4 rounded-2xl shadow-lg">
-              <p className="text-xs font-black tracking-widest mb-1 opacity-60">SINCE</p>
-              <p className="text-4xl font-black leading-none">2008</p>
+              <p className="text-xs font-black tracking-widest mb-1 opacity-60">
+                SINCE
+              </p>
+              <p className="text-4xl font-black leading-none">
+                2008
+              </p>
             </div>
           </div>
           <div>
@@ -197,8 +293,12 @@ export default function Home() {
                 { num: "24h", label: "緊急対応" },
               ].map(({ num, label }) => (
                 <div key={label}>
-                  <p className="text-4xl font-black text-accent">{num}</p>
-                  <p className="text-xs font-bold text-muted-foreground mt-1 tracking-wider">{label}</p>
+                  <p className="text-4xl font-black text-accent">
+                    {num}
+                  </p>
+                  <p className="text-xs font-bold text-muted-foreground mt-1 tracking-wider">
+                    {label}
+                  </p>
                 </div>
               ))}
             </div>
@@ -218,7 +318,8 @@ export default function Home() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
             <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug">
               私たちが得意とする
-              <br />4つの領域
+              <br />
+              2つの領域
             </h2>
             <Link
               to="/business"
@@ -227,7 +328,7 @@ export default function Home() {
               事業内容を詳しく見る <ArrowRight size={15} />
             </Link>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-2  gap-4 md:gap-5">
             {BUSINESSES.map(({ icon, label, img, desc }) => (
               <div
                 key={label}
@@ -245,8 +346,12 @@ export default function Home() {
                   <div className="w-9 h-9 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-3">
                     {icon}
                   </div>
-                  <p className="font-black text-lg text-foreground mb-1">{label}</p>
-                  <p className="text-xs leading-relaxed text-muted-foreground font-medium line-clamp-2">{desc}</p>
+                  <p className="font-black text-lg text-foreground mb-1">
+                    {label}
+                  </p>
+                  <p className="text-xs leading-relaxed text-muted-foreground font-medium line-clamp-2">
+                    {desc}
+                  </p>
                 </div>
               </div>
             ))}
@@ -258,7 +363,9 @@ export default function Home() {
       <section className="bg-background py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug">主な施工事例</h2>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug">
+              主な施工事例
+            </h2>
             <Link
               to="/works"
               className="inline-flex items-center gap-2 text-base font-bold text-foreground border-b-2 border-accent pb-0.5 hover:text-accent transition-colors self-start md:self-auto"
@@ -285,8 +392,12 @@ export default function Home() {
                   {String(i + 1).padStart(2, "0")}
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <p className="text-white font-black text-base mb-1">{work.label}</p>
-                  <p className="text-white/70 text-xs leading-relaxed font-medium">{work.desc}</p>
+                  <p className="text-white font-black text-base mb-1">
+                    {work.label}
+                  </p>
+                  <p className="text-white/70 text-xs leading-relaxed font-medium">
+                    {work.desc}
+                  </p>
                 </div>
               </div>
             ))}
@@ -315,7 +426,12 @@ export default function Home() {
               </p>
             </div>
             <div className="flex flex-wrap gap-2 mb-8">
-              {["機械据付工", "仕上工", "鍛冶工", "土木作業員"].map((r) => (
+              {[
+                "機械据付工",
+                "仕上工",
+                "鍛冶工",
+                "土木作業員",
+              ].map((r) => (
                 <span
                   key={r}
                   className="px-3 py-1.5 rounded-full border border-accent/40 text-accent text-xs font-bold"
@@ -337,15 +453,86 @@ export default function Home() {
               { num: "年2回", label: "賞与" },
               { num: "OJT", label: "研修制度" },
             ].map(({ num, label }) => (
-              <div key={label} className="bg-secondary rounded-2xl p-5 text-center">
-                <p className="text-3xl font-black text-accent leading-none mb-2">{num}</p>
-                <p className="text-muted-foreground text-xs font-bold">{label}</p>
+              <div
+                key={label}
+                className="bg-secondary rounded-2xl p-5 text-center"
+              >
+                <p className="text-3xl font-black text-accent leading-none mb-2">
+                  {num}
+                </p>
+                <p className="text-muted-foreground text-xs font-bold">
+                  {label}
+                </p>
               </div>
             ))}
             <div className="col-span-3 aspect-[16/7] rounded-2xl overflow-hidden bg-zinc-800">
-              <img src={work4Img} alt="現場の様子" className="w-full h-full object-cover opacity-80" />
+              <img
+                src={work4Img}
+                alt="現場の様子"
+                className="w-full h-full object-cover opacity-80"
+              />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── Instagram フィード ───────────────────────────── */}
+      <section className="bg-background pt-14 md:pt-20">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+          <div>
+            <p className="text-xs font-bold tracking-[0.35em] text-accent uppercase mb-2 hidden">
+              Instagram
+            </p>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug">
+              現場の様子を
+              <br className="sm:hidden" />
+              随時更新中
+            </h2>
+            <p className="text-base text-muted-foreground font-medium mt-2">
+              @irohagumi_2013
+            </p>
+          </div>
+          <a
+            href="https://www.instagram.com/irohagumi_2013/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-foreground text-foreground font-bold text-sm hover:bg-foreground hover:text-background transition-colors self-start sm:self-auto shrink-0"
+          >
+            <Instagram size={16} />
+            Instagramをフォローする
+          </a>
+        </div>
+        <div
+          className="grid transition-opacity duration-700"
+          style={{
+            gridTemplateColumns: `repeat(${IG_COUNT}, 1fr)`,
+            opacity: igVisible ? 1 : 0,
+          }}
+        >
+          {igPhotos.map((photo, i) => (
+            <div
+              key={`${photo.src}-${i}`}
+              className="relative overflow-hidden aspect-square group"
+            >
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                className="w-full h-full object-cover"
+              />
+              <a
+                href="https://www.instagram.com/irohagumi_2013/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/35 transition-colors duration-300"
+                aria-label="Instagramを見る"
+              >
+                <Instagram
+                  size={30}
+                  className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                />
+              </a>
+            </div>
+          ))}
         </div>
       </section>
 

@@ -287,7 +287,7 @@ export default function Recruit() {
       <section className="bg-background py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug mb-7 md:mb-10">よくある質問</h2>
-          <div className="max-w-3xl flex flex-col gap-3">
+          <div className="flex flex-col gap-4">
             {FAQS.map(({ q, a }, idx) => (
               <div key={idx} className="rounded-2xl border border-border overflow-hidden">
                 <button
@@ -305,7 +305,7 @@ export default function Recruit() {
                   )}
                 </button>
                 {openFaq === idx && (
-                  <div className="px-6 pb-6 bg-secondary">
+                  <div className="px-6 pb-6">
                     <div className="flex items-start gap-3">
                       <span className="text-white font-black text-xs flex-shrink-0 bg-accent rounded-full w-5 h-5 flex items-center justify-center mt-0.5">A</span>
                       <p className="text-base text-muted-foreground font-medium leading-relaxed">{a}</p>

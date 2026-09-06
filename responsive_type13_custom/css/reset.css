@@ -1,0 +1,271 @@
+@charset "utf-8";
+
+/* ---------------------------------------------------------------------------------------- 
+	CMS layout
+---------------------------------------------------------------------------------------- */
+.left  {float: left;}
+.right {float: right;}
+.textC {text-align: center;}
+.textR {text-align: right;}
+.box   {margin: 0 0 15px;}
+img {
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	height: auto;
+	max-width: 100%;
+}
+
+
+/* ---------------------------------------------------------------------------------------- 
+	table
+---------------------------------------------------------------------------------------- */
+table {
+	width: 100%;
+	max-width: 100%;
+	min-width: 100%;
+	margin: 0 0 15px;
+}
+table th{
+	padding:10px;
+	background:#eee;
+	vertical-align:top;
+	border:1px solid #ccc;
+}
+table td{
+	padding:10px;
+	border:1px solid #ccc;
+}
+
+
+/* ---------------------------------------------------------------------------------------- 
+	list
+---------------------------------------------------------------------------------------- */
+ul {
+	padding-left: 20px;
+}
+
+
+/* ---------------------------------------------------------------------------------------- 
+	form
+---------------------------------------------------------------------------------------- */
+
+/* .form-control */
+.parts_other_bupageTopBox a,
+.parts_other_buPrintBox a,
+.returnBu a,
+a.returnBu,
+.cartPartsLook a,
+.clearBu input,
+.agreeNoBu input,
+.agreeYesBu input,
+.noAgreeYesBu input,
+.pageLinkBox a,
+#header #user-login .headerBoxBottom div div.buLogout,
+input.formRegisterBu,
+input:not([type]),
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="button"],
+input[type="submit"],
+select,
+textarea {
+/*  width: 100%;*/
+/*  height: 34px;*/
+  padding: 6px 12px;
+  margin: 5px 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  display: inline-block;
+}
+.returnBu a:focus,
+a.returnBu:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.parts_other_bupageTopBox a:hover,
+.parts_other_buPrintBox a:hover,
+.returnBu a:hover,
+a.returnBu:hover,
+.cartPartsLook a:hover{
+	text-decoration:none;
+}
+
+input[disabled],
+button[disabled],
+input[readonly],
+button[readonly],
+fieldset[disabled] input,
+fieldset[disabled] button {
+  background-color: #eee;
+  opacity: 1;
+}
+input[disabled],
+button[disabled],
+fieldset[disabled] input,
+fieldset[disabled] button {
+  cursor: not-allowed;
+}
+
+/* サイズ調整 */
+input:not([type]),
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+	width: 100%;
+}
+
+/* button */
+#mailform_form .pageLinkBox ul{
+	list-style-type: none;
+}
+#mailform_form .pageLinkBox ul li{
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/* file */
+#mailForm input[type="file"] {
+    padding: 12px 12px 12px 0px;
+}
+
+/* label */
+#mailForm label {
+    padding: 12px 12px 12px 0px;
+}
+
+/* チェックボックス/ラジオボタン */
+#mailForm label .checkbox,
+#mailForm label .radio {
+	display: inline;
+}
+
+/* ドロップダウン */
+select {
+	height: 34px;
+	max-width: 100%;
+}
+
+/* formパーツ - 郵便番号・電話番号 */
+input.ant2api-zip,
+input.ant2api-pref,
+input[name=user_zip1],
+input[name=user_zip2],
+input[name=user_tel1],
+input[name=user_tel2],
+input[name=user_tel3],
+input[name=user_fax1],
+input[name=user_fax2],
+input[name=user_fax3],
+input[name=user_mobile1],
+input[name=user_mobile2],
+input[name=user_mobile3] {
+  width: auto;
+}
+
+/* formパーツ - HTML */
+#mailForm p,
+#mailform_form p {
+	margin: 10px 5px;
+}
+
+/* form - エラーメッセージ */
+.errorMessage,
+form table th strong {
+	color: #ff0000;
+}
+
+
+@media (min-width: 768px) {
+	.blogCommentPostBox table th,
+	#mailform_form table th,
+	form table th {
+		width: 20%;
+		white-space: nowrap;
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+		border-left: 1px solid #ccc;
+		border-right: 0px;
+	}
+	.blogCommentPostBox table td,
+	#mailform_form table td,
+	form table td {
+		width: 80%;
+		border-top: 0px;
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+		border-right: 1px solid #ccc;
+		border-left: 0px;
+	}
+}
+@media (max-width: 767px) {
+	.blogCommentPostBox table th,
+	#mailform_form table th,
+	form table th {
+		width: 100%;
+		display: block;
+		white-space: normal;
+		border-top: 1px solid #ccc;
+		border-bottom: 0px;
+		border-left: 1px solid #ccc;
+		border-right: 1px solid #ccc;
+	}
+	.blogCommentPostBox table td,
+	#mailform_form table td,
+	form table td {
+		width: 100%;
+		display: block;
+		white-space: normal;
+		border-top: 0px;
+		border-bottom: 0px;
+		border-left: 1px solid #ccc;
+		border-right: 1px solid #ccc;
+	}
+	.blogCommentPostBox table,
+	#mailform_form table,
+	form table {
+		border-bottom: 1px solid #ccc;
+	}
+}
+
+/* btn-primary */
+.btn-primary {
+    background-color: rgb(51, 122, 183) !important;
+    border-color: rgb(46, 109, 164) !important;
+    color: rgb(255, 255, 255) !important;
+}
+.btn-primary.focus, .btn-primary:focus {
+    background-color: rgb(40, 96, 144) !important;
+    border-color: rgb(18, 43, 64) !important;
+}
+.btn-primary:hover {
+    background-color: rgb(40, 96, 144) !important;
+    border-color: rgb(32, 77, 116) !important;
+}
+
+/* btn-lg */
+.btn-lg {
+    border-radius: 6px !important;
+    font-size: 18px !important;
+    line-height: 1.33333 !important;
+    padding: 10px 16px !important;
+}

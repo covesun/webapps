@@ -1,0 +1,88 @@
+﻿@charset "utf-8";
+
+/* ---------------------------------------------------------------------------------------- 
+
+	エディター用のスタイル
+
+---------------------------------------------------------------------------------------- */
+
+#editor {
+	border: none;
+	background-image: none;
+	background: #fff;
+}
+
+#cms_message_row li {
+	background: none !important;
+}
+
+.dialog table.table_window,
+.dialog table.table_window th,
+.dialog table.table_window td {
+	line-height: 1;
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+body#header,
+body#opt1,
+body#opt2,
+body#opt3 {
+	border: none;
+	background: #fff none;
+}
+
+body#main,
+body#upper,
+body#bottom,
+body#side,
+body#right {
+	border: none;
+	background: #f1f8ff url(../images/common/bg_body.gif);
+}
+
+body#header {
+	width: 1005px;
+	margin: 0 auto !important;
+}
+
+body#side,
+body#right {
+	width: 100% !important;
+}
+
+
+
+/* ---------------------------------------------------------------------------------------- 
+
+	ログインのスタイル
+
+---------------------------------------------------------------------------------------- */
+
+#LoginDialog table,
+#LoginDialog th,
+#LoginDialog td {
+	border: none;
+	background: transparent;
+}
+
+
+
+/* ---------------------------------------------------------------------------------------- 
+
+	bootstrap調整
+
+---------------------------------------------------------------------------------------- */
+.cms-easy-edit form input[disabled]{
+	margin:0;
+	padding:0;
+}
+
+.btn{
+	cursor:text;
+  -moz-user-select: text;  
+  -webkit-user-select: auto;  
+  -ms-user-select: text;  
+  user-select: text;
+}

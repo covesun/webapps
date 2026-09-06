@@ -1,0 +1,607 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* ----------------------------------------------------------------------
+
+  新規パーツ [2017.11.26]
+
+---------------------------------------------------------------------- */
+
+/* 背景色 */
+.parts_h_type17_box_text_foot,
+.parts_h_type18_box_foot,
+.parts_img_type28_box_text,
+.parts_img_type31_box_text,
+.parts_img_type38,
+.parts_img_type39,
+.parts_text_type16,
+.parts_img_type48,
+.parts_img_type49,
+.parts_img_type50_text_box,
+.parts_img_type51_text_box {
+  background:#f1f1f1;
+}
+.parts_img_type35_text h4,
+.parts_img_type38_text h4,
+.parts_img_type39_text h4,
+.parts_img_type48_text h4,
+.parts_img_type49_text h4{
+  border-bottom: 1px solid #555;
+}
+
+.parts_img_type36_text,
+.parts_img_type37_text{
+  background: rgba(0,0,0,0.4);
+  color:#fff;
+}
+.parts_img_type36_text h4,
+.parts_img_type37_text h4{
+  border-bottom:1px solid #fff !important;
+}
+
+
+.parts_free_type01_head:after {
+  background-color: #ccc;
+}
+
+.parts_h_type23_box_head_num > span,
+.parts_h_type24_box_head_num > span,
+div.parts_img_type40_box_num,
+div.parts_img_type41_box_num,
+div.parts_img_type42_box_num,
+div.parts_img_type43_box_num,
+.parts_text_type14_head,
+.parts_text_type15_head,
+.parts_h_type25,
+.parts_h_type26,
+.parts_h_type27,
+.parts_free_type04_head {
+  background-color: #02a6b0;
+}
+
+.parts_text_type14_head h3,
+.parts_text_type15_head h3{
+  background-color: #02a6b0 !important;
+}
+
+.parts_h_type23_box_head_num > span,
+.parts_h_type24_box_head_num > span,
+.parts_img_type40_box_num,
+.parts_img_type41_box_num,
+.parts_img_type42_box_num,
+.parts_img_type43_box_num,
+.parts_text_type14_head,
+.parts_text_type15_head,
+.parts_free_type04_head{
+  color: #fff;
+}
+
+.parts_h_type25_body,
+.parts_h_type26_body,
+.parts_h_type27_body {
+  background-color: #fff;
+}
+
+.parts_img_type34 p{
+  background: rgba(255,255,255,0.7);
+}
+
+/* テキスト */
+.parts_free_type01_body_tel span:first-child,
+.parts_free_type01_body_fax span:first-child,
+.parts_free_type02_body_tel span:first-child,
+.parts_free_type08_text h1,
+div.parts_free_type09_box_text,
+div.parts_free_type09_box_text h1 {
+  color: #222;
+}
+
+/* 線 */
+.parts_free_type04,
+.parts_text_type14,
+.parts_text_type15 {
+  border-color: #e7e7e7;
+}
+
+.parts_free_type01,
+.parts_free_type02,
+.parts_free_type03 {
+  border-color: #ccc;
+}
+
+.parts_free_type02_body_box:last-child a,
+.parts_free_type03_bu a,
+.parts_free_type05_text a,
+.parts_free_type06_text a,
+.parts_free_type07_text_bu a {
+  background-color: #02a6b0;
+  color: #fff !important;
+}
+.parts_free_type02_body_box:last-child a:hover,
+.parts_free_type03_bu a:hover,
+.parts_free_type05_text a:hover,
+.parts_free_type06_text a:hover,
+.parts_free_type07_text_bu a:hover{
+  background:#019084;
+  color:#fff !important;
+}
+.parts_free_type05_text a:before,
+.parts_free_type06_text a:before,
+.parts_free_type07_text_bu a:before{
+  background: url(../images/common/btn_arrow_sp_white.png) no-repeat left center;
+}
+.parts_free_type05_text a:hover:before,
+.parts_free_type06_text a:hover:before,
+.parts_free_type07_text_bu a:hover:before{
+  background: url(../images/common/btn_arrow_sp_white.png) no-repeat left center;
+}
+/* PC */
+@media (min-width: 992px){
+  .parts_free_type05_text a:before,
+  .parts_free_type06_text a:before,
+  .parts_free_type07_text_bu a:before{
+    background: url(../images/common/btn_arrow_white.png) no-repeat left center;
+  }
+  .parts_free_type05_text a:hover:before,
+  .parts_free_type06_text a:hover:before,
+  .parts_free_type07_text_bu a:hover:before{
+    background: url(../images/common/btn_arrow_white.png) no-repeat left center;
+  }
+}
+
+.parts_img_type50_text_box:after {
+  border-color: transparent #f1f1f1 transparent transparent;
+}
+
+.parts_img_type51_text_box:after {
+  border-color: transparent transparent transparent #f1f1f1;
+}
+
+.parts_h_type21_head > div,
+.parts_h_type21_body > div,
+.parts_h_type22_head > div,
+.parts_h_type22_body > div,
+.parts_text_type14 .parts_text_type14_head:after {
+  border-top-color: #02a6b0;
+}
+
+.parts_h_type21_body > div,
+.parts_h_type22_body > div {
+  border-top-color: #f1f1f1;
+}
+
+.parts_text_type18 li::after,
+.parts_text_type19 li::after,
+.parts_text_type20 li::after,
+.parts_text_type21 li::after,
+.parts_text_type22 li::after,
+.parts_text_type23 li::after {
+  border-left-color: #ccc;
+  border-bottom: #ccc;
+}
+
+.parts_free_type02_body_box:first-child {
+  border-right-color: #ccc;
+}
+
+/* キービジュアル */
+.parts_free_type05.box,
+.parts_free_type05_photo,
+.parts_free_type06.box,
+.parts_free_type06_photo,
+#header .parts_free_type07.box,
+.parts_free_type09.box,
+.parts_free_type09_photo {
+  background-color:;
+}
+
+.parts_img_type35_text,
+.parts_free_type05_text,
+.parts_free_type06_text > div,
+.parts_free_type07_text,
+.parts_free_type08_text{
+  background: rgba(255,255,255,0.7);
+}
+div.parts_free_type09_box_text > div {
+  background: rgba(255,255,255,0.7);
+}
+
+.parts_free_type05_text a,
+.parts_free_type06_text a,
+.parts_free_type07_text a,
+.parts_free_type08_text {
+  color: #fff;
+}
+
+
+/* ----------------------------------------------------------------------------------------
+  共通
+---------------------------------------------------------------------------------------- */
+a{
+  color: #00838b;
+}
+a:hover{
+  color: #02a6b0;
+}
+
+hr{
+  border-top:1px dotted #aaa;
+}
+
+/* -------------------------------------
+ *  table
+ * ---------------------------------- */
+#wrapper table th{
+  background: #02a6b0;
+  color:#fff;
+}
+#wrapper table th a,
+#wrapper th a:hover{
+  color:#fff;
+}
+
+/* ----------------------------------------------------------------------------------------
+  コンテンツパーツ
+---------------------------------------------------------------------------------------- */
+/* -------------------------------------
+ * .calender
+ * ---------------------------------- */
+table.calendar tr.week-label td.sat, table.calendarTable tr.week-label th.sat {
+    color: #1292bc;
+}
+
+/* -------------------------------------
+ * フリーパーツ
+ * ---------------------------------- */
+/*【フッター】会社案内*/
+#footer .company-info{
+  border-top:3px solid #00878f;
+  border-bottom:3px solid #00878f;
+  background: rgba(255,255,255,0.7);
+}
+
+/* -------------------------------------
+ * 見出し
+ * ---------------------------------- */
+#contents h1:before,
+#contents h1:after,
+#side h1:before,
+#side h1:after,
+#opt h1:before,
+#opt h1:after,
+#footer h1:before,
+#footer h1:after,
+div[class^="parts_"] h1:before,
+div[class^="parts_"] h1:after {
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #555;
+}
+#contents h1:before,
+#side h1:before,
+#opt h1:before,
+#footer h1:before,
+div[class^="parts_"] h1:before {
+  border-left: 1px solid #555;
+}
+#contents h1:after,
+#side h1:after,
+#opt h1:after,
+#footer h1:after,
+div[class^="parts_"] h1:after {
+  border-right: 1px solid #555;
+}
+#contents h2:before,
+#side h2:before,
+#opt h2:before,
+#footer h2:before{
+  border-top: 5px solid #019084;
+  background:#e6e6e6;
+}
+#contents h3,#side h3,#opt h3,#footer h3 {
+  background:#019084;
+  color:#fff;
+}
+#contents h3 a,#side h3 a,#opt h3 a,#footer h3 a {
+  color:#fff;
+  text-decoration: none;
+}
+#contents h3 a:hover,#side h3 a:hover,#opt h3 a:hover,#footer h3 a:hover {
+  color:#019084;
+}
+#contents h4,#side h4,#opt h4,#footer h4 {
+  border-bottom: 1px solid #666;
+}
+#contents h5,#side h5,#opt h5,#footer h5 {
+  background:#ddd;
+}
+#contents h6,#side h6,#opt h6,#footer h6 {
+  border-bottom: 1px dotted #666;
+}
+
+/* -------------------------------------
+ * button
+ * ---------------------------------- */
+.parts_other_bupageTopBox a,.parts_other_buPrintBox a,.returnBu a, a.returnBu,input[type="button"], input[type="submit"],.topicDigestLink a,.blogRecentLink a,.pageMore a {
+  background: #ddd;
+  color:#333;
+}
+.parts_other_bupageTopBox a:hover,.parts_other_buPrintBox a:hover,.returnBu a:hover, a.returnBu:hover,input[type="button"]:hover, input[type="submit"]:hover,.topicDigestLink a:hover,.blogRecentLink a:hover,.pageMore a:hover {
+  background:#019084;
+  color:#fff;
+}
+.parts_other_bupageTopBox a:before,
+.parts_other_buPrintBox a:before,
+input[type="button"]:before,
+input[type="submit"]:before,
+.topicDigestLink a:before,
+.blogRecentLink a:before,
+.pageMore a:before {
+  background: url(../images/common/linkmark_sp.png) no-repeat left center;
+}
+.parts_other_bupageTopBox a:hover:before,
+.parts_other_buPrintBox a:hover:before,
+input[type="button"]:hover:before,
+input[type="submit"]:hover:before,
+.topicDigestLink a:hover:before,
+.blogRecentLink a:hover:before,
+.pageMore a:hover:before{
+  background: url(../images/common/linkmark_sp_white.png) no-repeat left center;
+}
+/* PC */
+@media (min-width: 992px) {
+  .parts_other_bupageTopBox a:before,
+  .parts_other_buPrintBox a:before,
+  input[type="button"]:before,
+  input[type="submit"]:before,
+  .topicDigestLink a:before,
+  .blogRecentLink a:before,
+  .pageMore a:before {
+    background: url(../images/common/linkmark.png) no-repeat left center;
+  }
+  .parts_other_bupageTopBox a:hover:before,
+  .parts_other_buPrintBox a:hover:before,
+  input[type="button"]:hover:before,
+  input[type="submit"]:hover:before,
+  .topicDigestLink a:hover:before,
+  .blogRecentLink a:hover:before,
+  .pageMore a:hover:before {
+    background: url(../images/common/linkmark_white.png) no-repeat left center;
+  }
+}
+
+/*----btn02(追加class)----*/
+a.btn02{
+  background: #02a6b0;
+  color:#fff;
+}
+a.btn02:hover {
+  background:#019084;
+  color:#fff;
+}
+a.btn02:before{
+  background: url(../images/common/btn_arrow_sp_white.png) no-repeat left center;
+}
+a.btn02:hover:before{
+  background: url(../images/common/btn_arrow_sp_white.png) no-repeat left center;
+}
+/* PC */
+@media (min-width: 992px){
+  a.btn02:before{
+  background: url(../images/common/btn_arrow_white.png) no-repeat left center;
+  }
+  a.btn02:hover:before{
+  background: url(../images/common/btn_arrow_white.png) no-repeat left center;
+  }
+}
+
+/*----btn03(追加class)----*/
+a.btn03{
+  background: #ddd;
+  color:#333;
+}
+a.btn03:hover {
+  background:#019084;
+  color: #fff;
+}
+a.btn03:before{
+  background: url(../images/common/linkmark_sp.png) no-repeat left center;
+}
+a.btn03:hover:before{
+  background: url(../images/common/linkmark_sp_white.png) no-repeat left center;
+}
+/* PC */
+@media (min-width: 992px){
+  a.btn03:before{
+  background: url(../images/common/linkmark.png) no-repeat left center;
+  }
+  a.btn03:hover:before{
+  background: url(../images/common/linkmark_white.png) no-repeat left center;
+  }
+}
+
+
+/* ----------------------------------------------------------------------------------------
+  #header
+---------------------------------------------------------------------------------------- */
+.boxTop ul li.small,
+.boxTop ul li.middle,
+.boxTop ul li.large{
+  background:#d5d9dd;
+}
+.boxTop ul li.small:hover,
+.boxTop ul li.middle:hover,
+.boxTop ul li.large:hover{
+  background:#019084;
+  color:#fff;
+}
+
+/* スマホのみ */
+@media (max-width: 767px) {
+  #header #siteDesc,#header .right {
+    background: #efefef;
+  }
+}
+
+/* -------------------------------------
+ * navbar
+ * ---------------------------------- */
+.navbar-default {
+  background-color: #11b8c2;
+  border-color: #ccc;
+ }
+.navbar-default .navbar-nav li{
+  border-top:#fff solid 1px;
+}
+.navbar-default .navbar-nav>li:before{
+  background-color: #019084;
+}
+.navbar-default .navbar-nav>li>a {
+  color: #fff;
+  position:relative;
+}
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+  background-color: #019084;
+  color: #eee;
+}
+.navbar-default .navbar-nav>li>a.menu-selected{
+  background-color: #019084;
+  color: #eee;
+}
+.navbar-default .navbar-nav li a b{
+  color: #006b6c;
+}
+.navbar-default .navbar-toggle .icon-bar{
+  background-color:#019084;
+}
+/* スマホ以外 */
+@media (min-width: 768px) {
+  .navbar-default .navbar-nav li{
+    border:none;
+  }
+  .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    background-color: transparent;
+  }
+}
+
+/* ----------------------------------------------------------------------------------------
+  #upper
+---------------------------------------------------------------------------------------- */
+/* -------------------------------------
+ * .upperNavi
+ * ---------------------------------- */
+.upperNavi{
+  background:#efefef;
+}
+.upperNavi ul li a{
+  background:#d5d9dd;
+}
+.upperNavi ul li a:hover{
+  background:#019084;
+  color:#fff;
+}
+
+/* ----------------------------------------------------------------------------------------
+  #bottom
+---------------------------------------------------------------------------------------- */
+/* -------------------------------------
+ * .bottomNavi
+ * ---------------------------------- */
+.bottomNavi{
+  background:#efefef;
+}
+.bottomNavi ul li a{
+  background:#fafafa;
+}
+.bottomNavi ul li a:hover{
+  background:#019084;
+  color:#fff;
+}
+
+/* ----------------------------------------------------------------------------------------
+  #topicpath
+---------------------------------------------------------------------------------------- */
+.breadcrumb {
+  background: #f6f6f6;
+}
+
+
+/* ----------------------------------------------------------------------------------------
+  #side
+---------------------------------------------------------------------------------------- */
+/* -------------------------------------
+ * 2カラム サイドメニュー
+ * ---------------------------------- */
+.column2 .sideNavi .boxBottom > ul > li a:hover,
+.column2 .sideNavi .boxBottom > ul > li a.menu-selected{
+  background:#d8d8d8;
+}
+.column2 .sideNavi .boxBottom > ul > li.menu-level-0 > a,
+.column2 .sideNavi .boxBottom > ul > li.menu-level-1 > a{
+  background: #11b8c2;
+}
+.column2 .sideNavi .boxBottom > ul > li.menu-level-0 > a:hover,
+.column2 .sideNavi .boxBottom > ul > li.menu-level-1 > a:hover{
+  background:#019084;
+}
+
+/* ----------------------------------------------------------------------------------------
+  #opt
+---------------------------------------------------------------------------------------- */
+/* -------------------------------------
+ * opt1Navi,opt2Navi,opt3Navi
+ * ---------------------------------- */
+#opt .naviBox .boxBottom > ul > li.menu-level-0 > a,
+#opt .naviBox .boxBottom > ul > li.menu-level-1 > a{
+  background: #11b8c2;
+}
+#opt .naviBox .boxBottom > ul > li.menu-level-0 > a:hover,
+#opt .naviBox .boxBottom > ul > li.menu-level-1 > a:hover{
+  background:#8e8c84;
+}
+
+/* ----------------------------------------------------------------------------------------
+  #footer
+---------------------------------------------------------------------------------------- */
+/* -------------------------------------
+ * .footerNavi
+ * ---------------------------------- */
+#footer .footerNavi {
+  background:#ddd;
+}
+
+/* -------------------------------------
+ * .pageTop
+ * ---------------------------------- */
+#footer .pageTop a{
+  background: #00878f;
+}
+#footer .pageTop a:hover{
+  background: #019084;
+}
+
+/* -------------------------------------
+ * .sitemapParts
+ * ---------------------------------- */
+#footer .sitemapParts > ul.treeLevel0 ul.treeLevel0 > li > a {
+  background: #11b8c2;
+  color:#fff;
+}
+#footer .sitemapParts > ul.treeLevel0 ul.treeLevel0 > li > a:hover {
+  background: #019084;
+}
+#footer .sitemapParts ul.treeLevel0 li a:hover{
+  background:#d8d8d8;
+}
+
+/* -------------------------------------
+ * address
+ * ---------------------------------- */
+#footer address {
+  background: #00878f;
+}
+
+
+
+
+
+

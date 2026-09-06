@@ -1,0 +1,10 @@
+title:responsive_type13_custom
+author:ウィトンズ
+created:2020/03/22
+modified:2020/03/22
+columntype:2
+columnsize_side:210px
+columnsize_main:675px
+package:homepage,blog
+comment:
+license:MIT

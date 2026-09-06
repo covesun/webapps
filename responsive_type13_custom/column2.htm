@@ -1,0 +1,346 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{tr(#ja#)}" lang="{tr(#ja#)}">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta name="robots" content="INDEX,FOLLOW" />
+<title>{if:site[site_sub_title]}{site[site_sub_title]} | {end:}{site[site_title]}</title>
+<meta name="description" content="{site[description]}" />
+<meta name="keywords" content="{site[keyword]}" />
+
+
+<!-- bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- bootstrap - jquery(1.9.1以上必要) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+	$.noConflict();
+</script>
+<!-- bootstrap - js -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="<?php echo CMS_SKIN_URL ?>/js/contents.js"></script>
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+<link type="text/css" rel="stylesheet" href="<?php echo CMS_SKIN_URL ?>/contents_parts_2017.css" />
+{login:h}
+{feed:h}
+
+</head>
+<body id="bootstrap_template" class="column2">
+<div id="wrapper">
+
+<!-- ************************************************** id="header"  ************************************************** -->
+    <div id="header">
+        <div class="container">
+        <!--BLOCK:HEADER-->
+
+            <!--MODULE:album_index--> <!--/MODULE:album_index-->
+            <!--MODULE:blog_category--> <!--/MODULE:blog_category-->
+            <!--MODULE:blog_calendar--> <!--/MODULE:blog_calendar-->
+            <!--MODULE:blog_search--> <!--/MODULE:blog_search-->
+            <!--MODULE:blog_feed--> <!--/MODULE:blog_feed-->
+            <!--MODULE:blog_recent--> <!--/MODULE:blog_recent-->
+            <!--MODULE:blog_monthly--> <!--/MODULE:blog_monthly-->
+
+			<!--MODULE:cart_guide--> <!--/MODULE:cart_guide-->
+			<!--MODULE:cart_parts-js--> <!--/MODULE:cart_parts-js-->
+			<!--MODULE:catalog_new--> <!--/MODULE:catalog_new-->
+			<!--MODULE:catalog_picup--> <!--/MODULE:catalog_picup-->
+			<!--MODULE:catalog_popular--> <!--/MODULE:catalog_popular-->
+			<!--MODULE:catalog_random-get_random--> <!--/MODULE:catalog_random-get_random-->
+			<!--MODULE:catalog_index--> <!--/MODULE:catalog_index-->
+			<!--MODULE:catalog_search--> <!--/MODULE:catalog_search-->
+			<!--MODULE:user_login-get_form--> <!--/MODULE:user_login-get_form-->
+			<!--MODULE:user_login-menu--> <!--/MODULE:user_login-menu-->
+
+            <!--MODULE:event_calendar--> <!--/MODULE:event_calendar-->
+            <!--MODULE:event_digest--> <!--/MODULE:event_digest-->
+
+            <!--MODULE:topics_digest--> <!--/MODULE:topics_digest-->
+            <!--MODULE:topics_index--> <!--/MODULE:topics_index-->
+
+            <!--MODULE:search_form--> <!--/MODULE:search_form-->
+            <!--MODULE:mailform_parts--> <!--/MODULE:mailform_parts-->
+            <!--MODULE:mobile_qr--> <!--/MODULE:mobile_qr-->
+            <!--MODULE:rssreader--> <!--/MODULE:rssreader-->
+            <!--MODULE:sitemap_parts--> <!--/MODULE:sitemap_parts-->
+            <!--MODULE:business_calendar--> <!--/MODULE:business_calendar-->
+
+			<!-- MODULE:navigation-->
+			<nav class="navbar navbar-default">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#hearderNav{group[id]}" aria-expanded="false">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="hearderNav{group[id]}">
+
+<?php
+	if( !function_exists('rec_header_menu') ) {
+		function rec_header_menu ($array) {
+			echo '<ul class="nav navbar-nav">';
+			foreach( $array as $rownum => $row ) {
+				echo '<li id="'.$row['tagid'].'" class="menu-level-'.$row['level'].'">';
+				if( preg_match('|_link|',$row['linktype']) ) {
+					$tag = 'a';
+					$href = ' href="'.$row['url'].'" target="'.$row['target'].'"';
+				} else {
+					$tag = 'div';
+					$href = '';
+				}
+				if( preg_match('/image/',$row['linktype']) ) {
+					$rollover = '';
+					$class = 'imgNavi';
+					if( preg_match('/rollover/',$row['linktype']) ){
+						$rollover = " onmouseover=\"this.src='{$row['image_r']}'\" onmouseout=\"this.src='{$row['image']}'\"";
+					}
+					if( preg_match('/selected/',$row['linktype']) ){
+						$row['image'] = $row['image_s'];
+					}
+					$row['title'] = "<img src=\"{$row['image']}\" alt=\"{$row['title']}\"{$rollover} />";
+				}
+				echo "<{$tag} class=\"menu {$class} {$row['add_class']}\"{$href}>{$row['title']}</{$tag}>";
+				if( $row['child'] ){
+					 //rec_header_menu($row['child']);
+				}
+				echo "</li>";
+			}
+			echo "</ul>";
+		}
+	}
+	rec_header_menu($t->data);
+?>
+
+				</div><!-- /.navbar-collapse -->
+			</nav>
+			<!--/MODULE:navigation-->
+
+        
+        <!--/BLOCK:HEADER-->
+        </div>
+    </div>
+<!-- ************************************************** // id="header" ************************************************** -->
+
+	<!-- id="topicpath" -->
+	<div id="topicpath" class="container">
+		<?php
+			$count = count($t->site['topicpath']);
+			if($count > 0 ) {
+			    echo '<ol class="breadcrumb">';
+			    echo '<li id="topicpathFirst"><a href="'.$t->site[home_url].'">'.$t->site[top_title].'</a></li>';
+			    foreach( $t->site['topicpath'] as $url => $name) {
+			    if( $count == 1 ):
+			        echo "<li>$name</li>";
+			    else:
+			        echo '<li><a href="'.$url.'">'.$name.'</a></li>';
+			    endif;
+			    $count--;
+			    }
+			    echo "</ol>";
+			}
+		?>
+	</div>
+	<!-- // id="topicpath" -->
+
+
+<!-- ************************************************** id="container" ************************************************** -->
+	<div id="container" class="container">
+<div class="row">
+<!-- ************************************************** id="contents" ************************************************** -->
+		<div id="contents" class="col-lg-9 col-md-8 col-sm-7 col-xs-12">
+
+			<div id="upper">
+				<!--BLOCK:UPPER-->
+						<!--MODULE:mobile_qr--> <!--/MODULE:mobile_qr-->
+						<!--MODULE:sitemap_parts--> <!--/MODULE:sitemap_parts-->
+						<!--MODULE:cart_guide--> <!--/MODULE:cart_guide-->
+						<!--MODULE:cart_parts-js--> <!--/MODULE:cart_parts-js-->
+						<!--MODULE:catalog_new--> <!--/MODULE:catalog_new-->
+						<!--MODULE:catalog_picup--> <!--/MODULE:catalog_picup-->
+						<!--MODULE:catalog_popular--> <!--/MODULE:catalog_popular-->
+						<!--MODULE:catalog_random-get_random--> <!--/MODULE:catalog_random-get_random-->
+						<!--MODULE:catalog_index--> <!--/MODULE:catalog_index-->
+						<!--MODULE:catalog_search--> <!--/MODULE:catalog_search-->
+						<!--MODULE:user_login-get_form--> <!--/MODULE:user_login-get_form-->
+						<!--MODULE:user_login-menu--> <!--/MODULE:user_login-menu-->
+				<!--/BLOCK:UPPER-->
+			</div>
+
+			<div id="main">
+				<!--BLOCK:MAIN-->
+				<!--/BLOCK:MAIN-->
+			</div>
+
+			<div id="bottom">
+				<!--BLOCK:BOTTOM-->
+						<!--MODULE:mobile_qr--> <!--/MODULE:mobile_qr-->
+						<!--MODULE:sitemap_parts--> <!--/MODULE:sitemap_parts-->
+						<!--MODULE:cart_guide--> <!--/MODULE:cart_guide-->
+						<!--MODULE:cart_parts-js--> <!--/MODULE:cart_parts-js-->
+						<!--MODULE:catalog_new--> <!--/MODULE:catalog_new-->
+						<!--MODULE:catalog_picup--> <!--/MODULE:catalog_picup-->
+						<!--MODULE:catalog_popular--> <!--/MODULE:catalog_popular-->
+						<!--MODULE:catalog_random-get_random--> <!--/MODULE:catalog_random-get_random-->
+						<!--MODULE:catalog_index--> <!--/MODULE:catalog_index-->
+						<!--MODULE:catalog_search--> <!--/MODULE:catalog_search-->
+						<!--MODULE:user_login-get_form--> <!--/MODULE:user_login-get_form-->
+						<!--MODULE:user_login-menu--> <!--/MODULE:user_login-menu-->
+				<!--/BLOCK:BOTTOM-->
+			</div>
+
+		</div>
+<!-- ************************************************** // id="contents" ************************************************** -->
+
+<!-- ************************************************** id="side"  ************************************************** -->
+		<div id="side" class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
+			<!--BLOCK:SIDE-->
+				<!--MODULE:mobile_qr--> <!--/MODULE:mobile_qr-->
+				<!--MODULE:sitemap_parts--> <!--/MODULE:sitemap_parts-->
+				<!--MODULE:cart_guide--> <!--/MODULE:cart_guide-->
+				<!--MODULE:cart_parts-js--> <!--/MODULE:cart_parts-js-->
+				<!--MODULE:catalog_new--> <!--/MODULE:catalog_new-->
+				<!--MODULE:catalog_picup--> <!--/MODULE:catalog_picup-->
+				<!--MODULE:catalog_popular--> <!--/MODULE:catalog_popular-->
+				<!--MODULE:catalog_random-get_random--> <!--/MODULE:catalog_random-get_random-->
+				<!--MODULE:catalog_index--> <!--/MODULE:catalog_index-->
+				<!--MODULE:catalog_search--> <!--/MODULE:catalog_search-->
+				<!--MODULE:user_login-get_form--> <!--/MODULE:user_login-get_form-->
+				<!--MODULE:user_login-menu--> <!--/MODULE:user_login-menu-->
+			<!--/BLOCK:SIDE-->
+		</div>
+<!-- ************************************************** // id="side" ************************************************** -->
+</div>
+	</div><!-- //id="container" -->
+
+<!-- ************************************************** // id="container" ************************************************** -->
+
+<!-- ************************************************** id="opt" ************************************************** -->
+	<div id="opt" class="clearfix">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 col-xs-12">
+
+					<div id="opt1">
+					<!--BLOCK:OPT1-->
+						<!--MODULE:mobile_qr--> <!--/MODULE:mobile_qr-->
+						<!--MODULE:sitemap_parts--> <!--/MODULE:sitemap_parts-->
+						<!--MODULE:cart_guide--> <!--/MODULE:cart_guide-->
+						<!--MODULE:cart_parts-js--> <!--/MODULE:cart_parts-js-->
+						<!--MODULE:catalog_new--> <!--/MODULE:catalog_new-->
+						<!--MODULE:catalog_picup--> <!--/MODULE:catalog_picup-->
+						<!--MODULE:catalog_popular--> <!--/MODULE:catalog_popular-->
+						<!--MODULE:catalog_random-get_random--> <!--/MODULE:catalog_random-get_random-->
+						<!--MODULE:catalog_index--> <!--/MODULE:catalog_index-->
+						<!--MODULE:catalog_search--> <!--/MODULE:catalog_search-->
+						<!--MODULE:user_login-get_form--> <!--/MODULE:user_login-get_form-->
+						<!--MODULE:user_login-menu--> <!--/MODULE:user_login-menu-->
+					<!--/BLOCK:OPT1-->
+					</div>
+
+				</div>
+				<div class="col-sm-4 col-xs-12">
+
+					<div id="opt2">
+					<!--BLOCK:OPT2-->
+						<!--MODULE:mobile_qr--> <!--/MODULE:mobile_qr-->
+						<!--MODULE:sitemap_parts--> <!--/MODULE:sitemap_parts-->
+						<!--MODULE:cart_guide--> <!--/MODULE:cart_guide-->
+						<!--MODULE:cart_parts-js--> <!--/MODULE:cart_parts-js-->
+						<!--MODULE:catalog_new--> <!--/MODULE:catalog_new-->
+						<!--MODULE:catalog_picup--> <!--/MODULE:catalog_picup-->
+						<!--MODULE:catalog_popular--> <!--/MODULE:catalog_popular-->
+						<!--MODULE:catalog_random-get_random--> <!--/MODULE:catalog_random-get_random-->
+						<!--MODULE:catalog_index--> <!--/MODULE:catalog_index-->
+						<!--MODULE:catalog_search--> <!--/MODULE:catalog_search-->
+						<!--MODULE:user_login-get_form--> <!--/MODULE:user_login-get_form-->
+						<!--MODULE:user_login-menu--> <!--/MODULE:user_login-menu-->
+					<!--/BLOCK:OPT2-->
+					</div>
+
+				</div>
+				<div class="col-sm-4 col-xs-12">
+
+					<div id="opt3">
+					<!--BLOCK:OPT3-->
+						<!--MODULE:mobile_qr--> <!--/MODULE:mobile_qr-->
+						<!--MODULE:sitemap_parts--> <!--/MODULE:sitemap_parts-->
+						<!--MODULE:cart_guide--> <!--/MODULE:cart_guide-->
+						<!--MODULE:cart_parts-js--> <!--/MODULE:cart_parts-js-->
+						<!--MODULE:catalog_new--> <!--/MODULE:catalog_new-->
+						<!--MODULE:catalog_picup--> <!--/MODULE:catalog_picup-->
+						<!--MODULE:catalog_popular--> <!--/MODULE:catalog_popular-->
+						<!--MODULE:catalog_random-get_random--> <!--/MODULE:catalog_random-get_random-->
+						<!--MODULE:catalog_index--> <!--/MODULE:catalog_index-->
+						<!--MODULE:catalog_search--> <!--/MODULE:catalog_search-->
+						<!--MODULE:user_login-get_form--> <!--/MODULE:user_login-get_form-->
+						<!--MODULE:user_login-menu--> <!--/MODULE:user_login-menu-->
+					<!--/BLOCK:OPT3-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- ************************************************** // id="opt" ************************************************** -->
+
+<!-- ************************************************** id="footer" ************************************************** -->
+	<div id="footer" class="clearfix">
+		<div class="container">
+			<!--BLOCK:FOOTER-->
+
+	            <!--MODULE:album_index--> <!--/MODULE:album_index-->
+	            <!--MODULE:blog_category--> <!--/MODULE:blog_category-->
+	            <!--MODULE:blog_calendar--> <!--/MODULE:blog_calendar-->
+	            <!--MODULE:blog_search--> <!--/MODULE:blog_search-->
+	            <!--MODULE:blog_feed--> <!--/MODULE:blog_feed-->
+	            <!--MODULE:blog_recent--> <!--/MODULE:blog_recent-->
+	            <!--MODULE:blog_monthly--> <!--/MODULE:blog_monthly-->
+
+	            <!--MODULE:catalog_picup--> <!--/MODULE:catalog_picup-->
+	            <!--MODULE:catalog_random-get_random--> <!--/MODULE:catalog_random-get_random-->
+	            <!--MODULE:catalog_index--> <!--/MODULE:catalog_index-->
+	            <!--MODULE:catalog_new--> <!--/MODULE:catalog_new-->
+	            <!--MODULE:catalog_popular--> <!--/MODULE:catalog_popular-->
+	            <!--MODULE:catalog_search--> <!--/MODULE:catalog_search-->
+	            <!--MODULE:cart_parts-js--> <!--/MODULE:cart_parts-js-->
+	            <!--MODULE:cart_guide--> <!--/MODULE:cart_guide-->
+	            <!--MODULE:user_login-menu--> <!--/MODULE:user_login-menu-->
+	            <!--MODULE:user_login-get_form--> <!--/MODULE:user_login-get_form-->
+
+	            <!--MODULE:event_calendar--> <!--/MODULE:event_calendar-->
+	            <!--MODULE:event_digest--> <!--/MODULE:event_digest-->
+
+	            <!--MODULE:topics_digest--> <!--/MODULE:topics_digest-->
+	            <!--MODULE:topics_index--> <!--/MODULE:topics_index-->
+
+	            <!--MODULE:mailform_parts--> <!--/MODULE:mailform_parts-->
+	            <!--MODULE:mobile_qr--> <!--/MODULE:mobile_qr-->
+	            <!--MODULE:rssreader--> <!--/MODULE:rssreader-->
+	            <!--MODULE:business_calendar--> <!--/MODULE:business_calendar-->
+
+			<!--/BLOCK:FOOTER-->
+		</div>
+
+		<div class="pageTop clearfix">
+			<div class="container">
+				<a href="#header">Back to top</a>
+			</div>
+		</div>
+
+		<address>
+			<div class="container">{site[copyright]}</div>
+		</address>
+
+	</div>
+<!-- ************************************************** // id="footer" ************************************************** -->
+
+
+</div><!-- // id="wrapper" -->
+</body>
+</html>

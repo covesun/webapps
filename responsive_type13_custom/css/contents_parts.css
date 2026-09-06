@@ -1,0 +1,921 @@
+@charset "utf-8";
+
+/* ---------------------------------------------------------------------------------------- 
+
+	ヘッダーパーツ
+
+---------------------------------------------------------------------------------------- */
+
+#logo {
+	font-size: 180%;
+	margin-bottom: 10px;
+}
+#siteDesc {
+	font-size: 80%;
+}
+
+/* 小中大ボタン */
+.fontSize ul li {
+	display: inline-block;
+	padding: 2px;
+	min-width: 20px;
+	min-height: 20px;
+	border: 1px solid #ccc;	
+	text-align: center;
+	font-size: 12px;
+	background: #eee;
+}
+.right .fontSize {
+    margin-right: 15px;
+}
+
+
+
+/* ---------------------------------------------------------------------------------------- 
+
+	ページの先頭へ戻る
+
+---------------------------------------------------------------------------------------- */
+.parts_other_bupageTopBox a {
+	/* form-control */
+}
+
+
+
+/* ---------------------------------------------------------------------------------------- 
+
+	ページを印刷
+
+---------------------------------------------------------------------------------------- */
+
+.parts_other_buPrintBox a {
+	/* form-control */
+}
+
+
+
+/* ---------------------------------------------------------------------------------------- 
+
+	よくある質問
+
+---------------------------------------------------------------------------------------- */
+
+.qaList {
+	margin: 0 0 15px;
+}
+.qaList dl dt {
+	padding: 10px 0 10px 45px;
+	font-weight: bold;
+	border-bottom: 1px dotted #CCCCCC;
+	background: url(../images/parts/faq_q.png) no-repeat 5px;
+}
+
+.qaList dl dd {
+	padding: 10px 0 10px 45px;
+	background: url(../images/parts/faq_a.png) no-repeat 5px;
+}
+
+
+
+/* ---------------------------------------------------------------------------------------- 
+
+	リンクと説明
+
+---------------------------------------------------------------------------------------- */
+
+.explanList {
+	margin-top: 15px;	
+	margin-bottom: 15px;	
+	padding: 14px;
+	border: 1px solid #dad7d1;
+	line-height: 1.5;
+}
+.explanList dl {
+	margin-bottom: 0;
+}
+.explanList dl dt {
+	padding-bottom: 10px;
+	border-bottom: 1px dotted #ccc;
+}
+.explanList dl dd {
+	padding-top: 10px;
+}
+
+
+/* ---------------------------------------------------------------------------------------- 
+
+	リンク
+
+---------------------------------------------------------------------------------------- */
+
+.parts_img_type08_box p a,
+.parts_img_type09_box_01 p a,
+.parts_img_type09_box_02 p a,
+.parts_img_type09_box_03 p a,
+.parts_img_type10_box_01 p a,
+.parts_img_type10_box_02 p a,
+.parts_img_type10_box_03 p a,
+.parts_img_type10_box_04 p a {
+}
+
+
+/* ---------------------------------------------------------------------------------------- 
+
+	線
+
+---------------------------------------------------------------------------------------- */
+
+.parts_text_type02,
+.parts_text_type04,
+.parts_text_type06,
+.parts_text_type08 {
+	margin: 0 0 15px;
+	border: 1px solid #ccc;
+}
+
+#opt .parts_text_type02,
+#opt .parts_text_type04,
+#opt .parts_text_type06,
+#opt .parts_text_type08 {
+	background-color: #fff;
+}
+
+
+/* ---------------------------------------------------------------------------------------- 
+
+	スライダー
+
+---------------------------------------------------------------------------------------- */
+.container_skitter {
+	/* レスポンシブ非対応 */
+}
+
+
+/* ---------------------------------------------------------------------------------------- 
+
+	検索フォーム
+---------------------------------------------------------------------------------------- */
+#header .siteSearch h2 {
+	display:none;
+}
+#header .siteSearch　{
+	text-align:right;
+}
+#header .siteSearch .siteSearchText　{
+	max-width: 200px;
+}
+#header .siteSearch .searchLink　{
+	display: inline-block;
+}
+
+
+/* ---------------------------------------------------------------------------------------- 
+
+	コンテンツパーツ共通
+
+---------------------------------------------------------------------------------------- */
+
+/* --------------------------------
+ * サイズ
+ * ------------------------------*/
+
+.parts_h_type07_box,
+.parts_h_type08_box,
+.parts_h_type09_box,
+.parts_h_type10_box,
+.parts_h_type11_box,
+.parts_h_type12_box,
+.parts_h_type13_box,
+.parts_h_type14_box,
+.parts_img_type03_box ,
+.parts_img_type04_box ,
+.parts_img_type05_box ,
+.parts_img_type08_box ,
+.parts_img_type20_box {
+	width: 50%;
+}
+
+/* 画像 */
+.parts_h_type07_box div img,
+.parts_h_type08_box .parts_h_type08_imgBox img,
+.parts_h_type09_box.left div img,
+.parts_h_type10_box.right div img,
+.parts_h_type11_box.right div img,
+.parts_h_type12_box.left div img,
+.parts_h_type14_box img,
+.parts_h_type15_box_01 img,
+.parts_h_type15_box_02 img,
+.parts_h_type15_box_03 img,
+.parts_img_type03_box.left img,
+.parts_img_type04_box.right img,
+.parts_img_type05_box img,
+.parts_img_type06_box_01 img,
+.parts_img_type06_box_02 img,
+.parts_img_type06_box_03 img,
+.parts_img_type07_box_01 img,
+.parts_img_type07_box_02 img,
+.parts_img_type07_box_03 img,
+.parts_img_type07_box_04 img,
+.parts_img_type08_box img,
+.parts_img_type09_box_01 .parts_img_type09_img img,
+.parts_img_type09_box_02 .parts_img_type09_img img,
+.parts_img_type09_box_03 .parts_img_type09_img img,
+.parts_img_type10_box_01 .parts_img_type10_img img,
+.parts_img_type10_box_02 .parts_img_type10_img img,
+.parts_img_type10_box_03 .parts_img_type10_img img,
+.parts_img_type10_box_04 .parts_img_type10_img img,
+.parts_img_type11_box .parts_img_type11_img img,
+.parts_img_type12_box_01 .parts_img_type12_img img,
+.parts_img_type12_box_02 .parts_img_type12_img img,
+.parts_img_type12_box_03 .parts_img_type12_img img,
+.parts_img_type13_box_01 .parts_img_type13_img img,
+.parts_img_type13_box_02 .parts_img_type13_img img,
+.parts_img_type13_box_03 .parts_img_type13_img img,
+.parts_img_type13_box_04 .parts_img_type13_img img,
+.parts_img_type14_box_01 img,
+.parts_img_type14_box_02 img,
+.parts_img_type15_box_01 img,
+.parts_img_type15_box_03 img,
+.parts_img_type16_box_02 img,
+.parts_img_type16_box_03 img,
+.parts_img_type17_box_01 img,
+.parts_img_type17_box_03 img,
+.parts_img_type18_box_02 img,
+.parts_img_type18_box_04 img,
+.parts_img_type20_box .parts_img_type20_imgBox img,
+.parts_img_type21_box_01 .parts_img_type21_imgBox img,
+.parts_img_type21_box_02 .parts_img_type21_imgBox img,
+.parts_img_type21_box_03 .parts_img_type21_imgBox img,
+.parts_img_type22_imgBox img,
+.parts_img_type23_imgBox img,
+.parts_img_type24_box_01 img,
+.parts_img_type24_box_02 img,
+.parts_img_type24_box_03 img,
+.parts_img_type24_box_04 img,
+.parts_img_type24_box_05 img,
+.parts_img_type25_box_01 img,
+.parts_img_type25_box_02 img,
+.parts_img_type25_box_03 img,
+.parts_img_type25_box_04 img,
+.parts_img_type25_box_05 img,
+.parts_img_type25_box_06 img {
+	width: 100%;
+	/*display: block;*/
+}
+
+
+.parts_img_type06_box_01,
+.parts_img_type06_box_02,
+.parts_img_type06_box_03,
+.parts_h_type15_box_01,
+.parts_h_type15_box_02,
+.parts_h_type15_box_03 {
+	width: 33.3333%;
+}
+
+.parts_img_type07_box_01,
+.parts_img_type07_box_02,
+.parts_img_type07_box_03,
+.parts_img_type07_box_04 {
+	width: 25%;
+}
+
+
+
+
+/* 見出し系 - 左）見出しと画像　右)テキスト */
+.parts_img_type09_box_01,
+.parts_img_type09_box_02,
+.parts_img_type09_box_03 {
+	width: 33.3333%;
+}
+
+
+.parts_img_type10_box_01,
+.parts_img_type10_box_02,
+.parts_img_type10_box_03,
+.parts_img_type10_box_04 {
+	width: 25%;
+}
+
+.parts_img_type11_box {
+	width: 50%;
+}
+
+.parts_img_type12_box_01,
+.parts_img_type12_box_02,
+.parts_img_type12_box_03 {
+	width: 33.3333%;
+}
+
+/* 画像とテキストの4セット */
+.parts_img_type13_box_01,
+.parts_img_type13_box_02,
+.parts_img_type13_box_03,
+.parts_img_type13_box_04 {
+	width: 25%;
+}
+
+/* 左）画像　中）画像　右)テキスト */
+.parts_img_type14_box_01,
+.parts_img_type14_box_02,
+.parts_img_type14_box_03 {
+	width: 33.3333%;
+}
+
+/* 画像系 - 左）画像　中）テキスト　右)画像 */
+.parts_img_type15_box_01,
+.parts_img_type15_box_02,
+.parts_img_type15_box_03 {
+	width: 33.3333%;
+}
+
+.parts_img_type16_box_01,
+.parts_img_type16_box_02,
+.parts_img_type16_box_03 {
+	width: 33.3333%;
+}
+
+/* 画像系 - 左）テキスト　中左）画像　中右）テキスト　右）画像 */
+.parts_img_type17_box_01,
+.parts_img_type17_box_02,
+.parts_img_type17_box_03,
+.parts_img_type17_box_04 {
+	width: 25%;
+}
+
+.parts_img_type18_box_01,
+.parts_img_type18_box_02,
+.parts_img_type18_box_03,
+.parts_img_type18_box_04 {
+	width: 25%;
+}
+
+.parts_img_type19_box {
+	width: 100%;
+}
+
+.parts_img_type19_box img {
+	width: 100%;
+}
+
+/* 左）画像　右）テキストの2セット */
+.parts_img_type20_box .left,
+.parts_img_type20_box .right {
+	width: 50%;
+}
+/* 左）画像　右）テキストの2セット */
+.parts_img_type21_box_01,
+.parts_img_type21_box_02,
+.parts_img_type21_box_03 {
+	width: 33.3333%;
+}
+.parts_img_type21_box_01 .left,
+.parts_img_type21_box_01 .right,
+.parts_img_type21_box_02 .left,
+.parts_img_type21_box_02 .right,
+.parts_img_type21_box_03 .left,
+.parts_img_type21_box_03 .right {
+	width: 50%;
+}
+
+/* 画像(右・キャプション付)とテキスト【3】 */
+.parts_img_type22_box,
+.parts_img_type22_imgBox {
+	width: 50%;
+}
+
+/* 画像(左・キャプション付)とテキスト【3】 */
+.parts_img_type23_box,
+.parts_img_type23_imgBox {
+	width: 50%;
+}
+
+/* 画像5列 */
+.parts_img_type24_box_01,
+.parts_img_type24_box_02,
+.parts_img_type24_box_03,
+.parts_img_type24_box_04,
+.parts_img_type24_box_05 {
+	width: 20%;
+}
+
+/* 画像6列 */
+.parts_img_type25_box_01,
+.parts_img_type25_box_02,
+.parts_img_type25_box_03,
+.parts_img_type25_box_04,
+.parts_img_type25_box_05,
+.parts_img_type25_box_06 {
+	width: 16.666%;
+}
+
+
+.parts_tabel_type07_tableBox {
+	width: 75%;
+}
+
+.parts_tabel_type07_textBox {
+    width: 25%;
+}
+
+.parts_tabel_type08_tableBox {
+	width: 75%;
+}
+
+.parts_tabel_type08_textBox {
+    width: 25%;
+}
+
+.parts_tabel_type09_tableBox {
+	width: 75%;
+}
+
+.parts_tabel_type09_imgBox {
+    width: 25%;
+}
+
+.parts_tabel_type10_tableBox {
+	width: 75%;
+}
+
+.parts_tabel_type10_imgBox {
+    width: 25%;
+}
+
+/* テキスト系 - テキスト（2列） */
+.parts_text_type03_box {
+    width: 50%;
+}
+
+/* テキスト系 - テキスト（2列）枠線付き */
+.parts_text_type04_box {
+    width: 50%;
+}
+
+/* テキスト系 - テキスト（3列） */
+.parts_text_type05_box_01,
+.parts_text_type05_box_02,
+.parts_text_type05_box_03 {
+    width: 33.3333% !important;
+}
+
+/* テキスト系 - テキスト（3列）枠線付き */
+.parts_text_type06_box_01,
+.parts_text_type06_box_02,
+.parts_text_type06_box_03 {
+    width: 33.3333% !important;
+}
+
+/* テキスト系 - テキスト（4列） */
+.parts_text_type07_box_01,
+.parts_text_type07_box_02,
+.parts_text_type07_box_03,
+.parts_text_type07_box_04 {
+    width: 25% !important;
+}
+/* テキスト系 - テキスト（4列）枠線付き */
+.parts_text_type08_box_01,
+.parts_text_type08_box_02,
+.parts_text_type08_box_03,
+.parts_text_type08_box_04 {
+    width: 25% !important;
+}
+
+/* 表組系 - 画像 */
+div[class^="parts_tabel_type"] img {
+	width: 100%;
+	display: block;
+}
+
+.column2 .parts_text_type16 {
+	width: 100%;
+	margin-left: 0;
+	margin-left: 0;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+
+
+/* --------------------------------
+ * 余白調整
+ * ------------------------------*/
+
+/* 見出し系・画像系 */
+div[class^="parts_h_type"],
+div[class^="parts_img_type"] {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+div[class^="parts_h_type"].right,
+div[class^="parts_img_type"].right {
+	padding-left: 10px;
+}
+div[class^="parts_h_type"].left,
+div[class^="parts_img_type"].left {
+	padding-right: 10px;
+}
+div[class^="parts_h_type"].right h4,
+div[class^="parts_h_type"].left h4 {
+	margin-top: 0;
+}
+
+/* テキスト系 */
+div[class^="parts_text_type"].left,
+div[class^="parts_text_type"].right,
+div[class^="box parts_text_type"] {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+/* 表組系 */
+div[class^="parts_tabel_type"] {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+div[class^="parts_tabel_type"].right {
+	padding-left: 10px;
+}
+div[class^="parts_tabel_type"].left {
+	padding-right: 10px;
+}
+
+
+
+
+
+
+
+/* --------------------------------
+ * その他
+ * ------------------------------*/
+
+/* 表組系 - 表(見出し：下) */
+.parts_tabel_type04 caption,
+.parts_tabel_type06 caption {
+    caption-side: bottom;
+}
+
+/* 画像系 - 画像(右)とテキスト【1】 */
+.parts_img_type02_img {
+    float: right;
+	margin-left: 15px;
+}
+
+/* 画像系 - 画像(左)とテキスト【1】 */
+.parts_img_type01_img {
+    float: left;
+	margin-right: 15px;
+}
+
+/* テキスト系 - スクロールバー付きテキストボックス */
+.parts_text_type12 {
+    height: 180px;
+    overflow-y: scroll;
+    padding: 14px;
+}
+
+.parts_img_type20_txtBox,
+.parts_img_type21_txtBox {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+
+/* ----------------------------------------------------------------
+ * スマホ
+ * --------------------------------------------------------------*/
+@media (max-width: 767px) {
+
+	/* --------------------------------
+	 * 見出し系・画像系
+	 * ------------------------------*/
+	.parts_h_type07_box,
+	.parts_h_type08_box,
+	.parts_h_type09_box,
+	.parts_h_type10_box,
+	.parts_h_type11_box,
+	.parts_h_type12_box,
+	.parts_h_type13_box,
+	.parts_h_type14_box,
+	.parts_h_type15_box_01,
+	.parts_h_type15_box_02,
+	.parts_h_type15_box_03 {
+		width: 100%;
+	}
+
+	div[class^="parts_h_type"].right,
+	div[class^="parts_img_type"].right {
+		padding-left: 0px;
+	}
+	div[class^="parts_h_type"].left,
+	div[class^="parts_img_type"].left {
+		padding-right: 0px;
+	}
+
+	/* 画像系 - 左）テキスト　中左）画像　中右）テキスト　右）画像 */
+	.parts_img_type18_box_01,
+	.parts_img_type18_box_02,
+	.parts_img_type18_box_03,
+	.parts_img_type18_box_04 {
+		width: 100%;
+	}
+
+	/* 画像 - 左）テキスト　中）画像　右)画像 */
+	.parts_img_type16_box_01,
+	.parts_img_type16_box_02,
+	.parts_img_type16_box_03 {
+		width: 100%;
+	}
+
+	/* 画像系 - 左）テキスト　中左）画像　中右）テキスト　右）画像 */
+	.parts_img_type17_box_01,
+	.parts_img_type17_box_02,
+	.parts_img_type17_box_03,
+	.parts_img_type17_box_04 {
+		width: 100%;
+	}
+
+	/* 画像系 - 左）画像　中）テキスト　右)画像 */
+	.parts_img_type15_box_01,
+	.parts_img_type15_box_02,
+	.parts_img_type15_box_03 {
+		width: 100%;
+	}
+
+	/* 画像系 - 画像(右)とテキスト1 */
+	.parts_img_type04_box {
+	    width: 100% !important;
+	}
+
+	/* 画像系 - 画像とテキストの2セット */
+	.parts_img_type11_box {
+	    width: 100% !important;
+	}
+
+	/* 画像系 - 画像とテキストの3セット */
+	.parts_img_type12_box_01,
+	.parts_img_type12_box_02,
+	.parts_img_type12_box_03 {
+	    width: 100% !important;
+	}
+
+	/* 画像系 - 画像(右)とテキスト【1】 */
+	.parts_img_type04_img {
+		width: 100%;
+	}
+
+	/* 左）画像　中）画像　右)テキスト */
+	.parts_img_type14_box_01,
+	.parts_img_type14_box_02,
+	.parts_img_type14_box_03 {
+		width: 100%;
+	}
+
+	/* 画像(左)とテキスト【1】 */
+	.parts_img_type03_box {
+		width: 100%;
+	}
+
+	/* 画像2列 */
+	.parts_img_type05_box {
+		width: 100%;
+	}
+
+	/* 画像3列 */
+	.parts_img_type06_box_01,
+	.parts_img_type06_box_02,
+	.parts_img_type06_box_03 {
+		width: 100%;
+	}
+
+	/* 画像4列 */
+	.parts_img_type07_box_01,
+	.parts_img_type07_box_02,
+	.parts_img_type07_box_03,
+	.parts_img_type07_box_04 {
+		width: 100%;
+	}
+
+	/* 画像とテキストの4セット */
+	.parts_img_type13_box_01,
+	.parts_img_type13_box_02,
+	.parts_img_type13_box_03,
+	.parts_img_type13_box_04 {
+		width: 100%;
+	}
+
+	/* 画像とリンクテキストの2セット */
+	.parts_img_type08_box {
+		width: 100%;
+	}
+
+	/* 画像とリンクテキストの3セット */
+	.parts_img_type09_box_01,
+	.parts_img_type09_box_02,
+	.parts_img_type09_box_03 {
+		width: 100%;
+	}
+
+	/* 画像とリンクテキストの4セット */
+	.parts_img_type10_box_01,
+	.parts_img_type10_box_02,
+	.parts_img_type10_box_03,
+	.parts_img_type10_box_04 {
+		width: 100%;
+	}
+
+	/* 左）画像　右）テキストの2セット */
+	.parts_img_type20_box,
+	.parts_img_type20_box .left,
+	.parts_img_type20_box .right {
+		width: 100%;
+	}
+	/* 左）画像　右）テキストの2セット */
+	.parts_img_type21_box_01,
+	.parts_img_type21_box_02,
+	.parts_img_type21_box_03 {
+		width: 100%;
+	}
+	.parts_img_type21_box_01 .left,
+	.parts_img_type21_box_01 .right,
+	.parts_img_type21_box_02 .left,
+	.parts_img_type21_box_02 .right,
+	.parts_img_type21_box_03 .left,
+	.parts_img_type21_box_03 .right {
+		width: 100%;
+	}
+
+	/* 画像(右・キャプション付)とテキスト【3】 */
+	.parts_img_type22_box,
+	.parts_img_type22_imgBox {
+		width: 100%;
+	}
+
+	/* 画像(左・キャプション付)とテキスト【3】 */
+	.parts_img_type23_box,
+	.parts_img_type23_imgBox {
+		width: 100%;
+	}
+
+	/* 画像5列 */
+	.parts_img_type24_box_01,
+	.parts_img_type24_box_02,
+	.parts_img_type24_box_03,
+	.parts_img_type24_box_04,
+	.parts_img_type24_box_05 {
+		width: 100%;
+	}
+
+	/* 画像6列 */
+	.parts_img_type25_box_01,
+	.parts_img_type25_box_02,
+	.parts_img_type25_box_03,
+	.parts_img_type25_box_04,
+	.parts_img_type25_box_05,
+	.parts_img_type25_box_06 {
+		width: 100%;
+	}
+
+
+	/* --------------------------------
+	 * テキスト系
+	 * ------------------------------*/
+
+	/* テキスト系 - スクロールバー付きテキストボックス */
+	.parts_text_type12:-webkit-scrollbar {/*tableにスクロールバーを追加*/
+		width: 5px;
+	}
+	.parts_text_type12:-webkit-scrollbar-track {/*tableにスクロールバーを追加*/
+		background: #f1f1f1;
+	}
+	.parts_text_type12:-webkit-scrollbar-thumb {/*tableにスクロールバーを追加*/
+		background: #bcbcbc;
+	}
+
+	/* テキスト系 - テキスト（3列） */
+	.parts_text_type05_box_01,
+	.parts_text_type05_box_02,
+	.parts_text_type05_box_03 {
+	    width: 100% !important;
+	}
+
+	/* テキスト系 - テキスト（3列）枠線付き */
+	.parts_text_type06_box_01,
+	.parts_text_type06_box_02,
+	.parts_text_type06_box_03 {
+	    width: 100% !important;
+	}
+
+	/* テキスト系 - テキスト（4列） */
+	.parts_text_type07_box_01,
+	.parts_text_type07_box_02,
+	.parts_text_type07_box_03,
+	.parts_text_type07_box_04 {
+	    width: 50% !important;
+	}
+	.parts_text_type07_box_03 {
+		clear: both;
+	}
+
+	/* テキスト系 - テキスト（4列）枠線付き */
+	.parts_text_type08_box_01,
+	.parts_text_type08_box_02,
+	.parts_text_type08_box_03,
+	.parts_text_type08_box_04 {
+	    width: 50% !important;
+	}
+	.parts_text_type08_box_03 {
+		clear: both;
+	}
+
+
+	/* --------------------------------
+	 * 表組系
+	 * ------------------------------*/
+	div[class^="parts_tabel_type"] {
+		padding-bottom: 0px;
+		margin-bottom: 30px;
+	}
+	div[class^="parts_tabel_type"].left {
+	    width: 100% !important;
+		padding-bottom: 0;
+		padding-right: 0;
+	}
+	div[class^="parts_tabel_type"].right {
+	    width: 100% !important;
+		padding-top: 0;
+		padding-left: 0;
+	}
+
+	/* 表組系 - 左）画像　右）表 */
+	.parts_tabel_type10_imgBox {
+		margin-bottom: 10px;
+	}
+
+	/* 表組系 - 左）表　右）画像 */
+	.parts_tabel_type09_imgBox {
+		margin-top: 10px;
+	}
+
+	/*テーブルの横スクロール*/
+	.parts_tabel_type08_tableBox,
+	.parts_tabel_type10_tableBox,
+	.parts_tabel_type07_tableBox,
+	.parts_tabel_type09_tableBox,
+	.parts_tabel_type03,
+	.parts_tabel_type04,
+	.parts_tabel_type05,
+	.parts_tabel_type06 {
+		overflow-x: scroll;/*tableをスクロールさせる*/
+		margin-bottom: 15px;
+	}
+	.parts_tabel_type08_tableBox table,
+	.parts_tabel_type10_tableBox table,
+	.parts_tabel_type07_tableBox table,
+	.parts_tabel_type09_tableBox table,
+	.parts_tabel_type03 table,
+	.parts_tabel_type04 table,
+	.parts_tabel_type05 table,
+	.parts_tabel_type06 table {
+		white-space: nowrap;/*tableのセル内にある文字の折り返しを禁止*/
+		max-width: 1170px;
+	}
+
+	/*tableにスクロールバーを追加*/
+	.parts_tabel_type08_tableBox:-webkit-scrollbar,
+	.parts_tabel_type10_tableBox:-webkit-scrollbar,
+	.parts_tabel_type07_tableBox:-webkit-scrollbar,
+	.parts_tabel_type09_tableBox:-webkit-scrollbar,
+	.parts_tabel_type03:-webkit-scrollbar,
+	.parts_tabel_type04:-webkit-scrollbar,
+	.parts_tabel_type05:-webkit-scrollbar,
+	.parts_tabel_type06:-webkit-scrollbar {
+		height: 5px;
+	}
+	.parts_tabel_type08_tableBox:-webkit-scrollbar-track,
+	.parts_tabel_type10_tableBox:-webkit-scrollbar-track,
+	.parts_tabel_type07_tableBox:-webkit-scrollbar-track,
+	.parts_tabel_type09_tableBox:-webkit-scrollbar-track,
+	.parts_tabel_type03:-webkit-scrollbar-track,
+	.parts_tabel_type04:-webkit-scrollbar-track,
+	.parts_tabel_type05:-webkit-scrollbar-track,
+	.parts_tabel_type06:-webkit-scrollbar-track {
+		background: #eee;
+	}
+	.parts_tabel_type08_tableBox:-webkit-scrollbar-thumb,
+	.parts_tabel_type10_tableBox:-webkit-scrollbar-thumb,
+	.parts_tabel_type07_tableBox:-webkit-scrollbar-thumb,
+	.parts_tabel_type09_tableBox:-webkit-scrollbar-thumb,
+	.parts_tabel_type03:-webkit-scrollbar-thumb,
+	.parts_tabel_type04:-webkit-scrollbar-thumb,
+	.parts_tabel_type05:-webkit-scrollbar-thumb,
+	.parts_tabel_type06:-webkit-scrollbar-thumb {
+		background: #bbb;
+		border-radius: 5px;
+	}
+}
+

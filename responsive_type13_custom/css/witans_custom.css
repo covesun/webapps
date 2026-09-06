@@ -1,0 +1,369 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+/*==================================
+bootstrapの印刷時にURLを表示する設定を打ち消す
+===================================*/
+@media print {
+	a[href]:after {
+		content: "" !important;
+	}
+
+	abbr[title]:after {
+		content: "" !important;
+	}
+}
+
+
+/*==================================
+基本設定
+===================================*/
+/*リンク付画像のリンク枠線を消す*/
+a img {
+border-style:none;
+}
+/*リンクマウスオーバー（透過処理で少し明るく）*/
+a:hover,
+a:hover p,
+p a:hover,
+a:hover span,
+span a:hover
+ {
+ opacity: 0.7;
+}
+
+/*リンク画像マウスオーバー（透過処理で少し明るく）*/
+a:hover img{
+	opacity: 0.7;
+	-moz-opacity: 0.7; /* Firefox */
+	filter: alpha(opacity=70); /* IE6/7 */
+	-ms-filter: "alpha(opacity=70)"; /* IE8 */
+}
+
+/*リンクマウスオーバーをさせない*/
+a.opacity1:hover p {
+ opacity: 1;
+}
+p a.opacity1:hover {
+ opacity: 1;
+}
+a.opacity1:hover img{
+	opacity: 1;
+}
+
+
+/*文字設定*/
+#contents p{
+    line-height: 1.9;
+    margin-top: 3px;
+}
+
+
+/*==================================
+ヘッダー部分
+===================================*/
+
+#header .freeParts{
+	margin-top: 20px
+}
+#header .freeParts #logo{
+    margin-top: 3px;
+    margin-bottom: 1px;
+}
+
+
+
+/*==================================
+センターカラム
+===================================*/
+/*h1見出し*/
+#contents h1{
+    font-weight: bold;
+    color: #029084;
+}
+#contents h1:before{
+    border-top: 2px solid #029084;
+    border-bottom: 2px solid #029084;
+    border-left: 2px solid #029084;
+}
+#contents h1:after{
+    border-top: 2px solid #029084;
+    border-bottom: 2px solid #029084;
+    border-right: 2px solid #029084;
+}
+/*h2見出し*/
+#contents h2{
+    height: auto;
+    margin-top: 20px;
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-bottom: 0px;
+    padding-top: 25px;
+    padding-right:5%;
+    padding-left:5%;
+    padding-bottom: 25px;
+    font-size: 140%;
+    text-align: center !important;
+    letter-spacing: 0px;
+    position: relative;
+}
+#contents h2:before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border-top:;/*color*/
+    background:;/*color*/
+    z-index: -1;
+    background-color: #F5F5F5;
+    border-bottom: 1px none #019084;
+}
+
+
+#contents h3 {
+  background:;/*color*/
+  color:;/*color*/
+    border-bottom: 0px none #ddd;
+    padding: 10px 15px;
+    font-size: 130%;
+}
+
+
+/*==================================
+サイドカラム
+===================================*/
+
+.column2 .sideNavi .boxBottom > ul > li.menu-level-0 > a,
+.column2 .sideNavi .boxBottom > ul > li.menu-level-1 > a{
+  background:;/*color.css*/
+  color:#fff;
+  margin-top:10px;
+  margin-bottom:2px;
+  display: block;
+  font-weight: bold;
+  padding: 12px 1.0em 10px;
+  font-size: 15px;	
+}
+
+/*ブログ：カテゴリリスト*/
+#side div.blogCategory h3 {
+    background: #11b8c2;
+  color:;/*color*/
+    border-bottom: 0px none #ddd;
+    padding-top: 14px;
+    padding-right: 14px;
+    padding-left: 14px;
+    padding-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+#side div.blogCategoryList ul li,
+#side div.blogCategoryList ul li:first-child {
+    list-style-type: none;
+    background-repeat: no-repeat;
+    background-position: 0px 15px;
+    background-image: url(/images/website/categoryarrow01.png);
+    background-size: 12px auto;
+    margin-left: 12px;
+    padding-left: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#side div.blogCategoryList ul li a{
+    padding-left: 0px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+
+/*ブログ：最近のエントリー*/
+#side div.blogRecent h3 {
+    background: #11b8c2;
+  color:;/*color*/
+    border-bottom: 0px none #ddd;
+    padding-top: 8px;
+    padding-right: 14px;
+    padding-left: 14px;
+    padding-bottom: 3px;
+    font-size: 14px;
+    font-weight: bold;
+}
+#side div.blogRecent ul li,
+#side div.blogRecent ul li:first-child {
+    list-style-type: none;
+    padding-left: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 13px;
+}
+#side .blogRecentLink{
+    line-height: 0px;
+}
+#side .blogRecentLink a {
+    background-color: transparent;
+    color: #56A6AB;
+    font-size: 12px;
+    text-align: right;
+    padding-top: 1px;
+    margin-top: 1px;
+}
+#side .blogRecentLink a:before {
+    background-image:none;
+	
+}
+#side .blogRecentLink a:hover {
+    background-color: transparent;
+}
+
+
+
+
+/*お問合せ*/
+#side h4 {
+  border-bottom:;/*color*/
+  padding:0 0 10px;
+  margin:10px 0 20px;
+    font-size: 17px;
+}
+
+/*Instagramバナー*/
+div.InstagramBanner img{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 100%;
+    max-width: 280px;
+}
+
+
+/*==================================
+ブログページ
+===================================*/
+/*ブログページ：記事同士のマージン*/
+#contents div.blogEntryListBox{
+margin-bottom: 150px;
+}
+
+/*ブログページ：記事の見出し*/
+#contents div.blogEntryListBox h2{
+    color: #FFFFFF;
+    text-align: left!important;
+    border-bottom: 0px none #ddd;
+    padding: 20px 25px;
+    font-size: 135%;
+    border-radius: 12px;
+}
+#contents div.blogEntryListBox h2:before{
+    display: block;
+    background-color: #029084;
+    border-radius: 12px;
+}
+
+/*ブログカテゴリ別ページ：記事同士のマージン*/
+#contents div.blogCategoryArchivesList{
+margin-bottom: 150px;
+}
+
+/*ブログカテゴリ別ページ：記事の見出し*/
+#contents div.blogCategoryArchivesList h3{
+    padding: 20px 25px;
+    font-size: 135%;
+    border-radius: 12px;
+}
+
+/*ブログ記事：画像サイズ*/
+#contents div.blogEntryBody img {
+    max-width: 600px;
+    max-height: 600px;
+    width: auto;
+    height: auto;
+}
+/*ブログ記事：画像サイズ（スマホ表示）*/
+@media screen and (max-width: 991px) {
+#contents div.blogEntryBody img {
+    max-width: 90%;
+    max-height: 600px;
+    width: auto;
+    height: auto;
+}
+}
+
+
+
+
+/*==================================
+フッター
+===================================*/
+div#footer {
+    margin-top: 100px;
+}
+div.FooterInner {
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-bottom: 80px;
+}
+
+/*==================================
+コンテンツパーツ
+===================================*/
+
+/*工事実績（最新）*/
+#contents div.WorksList {
+    margin-top: 40px;
+}
+#contents div.WorksList h4{
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    font-size: 17px;
+}
+#contents div.WorksList div p{
+    margin-bottom: 5px;
+    margin-top: 0px;
+    line-height: 1.4;
+    margin-left: 5px;
+}
+
+/*改行で箇条書き01*/
+#contents div.ListText01 {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+#contents div.ListText01 h4{
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    font-size: 17px;
+}
+#contents div.ListText01 div p{
+    margin-top: 10px;
+    line-height: 1.4;
+    font-size: 15px;
+    text-indent: -1em;
+    padding-left: 1em;
+}
+#contents div.ListText01 div p:before {
+content: "・";
+}
+
+
+/*リンクボタン*/
+div.LinkButton01 p a {
+	font-size: 80%;
+	padding-left: 1rem;
+	padding-right: 15px;
+    background-color: #05A6B0;
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    border-radius: 1em;
+    text-decoration: none;
+}
+div.LinkButton01 p a:hover, a:active {
+    background-color: #0AAAB4;
+}
+
+

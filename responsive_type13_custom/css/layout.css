@@ -1,0 +1,487 @@
+@charset "utf-8";
+
+/* ---------------------------------------------------------------------------------------- 
+	#header
+---------------------------------------------------------------------------------------- */
+#header {
+	position: relative;
+}
+#header .container {
+	margin-top: 20px;
+}
+#header .container_fluid {
+	margin-top: 0px;
+}
+
+
+/* -------------------------------------
+ * メニューバー（全幅）
+ * ---------------------------------- */
+#header .container_fluid .box {
+	margin-bottom: 0px;
+}
+#header .container_fluid nav {
+	border-radius: 0;
+}
+
+
+/* -------------------------------------
+ * メニューバー（固定幅）
+ * ---------------------------------- */
+#header nav .container {
+	margin-top: 0;
+}
+
+
+/* -------------------------------------
+ * メニューバー（スマホ）
+ * ---------------------------------- */
+@media (max-width: 767px) {
+    .navbar-collapse {
+        border-top-width: 0px;
+    }
+}
+
+
+
+/* ---------------------------------------------------------------------------------------- 
+	#footer
+---------------------------------------------------------------------------------------- */
+#footer {
+	padding: 20px 0px 0px 0px;
+/*	margin-top: 50px;*/
+	background: #eee;
+}
+#footer address {
+	margin-bottom: 0px;
+}
+
+
+/* -------------------------------------
+ * フッターリンク
+ * ---------------------------------- */
+.footerNavi ul {
+    list-style: outside none none;
+    margin-left: -5px;
+    padding-left: 0;
+}
+.footerNavi ul  > li {
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
+/* -------------------------------------
+ * フッター サイト内検索
+ * ---------------------------------- */
+#footer .siteSearch h2 {
+	display: none;
+}
+
+
+/* -------------------------------------
+ * ページの先頭へ
+ * ---------------------------------- */
+.pageTop {
+	text-align: right;
+}
+
+
+
+/* ---------------------------------------------------------------------------------------- 
+	Copyright
+---------------------------------------------------------------------------------------- */
+address {
+	text-align: center;
+	margin-bottom: 0px;
+/*	background: #aaa;*/
+}
+
+
+
+/* ---------------------------------------------------------------------------------------- 
+	サイドバー（column2.htm）
+---------------------------------------------------------------------------------------- */
+.column2 #contents h1 {
+	text-align: left;
+}
+
+.column2 #contents .parts_free_type05 h1,
+.column2 #contents .parts_free_type06 h1,
+.column2 #contents .parts_free_type07 h1,
+.column2 #contents .parts_free_type08 h1,
+.column2 #contents .parts_free_type09 h1 {
+	text-align: center;
+}
+
+.column2 #contents .parts_free_type08 h1 {
+	margin-bottom: 0;
+}
+
+
+/* -------------------------------------
+ * 枠
+ * ---------------------------------- */
+.column2 #side .box,
+.column2 #side .sitemapParts,
+.column2 #side .categoryIndex .sideBox {
+	border: 1px solid #eee;
+	border-radius: 4px;
+	padding: 15px;
+	margin-bottom: 8px;
+}
+.column2 #side .box h3 {
+	margin-top: 0;
+}
+
+
+/* -------------------------------------
+ * サイドメニュー
+ * ---------------------------------- */
+.column2 .sideNavi .box {
+	padding: 0px !important;
+}
+.column2 .sideNavi ul {
+	padding: 0px !important;
+	list-style-type: none;
+}
+.column2 .sideNavi .boxBottom > ul > li {
+	padding: 15px 15px 8px;
+	border-bottom: 1px solid #eee;
+}
+.column2 .sideNavi .boxBottom > ul > li: last-child {
+	border-bottom: 0px;
+}
+.column2 .sideNavi .boxBottom > ul > li > ul li {
+	padding: 8px 15px;
+}
+
+
+
+/* ---------------------------------------------------------------------------------------- 
+	共通
+---------------------------------------------------------------------------------------- */
+
+/* -------------------------------------
+ * モバイルアクセス時の表示切替ボタン
+ * ---------------------------------- */
+#cmsMobileButton {
+	display: none;
+}
+
+
+/* -------------------------------------
+ * ページリンク
+ * ---------------------------------- */
+.pageLink {
+	margin: 15px 0;
+	text-align: center;
+}
+.pageLink ul {
+	margin: 0;
+}
+.pageLink li {
+    display: inline-block;
+    padding-left: 8px;
+    padding-right: 8px;
+	line-height: 1em;
+}
+.pageLink li.prevBu {
+	border-right: 1px solid #ccc;
+}
+.pageLink li.nextBu {
+	border-left: 1px solid #ccc;
+}
+
+@media screen and (max-width: 767px) {
+	.pageLink li {
+	    padding-left: 4px;
+	    padding-right: 4px;
+	}
+}
+
+
+/* -------------------------------------
+ * ぱんくずリスト
+ * ---------------------------------- */
+.breadcrumb {
+	background: none;
+	margin-bottom: 0px;
+	text-align: right;
+}
+.breadcrumb > li + li: : before {
+    content: " > ";
+}
+
+
+
+/* ---------------------------------------------------------------------------------------- 
+	モジュール
+---------------------------------------------------------------------------------------- */
+
+/* -------------------------------------
+ * トピックス
+ * ---------------------------------- */
+.topicsListBox {
+	margin-bottom: 30px;
+}
+.topicDate {
+	border-bottom: 1px dotted #ccc;
+    color: rgb(153, 153, 153);
+    font-size: 85.7%;
+    margin-bottom: 0;
+    text-align: right;
+	margin-top: 5px;
+}
+.topicsArticleBox .topicsArticleBody {
+	margin-top: 15px;
+}
+@media (min-width: 768px) {
+	.topicsListBox .topicDigestImgOn .topicDigestPhoto {
+		max-width: 50%;
+	}
+}
+
+
+/* -------------------------------------
+ * ブログ
+ * ---------------------------------- */
+.blogRecentLink {
+	text-align: right;
+}
+.blogRecentLink a {
+	text-decoration: underline;
+}
+.blogRecentLink a: after {
+	content: '\00bb';
+}
+
+/* 日付 */
+.blogEntryList p.topicDate,
+.blogIndividualBox p.topicDate,
+.blogMonthlArchivesList p.topicDate,
+.blogCategoryArchivesList p.topicDate {
+	color: #999;
+	font-size: 85.7%;
+	text-align: right;
+	margin-bottom: 0;
+}
+
+/* 記事本文 */
+.blogEntryBody p {
+	line-height: 180%;
+}
+
+/* 続きを読む */
+.pageMore {
+	padding-top: 0;
+	text-align: right;
+}
+
+/* 記事情報・記事カテゴリー */
+.entryFooter ul {
+	border-top: 1px dotted #ccc;
+	padding-top: 10px;
+	padding-left: 0px;
+}
+.entryCategory {
+	border-top: 1px dotted #ccc;
+}
+.entryCategory ul {
+	padding-top: 10px;
+	padding-left: 0px;
+}
+.entryCategory > b {
+	display: inline-block;
+	padding-top: 10px;
+    padding-left: 8px;
+}
+.entryFooter ul li,
+.entryCategory ul li {
+    display: inline-block;
+    padding-left: 8px;
+    padding-right: 8px;
+	border-right: 1px solid #ccc;
+	line-height: 1em;
+}
+.entryFooter ul li: last-child,
+.entryCategory ul li: last-child {
+	border-right: 0px;
+}
+
+/* トラックバック欄/コメント欄 */
+.blogTrackbacksName li,
+.blogCommentsName li {
+    display: inline-block;
+    padding-left: 8px;
+    padding-right: 8px;
+	border-right: 1px solid #ccc;
+	line-height: 1em;
+}
+.blogTrackbacksName li: last-child,
+.blogCommentsName li: last-child {
+	border-right: 0px;
+}
+
+/* コメントフォーム */
+.blogCommentsName ul {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 0px;
+	margin: 0 0 15px;
+	border-bottom: 1px dotted #ccc;
+
+}
+
+/* アーカイブ */
+.blogArchiveList dl{
+	margin-bottom:5px;
+}
+.blogArchiveList dl dt{
+	font-weight:normal;
+}
+/* pc */
+@media (min-width: 768px) {
+	.blogArchiveList dl dt{
+		float:left;
+		clear:left;
+		padding-right: 10px;
+	}
+}
+
+
+/* -------------------------------------
+	ブログ内検索・サイト内検索
+ * ---------------------------------- */
+.blogSearch form,
+.siteSearch form {
+    border-collapse: separate;
+/*    display: table;*/
+    position: relative;
+}
+/*
+.blogSearch form .blogSearchText,
+.siteSearch form .siteSearchText {
+    float: left;
+    margin-bottom: 0;
+    position: relative;
+    width: 100%;
+    z-index: 2;
+	display: table-cell;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+.blogSearch form div,
+.siteSearch form div {
+	 display: table-cell;
+	vertical-align: middle;
+	width: 1%;
+    font-size: 0;
+    position: relative;
+    white-space: nowrap;
+}
+.blogSearch form div input,
+.siteSearch form div input {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+*/
+
+
+/* -------------------------------------
+ * 一覧
+ * ---------------------------------- */
+.albumIndex ul,
+.topicsIndex ul,
+.blogRecent ul,
+.blogMonthly ul,
+.blogCategoryList ul,
+.blogFeed ul {
+	list-style: outside none none;
+	padding-left: 0;
+}
+
+
+/* -------------------------------------
+ * カレンダー
+ * ---------------------------------- */
+table.calendar {
+	width: 100%;
+	margin: 5px 0;
+}
+table.calendar th {
+	text-align: center;
+	padding: 4px;
+}
+table.calendar th span {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+table.calendar td {
+	text-align: center;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+table.calendar tr.week-label td {
+	background: #f8f8f8;
+	font-size: 80%;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+table.calendar tr.week-label td.sun,
+table.calendarTable tr.week-label th.sun {
+	color: red;
+}
+table.calendar tr.week-label td.sat,
+table.calendarTable tr.week-label th.sat {
+	color: blue;
+}
+table.calendar tr td.hol a {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+
+/* -------------------------------------
+ * イベント
+ * ---------------------------------- */
+table.eventList .data {
+	white-space: nowrap;
+	text-align: right;
+}
+table.eventList td ul {
+	list-style: outside none none;
+	padding-left: 0;
+}
+
+
+/* -------------------------------------
+ * アルバム
+ * ---------------------------------- */
+.albumListBox .albumPhoto,
+.albumListBox .albumText {
+	 float: left !important;
+}
+.albumListBox .albumPhoto {
+	margin-right: 10px;
+}
+.albumListBox .albumText {
+	width: 100%;
+	max-width: 950px;
+}
+.albumListBox .albumPhoto img {
+	max-width: 100% !important;
+}
+
+
+/* -------------------------------------
+ * メールフォーム
+ * ---------------------------------- */
+.mailform-table {
+	margin: 0;
+}

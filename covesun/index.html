@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>covesun web studio</title>
+<meta name="description" content="covesun web studio | ひとりで営むWeb制作スタジオ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #fdf6ec;
+    --ink-dim: rgba(253, 246, 236, 0.78);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--ink);
+    background-color: #1a2233;
+  }
+
+  .hero {
+    position: relative;
+    min-height: 100dvh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('images/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(10, 14, 24, 0.05) 0%,
+      rgba(10, 14, 24, 0.05) 45%,
+      rgba(10, 14, 24, 0.55) 85%,
+      rgba(10, 14, 24, 0.75) 100%
+    );
+  }
+
+  .hero__top {
+    position: relative;
+    z-index: 2;
+    padding: clamp(24px, 5vw, 48px) clamp(24px, 6vw, 64px) 0;
+  }
+
+  .brand {
+    font-family: 'Zen Old Mincho', serif;
+    font-size: clamp(20px, 2.4vw, 26px);
+    letter-spacing: 0.14em;
+    font-weight: 600;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    padding: 0 clamp(24px, 6vw, 64px) clamp(56px, 10vw, 96px);
+    max-width: 840px;
+  }
+
+  .catch {
+    font-family: 'Zen Old Mincho', serif;
+    font-weight: 600;
+    font-size: clamp(28px, 5.2vw, 56px);
+    line-height: 1.5;
+    margin: 20px 0 20px 0;
+    text-shadow: 0 2px 18px rgba(0,0,0,0.4);
+  }
+
+  .catch span {
+    display: inline-block;
+  }
+
+  .sub {
+    font-size: clamp(14px, 1.6vw, 17px);
+    line-height: 1.9;
+    color: var(--ink-dim);
+    margin: 0 0 32px;
+    max-width: 32em;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: clamp(11px, 1.2vw, 13px);
+    letter-spacing: 0.18em;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+  }
+
+  .tag::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--ink-dim);
+  }
+
+  .hero__foot {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 clamp(24px, 6vw, 64px) clamp(20px, 4vw, 28px);
+    font-size: 12px;
+    color: rgba(253, 246, 236, 0.55);
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 480px) {
+    .hero__foot { flex-direction: column; gap: 8px; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+  <main class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__scrim"></div>
+
+    <div class="hero__top">
+      <div class="brand">covesun web studio</div>
+    </div>
+
+    <div class="hero__content">
+      <h1 class="catch"><span>凪いだ入り江に、</span><span>灯りをひとつ。</span></h1>
+      <p class="sub">
+        必要な人に、必要なだけ届く場所を。<br>
+        ひとりで営む、小さなWeb制作スタジオ。
+      </p>
+    </div>
+
+    <div class="hero__foot">
+      <span>&copy; 2026 covesun web studio</span>
+    </div>
+  </main>
+</body>
+</html>

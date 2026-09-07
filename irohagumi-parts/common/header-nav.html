@@ -1,0 +1,44 @@
+<!--
+  パーツ名: header-nav
+  用途: 全ページ共通ヘッダー（ロゴ＋グローバルナビ＋モバイルメニュー）
+  元コンポーネント: src/app/layout/Layout.tsx のheader部分
+  依存CSS: common/irohagumi.css（Reactビルドで生成したTailwind CSSをそのまま使用。class名は元のTailwindユーティリティクラスのまま）
+  依存JS : common/site.js（スクロール時の背景変化・ハンバーガーメニュー開閉を再現）
+  手動対応が必要な点:
+    ・現在ページのナビ項目に "is-current" 相当の見た目（下線＋緑文字）を付けたい場合、
+      該当の<a>のclassに "border-b-2 border-accent pb-0.5 text-accent" を追記してください
+      （Reactではルーティングで自動判定していましたが、静的HTMLでは手動になります）
+    ・ロゴ画像パスは images/logo.png を仮定。ポケカン2にアップロード後、srcを差し替えてください
+-->
+<header id="ig-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-sm">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <a href="/" class="flex flex-col items-start">
+      <span class="text-[10px] font-bold tracking-[0.2em] text-accent leading-none mb-1">機器設置工事のプロ集団</span>
+      <img src="images/logo.png" alt="株式会社いろは組" class="h-9 w-auto" />
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8" aria-label="グローバルナビゲーション">
+      <a href="/" class="text-base font-bold text-foreground transition-colors duration-200 hover:text-accent">ホーム</a>
+      <a href="/company/" class="text-base font-bold text-foreground transition-colors duration-200 hover:text-accent">会社概要</a>
+      <a href="/business/" class="text-base font-bold text-foreground transition-colors duration-200 hover:text-accent">事業内容</a>
+      <a href="/works/" class="text-base font-bold text-foreground transition-colors duration-200 hover:text-accent">工事実績</a>
+      <a href="/recruit/" class="text-base font-bold text-foreground transition-colors duration-200 hover:text-accent">採用</a>
+      <a href="/contact/" class="ml-2 px-6 py-2.5 rounded-full text-base font-bold text-white bg-accent hover:bg-green-800 transition-colors duration-200">お問い合わせ</a>
+    </nav>
+
+    <button type="button" id="ig-menu-btn" class="md:hidden text-foreground" aria-label="メニュー" aria-expanded="false">
+      <svg id="ig-icon-menu" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      <svg id="ig-icon-close" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <div id="ig-mobile-menu" class="md:hidden bg-white border-t border-border px-6 py-4 flex-col gap-4" style="display:none">
+    <a href="/" class="text-base font-bold text-left transition-colors text-foreground hover:text-accent">ホーム</a>
+    <a href="/company/" class="text-base font-bold text-left transition-colors text-foreground hover:text-accent">会社概要</a>
+    <a href="/business/" class="text-base font-bold text-left transition-colors text-foreground hover:text-accent">事業内容</a>
+    <a href="/works/" class="text-base font-bold text-left transition-colors text-foreground hover:text-accent">工事実績</a>
+    <a href="/recruit/" class="text-base font-bold text-left transition-colors text-foreground hover:text-accent">採用</a>
+    <a href="/contact/" class="text-base font-bold text-left transition-colors text-accent">お問い合わせ</a>
+  </div>
+</header>
+<div class="h-20" aria-hidden="true"></div><!-- fixedヘッダー分のスペーサー（headerがposition:fixedのため本文が隠れないようにする隙間） -->

@@ -1,0 +1,23 @@
+<!--
+  パーツ名: footer
+  用途: 全ページ共通フッター
+  元コンポーネント: src/app/layout/Layout.tsx のfooter部分
+  備考: 年号は {new Date().getFullYear()} で自動計算していたが、静的HTMLでは固定値。
+        更新の都度、年を書き換えるか、ポケカン2側でJSを使うなら common/site.js の
+        renderFooterYear() で自動化も可能（現状はコメントアウトで用意）。
+-->
+<footer class="bg-[#081409] py-8 px-6">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <a href="/" class="flex items-center gap-2">
+      <span class="text-white/40 text-xs">株式会社</span>
+      <span class="text-white font-black text-lg">いろは組</span>
+    </a>
+    <p class="text-white/30 text-xs text-center">
+      <span id="ig-footer-year">2026</span> 株式会社いろは組. All rights reserved.
+    </p>
+    <div class="flex gap-6">
+      <a href="#" class="text-white/40 text-xs hover:text-white/70 transition-colors">プライバシーポリシー</a>
+      <a href="#" class="text-white/40 text-xs hover:text-white/70 transition-colors">サイトマップ</a>
+    </div>
+  </div>
+</footer>

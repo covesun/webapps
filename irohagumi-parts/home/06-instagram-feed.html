@@ -1,0 +1,77 @@
+<!--
+  パーツ名: home / 06-instagram-feed
+  元: Home.tsx 内 "Instagram フィード" section
+  挙動: 12枚のプールからランダムに5枚を表示し、4.5秒ごとにフェードしながら入れ替え（元のReact実装を再現）
+-->
+<section class="bg-background pt-14 md:pt-20">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+    <div>
+      <h2 class="text-4xl md:text-5xl font-black tracking-tight leading-snug">
+        現場の様子を<br class="sm:hidden" />随時更新中
+      </h2>
+      <p class="text-base text-muted-foreground font-medium mt-2">@irohagumi_2013</p>
+    </div>
+    <a href="https://www.instagram.com/irohagumi_2013/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-foreground text-foreground font-bold text-sm hover:bg-foreground hover:text-background transition-colors self-start sm:self-auto shrink-0">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      Instagramをフォローする
+    </a>
+  </div>
+  <div id="ig-insta-grid" class="grid transition-opacity duration-700" style="grid-template-columns: repeat(5, 1fr); opacity:1"></div>
+</section>
+
+<script>
+(function () {
+  "use strict";
+  var POOL = [
+    { src: "images/suetuke.jpg", alt: "プラント設備工事" },
+    { src: "images/IMG_9329.jpeg", alt: "大型配管据付" },
+    { src: "images/IMG_0350_2K.jpeg", alt: "重量物搬入" },
+    { src: "images/DSCF3225.jpg", alt: "溶接施工" },
+    { src: "images/DSCF3142_2K.jpg", alt: "クレーン作業" },
+    { src: "images/Position_trucks_around_warehouse_2K_202608101551.jpg", alt: "重機・トラック" },
+    { src: "images/IMG_9515.jpeg", alt: "自社クレーン車" },
+    { src: "images/IMG_6008.jpg", alt: "事務所" },
+    { src: "images/624845661_18122467930497151_6060076425127914825_n.jpg_2K_202608310427.jpeg", alt: "現場写真" },
+    { src: "images/662384918_18399784525196815_3165667921936231691_n.jpg_2K_202608310604.jpeg", alt: "現場写真" },
+    { src: "images/ph_company.jpg", alt: "会社" },
+    { src: "images/ph_recruit.jpg", alt: "採用" }
+  ];
+  var COUNT = 5;
+  var IG_URL = "https://www.instagram.com/irohagumi_2013/";
+  var grid = document.getElementById("ig-insta-grid");
+  if (!grid) return;
+
+  function shuffle(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+  }
+
+  function render(photos) {
+    grid.innerHTML = "";
+    photos.forEach(function (photo) {
+      var cell = document.createElement("div");
+      cell.className = "relative overflow-hidden aspect-square group";
+      cell.innerHTML =
+        '<img src="' + photo.src + '" alt="' + photo.alt + '" class="w-full h-full object-cover" />' +
+        '<a href="' + IG_URL + '" target="_blank" rel="noopener noreferrer" class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/35 transition-colors duration-300" aria-label="Instagramを見る">' +
+        '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>' +
+        '</a>';
+      grid.appendChild(cell);
+    });
+  }
+
+  render(shuffle(POOL).slice(0, COUNT));
+
+  setInterval(function () {
+    grid.style.opacity = "0";
+    setTimeout(function () {
+      render(shuffle(POOL).slice(0, COUNT));
+      grid.style.opacity = "1";
+    }, 600);
+  }, 4500);
+})();
+</script>

@@ -1,0 +1,155 @@
+<!--
+  ファイル: common/template.htm
+  用途: ポケカン2側の「テンプレート」に相当する骨格案。responsive_type13_custom/default.htm を
+        ベースに、ポケカン2のシステムタグ（{tr(...)} {site[...]} <!--MODULE:xxx--> など）と
+        BLOCK:HEADER / BLOCK:UPPER / BLOCK:MAIN / BLOCK:BOTTOM / BLOCK:FOOTER の位置・入れ子構造は
+        そのまま温存し、見た目に関わる中身だけ今回のデザインに差し替えた「たたき台」です。
+
+  ★修正履歴
+    ・初版でid="container">id="contents"の中にBLOCK:MAIN等のブロックタグを入れ忘れており、
+      ポケカン2エディタが編集領域を認識できず正常に描画されない不具合があったため、
+      default.htmの実際の入れ子構造（container > contents > upper/main/bottom、各BLOCKタグ）
+      をそのまま復元しました。本文パーツはBLOCK:MAINの中に配置してください。
+    ・bodyのclassもdefault.htm同様 "column1" に戻しています（layout.css側のレイアウト分岐に
+      使われている可能性があるため）。
+
+  ★注意（推測を含みます。実際にポケカン2の管理画面で試してから本番反映してください）
+    ・bootstrap/jQuery、css/style.css、{CMS_SKIN_URL}系の読み込みはポケカン2システム側の都合の
+      可能性があるため残しています。動作確認の上で本当に不要なら削除可。
+    ・topicpath（パンくず）・upper/bottom・opt1〜3・footer内のMODULEコメント群は、
+      使わないなら残っていても害はない想定ですが、シンプルにしたい場合はopt/footerのMODULE行は
+      削ってもらってOKです（BLOCK:MAINの構造だけは残してください）。
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{tr(#ja#)}" lang="{tr(#ja#)}">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta name="robots" content="INDEX,FOLLOW" />
+<title>{if:site[site_sub_title]}{site[site_sub_title]} | {end:}{site[site_title]}</title>
+<meta name="description" content="{site[description]}" />
+<meta name="keywords" content="{site[keyword]}" />
+
+<!-- bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- bootstrap - jquery(1.9.1以上必要) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+	$.noConflict();
+</script>
+<!-- bootstrap - js -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="<?php echo CMS_SKIN_URL ?>/js/contents.js"></script>
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+<link type="text/css" rel="stylesheet" href="<?php echo CMS_SKIN_URL ?>/contents_parts_2017.css" />
+
+<!-- ここから今回移植した新デザイン用の読み込み -->
+<link type="text/css" rel="stylesheet" href="css/irohagumi.css" />
+
+{login:h}
+{feed:h}
+
+</head>
+<body id="bootstrap_template" class="column1">
+<div id="wrapper">
+
+<!-- ************************************************** id="header"  ************************************************** -->
+    <div id="header">
+        <div class="container">
+        <!--BLOCK:HEADER-->
+            <!-- ↑この中に common/header-nav.html の中身をポケカン2の「パーツ」として差し込む -->
+        <!--/BLOCK:HEADER-->
+        </div>
+    </div>
+<!-- ************************************************** // id="header" ************************************************** -->
+
+	<!-- id="topicpath" -->
+	<div id="topicpath" class="container">
+		<?php
+			$count = count($t->site['topicpath']);
+			if($count > 0 ) {
+			    echo '<ol class="breadcrumb">';
+			    echo '<li id="topicpathFirst"><a href="'.$t->site[home_url].'">'.$t->site[top_title].'</a></li>';
+			    foreach( $t->site['topicpath'] as $url => $name) {
+			    if( $count == 1 ):
+			        echo "<li>$name</li>";
+			    else:
+			        echo '<li><a href="'.$url.'">'.$name.'</a></li>';
+			    endif;
+			    $count--;
+			    }
+			    echo "</ol>";
+			}
+		?>
+	</div>
+	<!-- // id="topicpath" -->
+
+<!-- ************************************************** id="container" ************************************************** -->
+	<div id="container" class="container">
+
+<!-- ************************************************** id="contents" ************************************************** -->
+		<div id="contents">
+
+			<div id="upper">
+				<!--BLOCK:UPPER-->
+				<!--/BLOCK:UPPER-->
+			</div>
+
+			<div id="main">
+				<!--BLOCK:MAIN-->
+				<!--
+				  ↑ここがページ本文の差し込み先。ページごとに以下の順で直接貼り付ける想定：
+				    1. page-hero パーツ（該当ページの1個）
+				    2. 各ページ固有の section パーツを上から順に配置
+				    3. contact-band パーツ（該当ページの1個。Recruitのみ独自CTAなので不要）
+				-->
+				<!--/BLOCK:MAIN-->
+			</div>
+
+			<div id="bottom">
+				<!--BLOCK:BOTTOM-->
+				<!--/BLOCK:BOTTOM-->
+			</div>
+
+		</div>
+<!-- ************************************************** // id="contents" ************************************************** -->
+
+<!-- ************************************************** id="side"  ************************************************** -->
+<!-- ************************************************** // id="side" ************************************************** -->
+	</div><!-- //id="container" -->
+<!-- ************************************************** // id="container" ************************************************** -->
+
+<!-- ************************************************** id="footer" ************************************************** -->
+	<div id="footer" class="clearfix">
+		<div class="container">
+			<!--BLOCK:FOOTER-->
+			<!-- ↑この中に common/footer.html の中身をポケカン2の「パーツ」として差し込む -->
+			<!--/BLOCK:FOOTER-->
+		</div>
+
+		<div class="pageTop clearfix">
+			<div class="container">
+				<a href="#header">Back to top</a>
+			</div>
+		</div>
+
+		<address>
+			<div class="container">{site[copyright]}</div>
+		</address>
+
+	</div>
+<!-- ************************************************** // id="footer" ************************************************** -->
+
+</div><!-- // id="wrapper" -->
+
+<!-- 新デザイン用の共通JS（スクロールヘッダー・ハンバーガーメニュー等） -->
+<script type="text/javascript" src="js/site.js"></script>
+
+</body>
+</html>

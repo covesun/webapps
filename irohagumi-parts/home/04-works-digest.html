@@ -1,0 +1,62 @@
+<!--
+  パーツ名: home / 04-works-digest
+  元: Home.tsx 内 "工事実績ダイジェスト" section
+  備考: カードは/worksへの遷移リンクとして<a>タグ化
+-->
+<section class="bg-background py-14 md:py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+      <h2 class="text-4xl md:text-5xl font-black tracking-tight leading-snug">主な施工事例</h2>
+      <a href="/works/" class="inline-flex items-center gap-2 text-base font-bold text-foreground border-b-2 border-accent pb-0.5 hover:text-accent transition-colors self-start md:self-auto">
+        実績一覧を見る
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+      <a href="/works/" class="group relative overflow-hidden rounded-2xl bg-zinc-300 cursor-pointer block">
+        <div class="aspect-[3/4] overflow-hidden">
+          <img src="images/suetuke.jpg" alt="プラント設備・鉄骨据付工事" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+        <div class="absolute top-4 left-4 w-8 h-8 rounded-full bg-yellow-400 flex items-center justify-center text-[#0c1f12] text-xs font-black">01</div>
+        <div class="absolute bottom-0 left-0 right-0 p-5">
+          <p class="text-white font-black text-base mb-1">プラント設備据付</p>
+          <p class="text-white/70 text-xs leading-relaxed font-medium">大型架構・鉄骨フレームの精密据付工事</p>
+        </div>
+      </a>
+      <a href="/works/" class="group relative overflow-hidden rounded-2xl bg-zinc-300 cursor-pointer block">
+        <div class="aspect-[3/4] overflow-hidden">
+          <img src="images/IMG_9329.jpeg" alt="大型配管据付工事" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+        <div class="absolute top-4 left-4 w-8 h-8 rounded-full bg-yellow-400 flex items-center justify-center text-[#0c1f12] text-xs font-black">02</div>
+        <div class="absolute bottom-0 left-0 right-0 p-5">
+          <p class="text-white font-black text-base mb-1">大型配管据付</p>
+          <p class="text-white/70 text-xs leading-relaxed font-medium">工場・プラント内の大口径配管の設置・位置決め</p>
+        </div>
+      </a>
+      <a href="/works/" class="group relative overflow-hidden rounded-2xl bg-zinc-300 cursor-pointer block">
+        <div class="aspect-[3/4] overflow-hidden">
+          <img src="images/IMG_0350_2K.jpeg" alt="重量物搬入・揚重工事" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+        <div class="absolute top-4 left-4 w-8 h-8 rounded-full bg-yellow-400 flex items-center justify-center text-[#0c1f12] text-xs font-black">03</div>
+        <div class="absolute bottom-0 left-0 right-0 p-5">
+          <p class="text-white font-black text-base mb-1">重量物搬入・揚重</p>
+          <p class="text-white/70 text-xs leading-relaxed font-medium">大型タンク・機器の精密吊込み・搬入据付</p>
+        </div>
+      </a>
+      <a href="/works/" class="group relative overflow-hidden rounded-2xl bg-zinc-300 cursor-pointer block">
+        <div class="aspect-[3/4] overflow-hidden">
+          <img src="images/DSCF3225.jpg" alt="溶接・仕上げ工事" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+        <div class="absolute top-4 left-4 w-8 h-8 rounded-full bg-yellow-400 flex items-center justify-center text-[#0c1f12] text-xs font-black">04</div>
+        <div class="absolute bottom-0 left-0 right-0 p-5">
+          <p class="text-white font-black text-base mb-1">溶接・仕上げ施工</p>
+          <p class="text-white/70 text-xs leading-relaxed font-medium">現場溶接・グラインダー仕上げによる高品質施工</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>

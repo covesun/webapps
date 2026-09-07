@@ -1,0 +1,44 @@
+<!--
+  パーツ名: home / 03-business-digest
+  元: Home.tsx 内 "事業内容ダイジェスト" section
+  備考: Reactではカード全体がonClickで/businessへ遷移していたので、静的HTML化にあたり
+        カード自体を<a>タグに変更しています（挙動は同じ、かつSEO/アクセシビリティ的にも自然）。
+        アイコンはlucide-react (Settings / Weight) の代替として簡易SVGに置き換えています。
+-->
+<section class="bg-background py-14 md:py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+      <h2 class="text-4xl md:text-5xl font-black tracking-tight leading-snug">私たちが得意とする<br />2つの領域</h2>
+      <a href="/business/" class="inline-flex items-center gap-2 text-base font-bold text-foreground border-b-2 border-accent pb-0.5 hover:text-accent transition-colors self-start md:self-auto">
+        事業内容を詳しく見る
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-2 gap-4 md:gap-5">
+      <a href="/business/" class="group rounded-2xl border border-border overflow-hidden bg-card hover:shadow-md transition-shadow duration-300 cursor-pointer block">
+        <div class="aspect-[4/3] overflow-hidden bg-zinc-200">
+          <img src="images/suetuke.jpg" alt="プラント工事" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="p-4">
+          <div class="w-9 h-9 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-3">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </div>
+          <p class="font-black text-lg text-foreground mb-1">プラント工事</p>
+          <p class="text-xs leading-relaxed text-muted-foreground font-medium line-clamp-2">化学・食品・製薬プラントの設備据付から架台組立・配管工事まで、精密さが求められる工事を専門に手がけます。</p>
+        </div>
+      </a>
+      <a href="/business/" class="group rounded-2xl border border-border overflow-hidden bg-card hover:shadow-md transition-shadow duration-300 cursor-pointer block">
+        <div class="aspect-[4/3] overflow-hidden bg-zinc-200">
+          <img src="images/IMG_0350_2K.jpeg" alt="重量物据付" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="p-4">
+          <div class="w-9 h-9 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-3">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.5 6.5 17.5 17.5"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+          </div>
+          <p class="font-black text-lg text-foreground mb-1">重量物据付</p>
+          <p class="text-xs leading-relaxed text-muted-foreground font-medium line-clamp-2">数トン〜数十トン規模の大型機器・タンクの搬入・吊込み・精密据付。難しい条件下でも確実に仕上げます。</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>

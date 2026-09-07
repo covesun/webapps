@@ -1,0 +1,88 @@
+<!--
+  パーツ名: home / 01-hero-slideshow
+  元: Home.tsx 内 "Hero（スライドショー）" section
+  画像は5枚を5秒ごとに自動切替。下部のドットで手動切替も可能。
+  依存: common/irohagumi.css, 下部の<script>（JSはこのパーツ専用。複数パーツを1ページに
+        並べる際、id="ig-hero" 等が重複しないよう他パーツと名前が被らないか確認してください）
+-->
+<section class="relative h-screen min-h-[640px] overflow-hidden bg-zinc-900" id="ig-hero">
+  <img src="images/Position_trucks_around_warehouse_2K_202608101551.jpg" alt="株式会社いろは組" class="ig-hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000" style="object-position:25% 30%;opacity:1" />
+  <img src="images/DSCF3142_2K.jpg" alt="株式会社いろは組" class="ig-hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000" style="object-position:35% 30%;opacity:0" />
+  <img src="images/suetuke.jpg" alt="株式会社いろは組" class="ig-hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000" style="object-position:30% center;opacity:0" />
+  <img src="images/IMG_9515.jpeg" alt="株式会社いろは組" class="ig-hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000" style="object-position:0% 5%;opacity:0" />
+  <img src="images/IMG_0350_2K.jpeg" alt="株式会社いろは組" class="ig-hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000" style="object-position:30% center;opacity:0" />
+
+  <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-yellow-400 z-10"></div>
+  <div class="absolute inset-0 z-10 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-6">
+      <div class="max-w-2xl">
+        <h1 class="font-black tracking-tight leading-snug mb-10 text-halo">
+          <span class="text-2xl md:text-3xl block mb-3 text-foreground/70 font-bold tracking-[0.2em]">運ぶ、吊るす、据える</span>
+          <span class="text-[2.75rem] md:text-6xl block leading-tight text-foreground/90">
+            すべての始まりは<br />
+            <span class="text-accent">『いろは』</span>から
+          </span>
+        </h1>
+        <div class="flex flex-wrap gap-3">
+          <a href="/contact/" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-accent text-white font-bold text-sm hover:bg-green-800 transition-colors duration-200 shadow-md">
+            お問い合わせ
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="/works/" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white border-2 border-accent text-accent font-bold text-sm hover:bg-accent hover:text-white transition-colors duration-200 shadow-md">
+            施工実績を見る
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="ig-hero-dots" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2">
+    <button type="button" class="ig-hero-dot rounded-full transition-all duration-300 w-8 h-2 bg-accent" aria-label="スライド 1" data-index="0"></button>
+    <button type="button" class="ig-hero-dot rounded-full transition-all duration-300 w-2 h-2 bg-white/50 hover:bg-white/80" aria-label="スライド 2" data-index="1"></button>
+    <button type="button" class="ig-hero-dot rounded-full transition-all duration-300 w-2 h-2 bg-white/50 hover:bg-white/80" aria-label="スライド 3" data-index="2"></button>
+    <button type="button" class="ig-hero-dot rounded-full transition-all duration-300 w-2 h-2 bg-white/50 hover:bg-white/80" aria-label="スライド 4" data-index="3"></button>
+    <button type="button" class="ig-hero-dot rounded-full transition-all duration-300 w-2 h-2 bg-white/50 hover:bg-white/80" aria-label="スライド 5" data-index="4"></button>
+  </div>
+
+  <div class="absolute bottom-8 right-8 z-10 flex flex-col items-center gap-1 text-white/75">
+    <span class="text-[10px] tracking-widest uppercase">Scroll</span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animate-bounce"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>
+
+<script>
+(function () {
+  "use strict";
+  var hero = document.getElementById("ig-hero");
+  if (!hero) return;
+  var slides = hero.querySelectorAll(".ig-hero-slide");
+  var dots = hero.querySelectorAll(".ig-hero-dot");
+  var current = 0;
+
+  function show(i) {
+    current = i;
+    slides.forEach(function (img, idx) {
+      img.style.opacity = idx === i ? "1" : "0";
+    });
+    dots.forEach(function (dot, idx) {
+      if (idx === i) {
+        dot.classList.remove("w-2", "bg-white/50", "hover:bg-white/80");
+        dot.classList.add("w-8", "bg-accent");
+      } else {
+        dot.classList.remove("w-8", "bg-accent");
+        dot.classList.add("w-2", "bg-white/50", "hover:bg-white/80");
+      }
+    });
+  }
+
+  dots.forEach(function (dot) {
+    dot.addEventListener("click", function () {
+      show(parseInt(dot.getAttribute("data-index"), 10));
+    });
+  });
+
+  setInterval(function () {
+    show((current + 1) % slides.length);
+  }, 5000);
+})();
+</script>

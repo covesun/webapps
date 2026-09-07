@@ -1,0 +1,37 @@
+<!--
+  パーツ名: contact-band（お問い合わせCTA帯）
+  用途: ページ下部の緑背景CTA。Home/Company/Business/Worksの4ページで使用（Recruitのみ独自のCTAで別物）。
+  元コンポーネント: src/app/components/ContactBand.tsx
+  注意: page-hero同様、copy（見出し文言）がページごとに異なるだけで構造は共通。
+        以下2パターンをそのまま各ページにコピーして使ってください。
+  依存CSS: common/irohagumi.css
+  背景画像: images/IMG_6008.jpg（薄く重ねているだけの装飾）
+-->
+
+<!-- パターンA: Home / Company で使用 -->
+<section class="bg-accent py-14 md:py-20 px-6 relative overflow-hidden">
+  <img src="images/IMG_6008.jpg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-overlay" />
+  <div class="relative z-10 max-w-3xl mx-auto text-center">
+    <p class="text-xs font-bold tracking-[0.3em] text-yellow-400 mb-4 uppercase">Contact</p>
+    <h2 class="text-3xl md:text-4xl font-black text-white mb-4">お気軽にお問い合わせください。</h2>
+    <p class="text-white/60 text-base leading-relaxed mb-6">見積もり・現地調査は無料です。まずはご連絡ください。</p>
+    <a href="/contact/" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-accent font-black text-base hover:bg-yellow-50 transition-colors shadow-md">
+      お問い合わせフォームへ
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- パターンB: Business / Works で使用（copyのみ差し替え） -->
+<section class="bg-accent py-14 md:py-20 px-6 relative overflow-hidden">
+  <img src="images/IMG_6008.jpg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-overlay" />
+  <div class="relative z-10 max-w-3xl mx-auto text-center">
+    <p class="text-xs font-bold tracking-[0.3em] text-yellow-400 mb-4 uppercase">Contact</p>
+    <h2 class="text-3xl md:text-4xl font-black text-white mb-4">工事のご依頼・ご相談はお気軽に</h2>
+    <p class="text-white/60 text-base leading-relaxed mb-6">見積もり・現地調査は無料です。まずはご連絡ください。</p>
+    <a href="/contact/" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-accent font-black text-base hover:bg-yellow-50 transition-colors shadow-md">
+      お問い合わせフォームへ
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>

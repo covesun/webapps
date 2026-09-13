@@ -71,11 +71,27 @@
   }
 
   .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
     font-family: 'Zen Old Mincho', serif;
     font-size: clamp(20px, 2.4vw, 26px);
     letter-spacing: 0.14em;
     font-weight: 600;
     text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+  }
+
+  .brand__mark {
+    width: 2.3em;
+    height: 2.3em;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.35));
+  }
+
+  .brand__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.28;
   }
 
   .hero__content {
@@ -148,7 +164,7 @@
     <div class="hero__scrim"></div>
 
     <div class="hero__top">
-      <div class="brand">covesun studio</div>
+      <div class="brand"><img class="brand__mark" src="images/mark.png" alt=""><span class="brand__text"><span>covesun</span><span>studio</span></span></div>
     </div>
 
     <div class="hero__content">

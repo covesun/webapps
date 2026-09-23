@@ -183,7 +183,7 @@ export default function Home2() {
           aria-hidden
           className="hero2-mark"
           initial={{ opacity: 0, scale: 1 }}
-          animate={{ opacity: 0.5, scale: 1.02 }}
+          animate={{ opacity: 0.75, scale: 1.02 }}
           transition={{ duration: 1.0, ease: "easeOut" }}
         />
 

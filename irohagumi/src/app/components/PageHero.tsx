@@ -17,7 +17,8 @@ export default function PageHero({
         className="absolute inset-0 w-full h-full object-cover"
         style={{ objectPosition: objectPos }}
       />
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white/95 via-white/50 to-transparent" />
+      {/* <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white/95 via-white/50 to-transparent" /> */}
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t" />
       <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-yellow-400" />
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pb-10 md:pb-14">
         {en && (

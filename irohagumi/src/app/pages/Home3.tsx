@@ -135,17 +135,21 @@ export default function Home2() {
         <style>{`
           .hero2-mark {
             position: absolute;
-            width: 120vh;
+            width: 100vw;
+            max-width: none;
             height: auto;
-            top: 50%;
-            left: 25vw;
+            top: 0;
+            left: -20vw;
             transform: translate(-50%, -50%);
             z-index: 2;
           }
           @media (max-width: 640px) {
             .hero2-mark {
-              width: 130vw;
-              left: 50vw;
+              width: 200vw;
+              height: auto;
+              left: -40vw;
+              transform: translate(-50%, -50%);
+              top: 0;
             }
           }
         `}</style>
@@ -178,8 +182,8 @@ export default function Home2() {
           alt=""
           aria-hidden
           className="hero2-mark"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
+          initial={{ opacity: 0, scale: 1 }}
+          animate={{ opacity: 0.5, scale: 1.02 }}
           transition={{ duration: 1.0, ease: "easeOut" }}
         />
 

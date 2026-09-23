@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Home2 from "./pages/Home2";
 import Home3 from "./pages/Home3";
 import Home4 from "./pages/Home4";
+import Home5 from "./pages/Home5";
 import Company from "./pages/Company";
 import Business from "./pages/Business";
 import Works from "./pages/Works";
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="home2" element={<Home2 />} />
           <Route path="home3" element={<Home3 />} />
           <Route path="home4" element={<Home4 />} />
+          <Route path="home5" element={<Home5 />} />
         </Route>
       </Routes>
     </BrowserRouter>

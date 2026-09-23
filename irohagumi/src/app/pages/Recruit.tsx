@@ -114,21 +114,24 @@ export default function Recruit() {
   return (
     <>
       {/* ── Hero & 採用メッセージ ───────────────────── */}
-      <section className="relative h-[70vh] min-h-[500px] flex items-end overflow-hidden bg-zinc-100">
+      {/* <section className="relative h-[70vh] min-h-[500px] flex items-end overflow-hidden bg-zinc-100"> */}
+     <section className="relative h-[70vh] min-h-[500px] flex items-center overflow-hidden bg-zinc-100">
         <img
           src={heroImg}
           alt="現場で働くスタッフ"
           className="absolute inset-0 w-full h-full object-cover object-[40%_45%]"
         />
-        <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-white/95 via-white/60 to-transparent" />
+        {/* <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-white/95 via-white/60 to-transparent" /> */}
+        <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t" />
         <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-yellow-400" />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pb-14 md:pb-20">
+        {/* <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pb-14 md:pb-20"> */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full text-right">
           <h1 className="text-4xl md:text-6xl font-black text-foreground/95 tracking-tight leading-tight mb-3 text-halo">
             未経験から、
             <br />
             一人前の技術者へ。
           </h1>
-          <p className="text-base md:text-lg font-bold text-muted-foreground">
+          <p className="text-base md:text-lg font-bold text-muted-foreground text-halo">
             意欲のある仲間を、いろは組は全力でサポートします。
           </p>
         </div>

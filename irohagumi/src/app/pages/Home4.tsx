@@ -209,7 +209,7 @@ export default function Home2() {
               <p className="text-gray-500 text-base md:text-xl font-medium mb-2 md:mb-3 tracking-wide">
                 運ぶ、吊る、据える
               </p>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-black text-foreground leading-tight tracking-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-[3.5rem] font-black text-foreground leading-tight tracking-tight">
                 すべての始まりは
                 <br className="md:hidden" />
                 <span className="text-accent">『いろは』</span>

@@ -11,9 +11,13 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 import ContactBand from "../components/ContactBand";
-import topHeroImg from "../../imports/top_hero_04.jpg";
 import markOutlineImg from "../../imports/iroha_mark.png";
 import heroImg from "../../imports/DSCF3142_2K.jpg";
+import heroImg01 from "../../imports/top_hero_01.jpg";
+import heroImg04 from "../../imports/top_hero_04.jpg";
+import heroImg06 from "../../imports/top_hero_06.jpg";
+import heroImg07 from "../../imports/top_hero_07.jpg";
+import heroImg08 from "../../imports/top_hero_08.jpg";
 import warehouseImg from "../../imports/Position_trucks_around_warehouse_2K_202608101551.jpg";
 import truckImg from "../../imports/IMG_9515.jpeg";
 import work1Img from "../../imports/suetuke.jpg";
@@ -109,12 +113,29 @@ const HOME_WORKS = [
   },
 ];
 
-export default function Home2() {
+const HERO_SLIDES = [
+  { img: heroImg04, pos: "object-[40%_30%]" },
+  { img: heroImg, pos: "object-[35%_30%]" },
+  { img: heroImg06, pos: "object-[30%_center]" },
+  { img: heroImg07, pos: "object-[30%_center]" },
+  { img: heroImg08, pos: "object-[30%_center]" },
+  { img: work3Img, pos: "object-[30%_center]" },
+];
+
+export default function Home5() {
   const navigate = useNavigate();
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [igPhotos, setIgPhotos] = useState(() =>
     shuffle(IG_POOL).slice(0, IG_COUNT),
   );
   const [igVisible, setIgVisible] = useState(true);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -135,43 +156,58 @@ export default function Home2() {
         <style>{`
           .hero2-mark {
             position: absolute;
-            width: 100vw;
-            max-width: none;
+            width: 120vh;
             height: auto;
-            top: 0;
-            left: -20vw;
+            top: 50%;
+            left: 25vw;
             transform: translate(-50%, -50%);
             z-index: 2;
           }
           @media (max-width: 640px) {
             .hero2-mark {
-              width: 200vw;
-              height: auto;
-              left: -40vw;
-              transform: translate(-50%, -50%);
-              top: 0;
+              width: 130vw;
+              left: 50vw;
             }
           }
         `}</style>
 
-        {/* 背景写真：わずかなズームアウトで登場 */}
-        <motion.img
-          src={topHeroImg}
-          alt=""
-          aria-hidden
-          className="absolute inset-0 w-full h-full object-cover object-[37%_65%] md:object-center"
-          style={{ zIndex: 0 }}
-          initial={{ scale: 1.06 }}
-          animate={{ scale: 1.0 }}
-          transition={{ duration: 8, ease: "easeOut" }}
-        />
+        {/* 背景写真：スライドショー */}
+        {HERO_SLIDES.map((slide, i) => (
+          // <img
+          //   key={slide.img}
+          //   src={slide.img}
+          //   alt=""
+          //   aria-hidden
+          //   className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${slide.pos} ${
+          //     i === currentSlide ? "opacity-100" : "opacity-0"
+          //   }`}
+          //   style={{ zIndex: 0 }}
+          // />
+          <motion.img
+            key={slide.img}
+            src={slide.img}
+            alt=""
+            aria-hidden
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${slide.pos} ${
+              i === currentSlide ? "opacity-100" : "opacity-0"
+            }`}
+            style={{ zIndex: 0 }}
+            initial={{ scale: 1.06 }}
+            animate={{ scale: i === currentSlide ? 1.0 : 1.06 }}
+            transition={
+              i === currentSlide
+                ? { duration: 8, ease: "easeOut" }
+                : { duration: 0, delay: 1 }
+            }
+          />
+        ))}
 
         {/* グリーンオーバーレイ #14351B 82% */}
         <div
           className="absolute inset-0"
           style={{
             backgroundColor: "#14351B",
-            opacity: 1,
+            opacity: 0,
             zIndex: 1,
           }}
         />
@@ -182,8 +218,8 @@ export default function Home2() {
           alt=""
           aria-hidden
           className="hero2-mark"
-          initial={{ opacity: 0, scale: 1 }}
-          animate={{ opacity: 0.5, scale: 1.02 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0 }}
           transition={{ duration: 1.0, ease: "easeOut" }}
         />
 
@@ -213,7 +249,7 @@ export default function Home2() {
               <p className="text-gray-500 text-base md:text-xl font-medium mb-2 md:mb-3 tracking-wide">
                 運ぶ、吊る、据える
               </p>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-black text-foreground leading-tight tracking-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-[3.5rem] font-black text-foreground leading-tight tracking-tight">
                 すべての始まりは
                 <br className="md:hidden" />
                 <span className="text-accent">『いろは』</span>
@@ -249,15 +285,31 @@ export default function Home2() {
           </motion.div>
         </div>
 
-        {/* スクロール誘導 */}
+        {/* ドットナビ＋スクロール誘導 */}
         <div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/75"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
           style={{ zIndex: 3 }}
         >
-          <span className="text-[10px] tracking-widest uppercase">
-            Scroll
-          </span>
-          <ChevronDown size={14} className="animate-bounce" />
+          <div className="flex items-center gap-2">
+            {HERO_SLIDES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentSlide(i)}
+                aria-label={`スライド ${i + 1}`}
+                className={`rounded-full transition-all duration-300 ${
+                  i === currentSlide
+                    ? "w-8 h-2 bg-accent"
+                    : "w-2 h-2 bg-white/50 hover:bg-white/80"
+                }`}
+              />
+            ))}
+          </div>
+          <div className="flex flex-col items-center gap-1 text-white/75">
+            <span className="text-[10px] tracking-widest uppercase">
+              Scroll
+            </span>
+            <ChevronDown size={14} className="animate-bounce" />
+          </div>
         </div>
       </section>
 
@@ -283,9 +335,9 @@ export default function Home2() {
           </div>
           <div>
             <h2 className="text-4xl md:text-5xl font-black leading-snug mb-6 tracking-tight">
-              自社機材×ワンストップ施工。
+              「難しい」と言われる
               <br />
-              抜群の機動力が、あらゆる現場を動かす。
+              仕事を、得意にしてきた。
             </h2>
             <div className="space-y-4 text-lg leading-relaxed text-muted-foreground font-medium">
               <p>

@@ -24,6 +24,10 @@ import ig2Img from "../../imports/662384918_18399784525196815_316566792193623169
 import phCompanyImg from "../../imports/ph_company.jpg";
 import phRecruitImg from "../../imports/ph_recruit.jpg";
 import heroImg01 from "../../imports/top_hero_01.jpg"
+import heroImg05 from "../../imports/top_hero_05.jpg"
+import heroImg06 from "../../imports/top_hero_06.jpg"
+import heroImg07 from "../../imports/top_hero_07.jpg"
+import heroImg08 from "../../imports/top_hero_08.jpg"
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -147,10 +151,13 @@ const PAGE_LINKS = [
 ];
 
 const HERO_SLIDES = [
-  { img: heroImg01, pos: "object-[25%_30%]" },
+  { img: heroImg01, pos: "object-[40%_30%]" },
   { img: heroImg, pos: "object-[35%_30%]" },
-  { img: work1Img, pos: "object-[30%_center]" },
-  { img: truckImg, pos: "object-[0%_5%]" },
+  // { img: warehouseImg, pos: "object-[30%_center]" },
+  // { img: heroImg05, pos: "object-[30%_center]" },
+  { img: heroImg06, pos: "object-[30%_center]" },
+  { img: heroImg07, pos: "object-[30%_center]" },
+  { img: heroImg08, pos: "object-[30%_center]" },
   { img: work3Img, pos: "object-[30%_center]" },
 ];
 
@@ -231,25 +238,27 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2">
-          {HERO_SLIDES.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentSlide(i)}
-              aria-label={`スライド ${i + 1}`}
-              className={`rounded-full transition-all duration-300 ${
-                i === currentSlide
-                  ? "w-8 h-2 bg-accent"
-                  : "w-2 h-2 bg-white/50 hover:bg-white/80"
-              }`}
-            />
-          ))}
-        </div>
-        <div className="absolute bottom-8 right-8 z-10 flex flex-col items-center gap-1 text-white/75">
-          <span className="text-[10px] tracking-widest uppercase">
-            Scroll
-          </span>
-          <ChevronDown size={14} className="animate-bounce" />
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-4">
+          <div className="flex items-center gap-2">
+            {HERO_SLIDES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentSlide(i)}
+                aria-label={`スライド ${i + 1}`}
+                className={`rounded-full transition-all duration-300 ${
+                  i === currentSlide
+                    ? "w-8 h-2 bg-accent"
+                    : "w-2 h-2 bg-white/50 hover:bg-white/80"
+                }`}
+              />
+            ))}
+          </div>
+          <div className="flex flex-col items-center gap-1 text-white/75">
+            <span className="text-[10px] tracking-widest uppercase">
+              Scroll
+            </span>
+            <ChevronDown size={14} className="animate-bounce" />
+          </div>
         </div>
       </section>
 
@@ -274,20 +283,25 @@ export default function Home() {
             </div>
           </div>
           <div>
-            <h2 className="text-4xl md:text-5xl font-black leading-snug mb-6 tracking-tight">
-              「難しい」と言われる
+            <h2 className="text-3xl md:text-4xl font-black leading-snug mb-6 tracking-tight">
+              自社機材×ワンストップ施工。
               <br />
-              仕事を、得意にしてきた。
+              抜群の機動力が、
+              <br />
+              あらゆる現場を動かす。
             </h2>
             <div className="space-y-4 text-lg leading-relaxed text-muted-foreground font-medium">
               <p>
-                株式会社いろは組は、大阪を拠点にプラント設備・重量物の据付工事を専門とする施工会社です。2008年の創業以来、化学・食品・製薬・電力など幅広い産業のプラントで、大型機器の精密据付から高所揚重まで手がけてきました。
+                株式会社いろは組は2013年の創業以来、重量物や産業機器の据付工事をはじめとするプラント工事のプロフェッショナルとして、ひとつひとつの現場に真摯に向き合い、10年以上の確かな実績を重ねてまいりました。
               </p>
               <p>
-                "重くて・高くて・狭い"——そんな三拍子揃った現場こそ、私たちの出番です。熟練の職人技術と最新の重機を組み合わせ、安全・確実・スピーディに施工します。
+                機器の連携、鉄骨架台の組立、足場架設、アンカー工事など、多岐にわたる工程を自社でカバーする「ワンストップサービス」を展開しています。
+              </p>
+              <p>
+                これまでに培った社員の技術力と、強固なチームワークには絶対の自信があります。自社保有の機材と結束力を最大限に活かし、多様なニーズに対して安全・確実・スピーディーにお応えします。
               </p>
             </div>
-            <div className="mt-8 grid grid-cols-3 gap-6 border-t border-border pt-8 mb-8">
+            {/* <div className="mt-8 grid grid-cols-3 gap-6 border-t border-border pt-8 mb-8">
               {[
                 { num: "300+", label: "施工実績" },
                 { num: "15年", label: "専門技術" },
@@ -302,10 +316,10 @@ export default function Home() {
                   </p>
                 </div>
               ))}
-            </div>
+            </div> */}
             <Link
               to="/company"
-              className="inline-flex items-center gap-2 text-base font-bold text-foreground border-b-2 border-accent pb-0.5 hover:text-accent transition-colors"
+              className="mt-8 inline-flex items-center gap-2 text-base font-bold text-foreground border-b-2 border-accent pb-0.5 hover:text-accent transition-colors"
             >
               会社概要を見る <ArrowRight size={14} />
             </Link>

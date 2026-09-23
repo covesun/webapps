@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { label: "ホーム", to: "/" },
   { label: "会社概要", to: "/company" },
   { label: "事業内容", to: "/business" },
+  { label: "設備機器", to: "/equipment" },
   { label: "工事実績", to: "/works" },
   { label: "採用", to: "/recruit" },
   { label: "お問い合わせ", to: "/contact" },

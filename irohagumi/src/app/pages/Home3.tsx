@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
 import {
   ArrowRight,
-  Phone,
   ChevronDown,
   Settings,
   Weight,
@@ -10,7 +9,10 @@ import {
   Package,
   Instagram,
 } from "lucide-react";
+import { motion } from "motion/react";
 import ContactBand from "../components/ContactBand";
+import topHeroImg from "../../imports/top_hero_04.jpg";
+import markOutlineImg from "../../imports/iroha_mark.png";
 import heroImg from "../../imports/DSCF3142_2K.jpg";
 import warehouseImg from "../../imports/Position_trucks_around_warehouse_2K_202608101551.jpg";
 import truckImg from "../../imports/IMG_9515.jpeg";
@@ -23,7 +25,6 @@ import ig1Img from "../../imports/624845661_18122467930497151_606007642512791482
 import ig2Img from "../../imports/662384918_18399784525196815_3165667921936231691_n.jpg_2K_202608310604.jpeg";
 import phCompanyImg from "../../imports/ph_company.jpg";
 import phRecruitImg from "../../imports/ph_recruit.jpg";
-import heroImg01 from "../../imports/top_hero_01.jpg"
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -63,18 +64,18 @@ const BUSINESSES = [
     img: work3Img,
     desc: "数トン〜数十トン規模の大型機器・タンクの搬入・吊込み・精密据付。難しい条件下でも確実に仕上げます。",
   },
-  // {
-  //   icon: <Truck size={28} strokeWidth={1.5} />,
-  //   label: "クレーン作業",
-  //   img: heroImg,
-  //   desc: "ラフタークレーン・カーゴクレーンを自社保有。高所揚重・狭小現場への対応力が強みです。",
-  // },
-  // {
-  //   icon: <Package size={28} strokeWidth={1.5} />,
-  //   label: "機材レンタル",
-  //   img: truckImg,
-  //   desc: "保有する重機・クレーン車のレンタルにも対応。※詳細はお問い合わせください。",
-  // },
+  {
+    icon: <Truck size={28} strokeWidth={1.5} />,
+    label: "クレーン作業",
+    img: heroImg,
+    desc: "ラフタークレーン・カーゴクレーンを自社保有。高所揚重・狭小現場への対応力が強みです。",
+  },
+  {
+    icon: <Package size={28} strokeWidth={1.5} />,
+    label: "機材レンタル",
+    img: truckImg,
+    desc: "保有する重機・クレーン車のレンタルにも対応。※詳細はお問い合わせください。",
+  },
 ];
 
 const HOME_WORKS = [
@@ -108,68 +109,12 @@ const HOME_WORKS = [
   },
 ];
 
-const PAGE_LINKS = [
-  {
-    to: "/company",
-    label: "会社概要",
-    en: "About",
-    img: officeImg,
-    desc: "代表メッセージ・会社情報・アクセス",
-  },
-  {
-    to: "/business",
-    label: "事業内容",
-    en: "Business",
-    img: work1Img,
-    desc: "プラント工事・重量物据付・クレーン・機材レンタル",
-  },
-  {
-    to: "/works",
-    label: "工事実績",
-    en: "Works",
-    img: work3Img,
-    desc: "近畿・全国 300件以上の施工事例",
-  },
-  {
-    to: "/recruit",
-    label: "採用情報",
-    en: "Recruit",
-    img: heroImg,
-    desc: "未経験歓迎・キャリアステップ・福利厚生",
-  },
-  {
-    to: "/contact",
-    label: "お問い合わせ",
-    en: "Contact",
-    img: warehouseImg,
-    desc: "見積もり・ご相談・エントリーはこちら",
-  },
-];
-
-const HERO_SLIDES = [
-  { img: heroImg01, pos: "object-[25%_30%]" },
-  { img: heroImg, pos: "object-[35%_30%]" },
-  { img: work1Img, pos: "object-[30%_center]" },
-  { img: truckImg, pos: "object-[0%_5%]" },
-  { img: work3Img, pos: "object-[30%_center]" },
-];
-
-export default function Home() {
+export default function Home2() {
   const navigate = useNavigate();
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [igPhotos, setIgPhotos] = useState(() =>
     shuffle(IG_POOL).slice(0, IG_COUNT),
   );
   const [igVisible, setIgVisible] = useState(true);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide(
-        (prev) => (prev + 1) % HERO_SLIDES.length,
-      );
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -184,68 +129,127 @@ export default function Home() {
 
   return (
     <>
-      {/* ── Hero（スライドショー） ──────────────────────── */}
-      <section className="relative h-screen min-h-[640px] overflow-hidden bg-zinc-900">
-        {HERO_SLIDES.map((slide, i) => (
-          <img
-            key={slide.img}
-            src={slide.img}
-            alt="株式会社いろは組"
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${slide.pos} ${
-              i === currentSlide ? "opacity-100" : "opacity-0"
-            }`}
-          />
-        ))}
-        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-yellow-400 z-10" />
-        <div className="absolute inset-0 z-10 flex items-center">
-          <div className="w-full max-w-7xl mx-auto px-6">
-            <div className="max-w-2xl">
-              <h1 className="font-black tracking-tight leading-snug mb-10 text-halo">
-                <span className="text-2xl md:text-3xl block mb-3 text-foreground/70 font-bold tracking-[0.2em]">
-                  運ぶ、吊るす、据える
-                </span>
-                <span className="text-[2.75rem] md:text-6xl block leading-tight text-foreground/90">
-                  すべての始まりは
-                  <br />
-                  <span className="text-accent">
-                    『いろは』
-                  </span>
-                  から
-                </span>
+      {/* ── Hero（背景写真＋グリーンオーバーレイ＋ロゴマーク） ── */}
+      <section className="relative h-screen min-h-[640px] overflow-hidden bg-[#14351B]">
+        {/* レスポンシブ対応：ロゴマーク位置・サイズをメディアクエリで切替 */}
+        <style>{`
+          .hero2-mark {
+            position: absolute;
+            width: 120vh;
+            height: auto;
+            top: 50%;
+            left: 25vw;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+          }
+          @media (max-width: 640px) {
+            .hero2-mark {
+              width: 130vw;
+              left: 50vw;
+            }
+          }
+        `}</style>
+
+        {/* 背景写真：わずかなズームアウトで登場 */}
+        <motion.img
+          src={topHeroImg}
+          alt=""
+          aria-hidden
+          className="absolute inset-0 w-full h-full object-cover object-[37%_65%] md:object-center"
+          style={{ zIndex: 0 }}
+          initial={{ scale: 1.06 }}
+          animate={{ scale: 1.0 }}
+          transition={{ duration: 8, ease: "easeOut" }}
+        />
+
+        {/* グリーンオーバーレイ #14351B 82% */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundColor: "#14351B",
+            opacity: 0.9,
+            zIndex: 1,
+          }}
+        />
+
+        {/* ロゴマーク：左寄せ、中心25vw、直径120vh */}
+        <motion.img
+          src={markOutlineImg}
+          alt=""
+          aria-hidden
+          className="hero2-mark"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          transition={{ duration: 1.0, ease: "easeOut" }}
+        />
+
+        {/* 左端のアクセントバー */}
+        <div
+          className="absolute left-0 top-0 bottom-0 w-1.5 bg-yellow-400"
+          style={{ zIndex: 3 }}
+        />
+
+        {/* 縦中央：白帯＋ボタン（ロゴの前面） */}
+        <div
+          className="absolute inset-0 flex flex-col justify-center"
+          style={{ zIndex: 3 }}
+        >
+          {/* 白帯：画面幅いっぱい */}
+          <motion.div
+            className="w-full bg-white/85 py-6 md:py-9"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 1.0,
+              delay: 0.5,
+              ease: "easeOut",
+            }}
+          >
+            <div className="text-center px-4">
+              <p className="text-gray-500 text-base md:text-xl font-medium mb-2 md:mb-3 tracking-wide">
+                運ぶ、吊る、据える
+              </p>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-black text-foreground leading-tight tracking-tight">
+                すべての始まりは
+                <br className="md:hidden" />
+                <span className="text-accent">『いろは』</span>
+                から
               </h1>
-              <div className="flex flex-wrap gap-3">
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-accent text-white font-bold text-sm hover:bg-green-800 transition-colors duration-200 shadow-md"
-                >
-                  お問い合わせ
-                  <ArrowRight size={16} />
-                </Link>
-                <Link
-                  to="/works"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white border-2 border-accent text-accent font-bold text-sm hover:bg-accent hover:text-white transition-colors duration-200 shadow-md"
-                >
-                  施工実績を見る
-                </Link>
-              </div>
             </div>
-          </div>
+          </motion.div>
+
+          {/* ボタン：白帯直下、中央 */}
+          <motion.div
+            className="mt-5 flex flex-wrap gap-3 justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              duration: 0.8,
+              delay: 1.1,
+              ease: "easeOut",
+            }}
+          >
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-accent text-white font-bold text-sm hover:bg-green-800 transition-colors duration-200 shadow-md"
+            >
+              お問い合わせ
+              <ArrowRight size={16} />
+            </Link>
+            <Link
+              to="/works"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white border-2 border-accent text-accent font-bold text-sm hover:bg-accent hover:text-white transition-colors duration-200 shadow-md"
+            >
+              施工実績を見る
+            </Link>
+          </motion.div>
         </div>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2">
-          {HERO_SLIDES.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentSlide(i)}
-              aria-label={`スライド ${i + 1}`}
-              className={`rounded-full transition-all duration-300 ${
-                i === currentSlide
-                  ? "w-8 h-2 bg-accent"
-                  : "w-2 h-2 bg-white/50 hover:bg-white/80"
-              }`}
-            />
-          ))}
-        </div>
-        <div className="absolute bottom-8 right-8 z-10 flex flex-col items-center gap-1 text-white/75">
+
+        {/* スクロール誘導 */}
+        <div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/75"
+          style={{ zIndex: 3 }}
+        >
           <span className="text-[10px] tracking-widest uppercase">
             Scroll
           </span>
@@ -320,7 +324,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug">
               私たちが得意とする
               <br />
-              2つの領域
+              4つの領域
             </h2>
             <Link
               to="/business"
@@ -329,7 +333,7 @@ export default function Home() {
               事業内容を詳しく見る <ArrowRight size={15} />
             </Link>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-2  gap-4 md:gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
             {BUSINESSES.map(({ icon, label, img, desc }) => (
               <div
                 key={label}
@@ -408,12 +412,6 @@ export default function Home() {
 
       {/* ── 採用ダイジェスト ─────────────────────────────── */}
       <section className="bg-background py-14 md:py-20">
-        {/* <img
-          src={heroImg}
-          alt=""
-          aria-hidden
-          className="absolute inset-0 w-full h-full object-cover object-[center_30%] opacity-15"
-        /> */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug mb-6">
@@ -537,66 +535,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── サイトメニュー（全ページへのナビ） ──────────── */}
-      {/* <section className="bg-secondary py-10 md:py-14">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-10">各ページへのご案内</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-            {PAGE_LINKS.map(({ to, label, en, img, desc }) => (
-              <Link
-                key={to}
-                to={to}
-                className="group text-left rounded-2xl overflow-hidden border border-border bg-card hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
-              >
-                <div className="aspect-[4/3] overflow-hidden bg-zinc-200 relative">
-                  <img
-                    src={img}
-                    alt={label}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <p className="absolute bottom-3 left-4 text-xs font-bold tracking-[0.2em] text-white/70 uppercase">
-                    {en}
-                  </p>
-                </div>
-                <div className="p-4">
-                  <p className="font-black text-lg text-foreground mb-1 flex items-center justify-between">
-                    {label}
-                    <ArrowRight size={14} className="text-accent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </p>
-                  <p className="text-xs text-muted-foreground font-medium leading-relaxed">{desc}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
       {/* ── お問い合わせ CTA ─────────────────────────────── */}
       <ContactBand copy="お気軽にお問い合わせください。" />
-      {/* <section className="bg-[#0c1f12] py-10 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-xs font-bold tracking-[0.3em] text-yellow-400 mb-4 uppercase">Contact</p>
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-4">まず相談だけでもかまいません。</h2>
-          <p className="text-white/60 text-base leading-relaxed mb-6">
-            見積もり・現地調査は無料です。お気軽にご連絡ください。
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-accent text-white font-bold text-base hover:bg-green-800 transition-colors"
-            >
-              お問い合わせフォームへ <ArrowRight size={18} />
-            </Link>
-            <a
-              href="tel:0728487936"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/30 text-white font-bold text-base hover:bg-white/10 transition-colors"
-            >
-              <Phone size={16} /> 072-848-7936
-            </a>
-          </div>
-        </div>
-      </section> */}
     </>
   );
 }

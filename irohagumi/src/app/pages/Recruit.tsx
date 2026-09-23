@@ -221,16 +221,18 @@ export default function Recruit() {
                   <div className="hidden sm:flex flex-col items-center flex-shrink-0 pt-6">
                     <div className="w-3 h-3 rounded-full border-2 border-accent bg-white z-10" />
                   </div>
-                  <div className="flex-1 flex gap-4 items-start">
-                    <div className="flex-1 bg-secondary rounded-xl px-5 py-4">
-                      <p className="font-black text-lg text-foreground mb-1">{item.activity}</p>
-                      <p className="text-xs text-muted-foreground font-medium leading-relaxed">{item.desc}</p>
+                  <div className="flex-1 bg-secondary rounded-xl px-5 py-4">
+                    <p className="font-black text-lg text-foreground mb-1">{item.activity}</p>
+                    <div className="flex items-start gap-4">
+                      <p className="flex-1 text-xs text-muted-foreground font-medium leading-relaxed">
+                        {item.desc}
+                      </p>
+                      {item.img && (
+                        <div className="w-20 h-16 md:w-24 md:h-20 rounded-xl overflow-hidden bg-zinc-200 flex-shrink-0">
+                          <img src={item.img} alt={item.activity} className="w-full h-full object-cover" />
+                        </div>
+                      )}
                     </div>
-                    {item.img && (
-                      <div className="w-20 h-16 md:w-24 md:h-20 rounded-xl overflow-hidden bg-zinc-200 flex-shrink-0">
-                        <img src={item.img} alt={item.activity} className="w-full h-full object-cover" />
-                      </div>
-                    )}
                   </div>
                 </div>
               ))}

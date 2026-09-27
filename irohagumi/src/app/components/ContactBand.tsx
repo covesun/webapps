@@ -1,11 +1,12 @@
 import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
 import officeImg from "../../imports/IMG_6008.jpg";
+import type { ReactNode } from "react";
 
 export default function ContactBand({
   copy = "お気軽にお問い合わせください。",
 }: {
-  copy?: string;
+  copy?: ReactNode;
 }) {
   return (
     <section className="bg-accent py-14 md:py-20 px-6 relative overflow-hidden">
@@ -21,7 +22,7 @@ export default function ContactBand({
         </p>
         <h2 className="text-3xl md:text-4xl font-black text-white mb-4">{copy}</h2>
         <p className="text-white/60 text-base leading-relaxed mb-6">
-          見積もり・現地調査は無料です。まずはご連絡ください。
+          見積もり・現地調査は無料です。<br className="md:hidden" />まずはご連絡ください。
         </p>
         <Link
           to="/contact"

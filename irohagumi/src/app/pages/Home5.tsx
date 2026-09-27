@@ -5,8 +5,6 @@ import {
   ChevronDown,
   Settings,
   Weight,
-  Truck,
-  Package,
   Instagram,
 } from "lucide-react";
 import { motion } from "motion/react";
@@ -67,18 +65,6 @@ const BUSINESSES = [
     label: "重量物据付",
     img: work3Img,
     desc: "数トン〜数十トン規模の大型機器・タンクの搬入・吊込み・精密据付。難しい条件下でも確実に仕上げます。",
-  },
-  {
-    icon: <Truck size={28} strokeWidth={1.5} />,
-    label: "クレーン作業",
-    img: heroImg,
-    desc: "ラフタークレーン・カーゴクレーンを自社保有。高所揚重・狭小現場への対応力が強みです。",
-  },
-  {
-    icon: <Package size={28} strokeWidth={1.5} />,
-    label: "機材レンタル",
-    img: truckImg,
-    desc: "保有する重機・クレーン車のレンタルにも対応。※詳細はお問い合わせください。",
   },
 ];
 
@@ -151,7 +137,7 @@ export default function Home5() {
   return (
     <>
       {/* ── Hero（背景写真＋グリーンオーバーレイ＋ロゴマーク） ── */}
-      <section className="relative h-screen min-h-[640px] overflow-hidden bg-[#14351B]">
+      <section className="relative h-svh min-h-[560px] md:min-h-[640px] overflow-hidden bg-[#14351B]">
         {/* レスポンシブ対応：ロゴマーク位置・サイズをメディアクエリで切替 */}
         <style>{`
           .hero2-mark {
@@ -223,20 +209,17 @@ export default function Home5() {
           transition={{ duration: 1.0, ease: "easeOut" }}
         />
 
-        {/* 左端のアクセントバー */}
+        {/* 縦中央：白帯＋ボタン（ロゴの前面）
+            ・top-20：固定ヘッダー（h-20）の下の領域で中央揃え
+            ・ボタンは白帯の直下に absolute 配置し、白帯そのものが中央に来るようにする */}
         <div
-          className="absolute left-0 top-0 bottom-0 w-1.5 bg-yellow-400"
-          style={{ zIndex: 3 }}
-        />
-
-        {/* 縦中央：白帯＋ボタン（ロゴの前面） */}
-        <div
-          className="absolute inset-0 flex flex-col justify-center"
+          className="absolute inset-x-0 top-20 bottom-0 pb-16 flex flex-col justify-center"
           style={{ zIndex: 3 }}
         >
+          <div className="relative">
           {/* 白帯：画面幅いっぱい */}
           <motion.div
-            className="w-full bg-white/85 py-6 md:py-9"
+            className="w-full bg-white/85 py-8 md:py-11"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -246,10 +229,10 @@ export default function Home5() {
             }}
           >
             <div className="text-center px-4">
-              <p className="text-gray-500 text-base md:text-xl font-medium mb-2 md:mb-3 tracking-wide">
+              <p className="text-gray-500 text-2xl md:text-3xl font-medium mb-2 md:mb-3 tracking-wide">
                 運ぶ、吊る、据える
               </p>
-              <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-[3.5rem] font-black text-foreground leading-tight tracking-tight">
+              <h1 className="text-[2.75rem] md:text-6xl font-black text-foreground leading-tight tracking-tight">
                 すべての始まりは
                 <br className="md:hidden" />
                 <span className="text-accent">『いろは』</span>
@@ -260,7 +243,7 @@ export default function Home5() {
 
           {/* ボタン：白帯直下、中央 */}
           <motion.div
-            className="mt-5 flex flex-wrap gap-3 justify-center"
+            className="absolute inset-x-0 top-full mt-5 flex flex-wrap gap-3 justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
@@ -283,7 +266,14 @@ export default function Home5() {
               施工実績を見る
             </Link>
           </motion.div>
+          </div>
         </div>
+
+        {/* 左端のアクセントバー */}
+        <div
+          className="absolute left-0 top-0 bottom-0 w-1.5 bg-yellow-400"
+          style={{ zIndex: 3 }}
+        />
 
         {/* ドットナビ＋スクロール誘導 */}
         <div
@@ -324,30 +314,37 @@ export default function Home5() {
                 className="w-full h-full object-cover object-center"
               />
             </div>
-            <div className="absolute -bottom-5 -right-3 md:-right-8 bg-yellow-400 text-[#0c1f12] px-6 py-4 rounded-2xl shadow-lg">
+            {/* <div className="absolute -bottom-5 -right-3 md:-right-8 bg-yellow-400 text-[#0c1f12] px-6 py-4 rounded-2xl shadow-lg">
               <p className="text-xs font-black tracking-widest mb-1 opacity-60">
                 SINCE
               </p>
               <p className="text-4xl font-black leading-none">
                 2008
               </p>
-            </div>
+            </div> */}
           </div>
           <div>
-            <h2 className="text-4xl md:text-5xl font-black leading-snug mb-6 tracking-tight">
-              「難しい」と言われる
-              <br />
-              仕事を、得意にしてきた。
-            </h2>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 md:mb-9">
+              <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug">
+                  いろは組について
+              </h2>   
+            </div>
+            <h3 className="text-2xl md:text-3xl font-black text-accent leading-snug mb-6 tracking-tight">
+              自社機材×ワンストップ施工。<br />
+              抜群の機動力が、あらゆる現場を動かす。
+            </h3>
             <div className="space-y-4 text-lg leading-relaxed text-muted-foreground font-medium">
               <p>
-                株式会社いろは組は、大阪を拠点にプラント設備・重量物の据付工事を専門とする施工会社です。2008年の創業以来、化学・食品・製薬・電力など幅広い産業のプラントで、大型機器の精密据付から高所揚重まで手がけてきました。
+                株式会社いろは組は2013年の創業以来、重量物や産業機器の据付工事をはじめとするプラント工事のプロフェッショナルとして、ひとつひとつの現場に真摯に向き合い、10年以上の確かな実績を重ねてまいりました。
               </p>
               <p>
-                "重くて・高くて・狭い"——そんな三拍子揃った現場こそ、私たちの出番です。熟練の職人技術と最新の重機を組み合わせ、安全・確実・スピーディに施工します。
+                機器の連携、鉄骨架台の組立、足場架設、アンカー工事など、多岐にわたる工程を自社でカバーする「ワンストップサービス」を展開しています。
+              </p>
+              <p>
+                これまでに培った社員の技術力と、強固なチームワークには絶対の自信があります。自社保有の機材と結束力を最大限に活かし、多様なニーズに対して安全・確実・スピーディーにお応えします。
               </p>
             </div>
-            <div className="mt-8 grid grid-cols-3 gap-6 border-t border-border pt-8 mb-8">
+            {/* <div className="mt-8 grid grid-cols-3 gap-6 border-t border-border pt-8 mb-8">
               {[
                 { num: "300+", label: "施工実績" },
                 { num: "15年", label: "専門技術" },
@@ -362,10 +359,10 @@ export default function Home5() {
                   </p>
                 </div>
               ))}
-            </div>
+            </div> */}
             <Link
               to="/company"
-              className="inline-flex items-center gap-2 text-base font-bold text-foreground border-b-2 border-accent pb-0.5 hover:text-accent transition-colors"
+              className="mt-8 inline-flex items-center gap-2 text-base font-bold text-foreground border-b-2 border-accent pb-0.5 hover:text-accent transition-colors"
             >
               会社概要を見る <ArrowRight size={14} />
             </Link>
@@ -374,13 +371,13 @@ export default function Home5() {
       </section>
 
       {/* ── 事業内容ダイジェスト ─────────────────────────── */}
-      <section className="bg-background py-14 md:py-20">
+      <section className="bg-background py-14 md:py-20 border-t border-border">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 md:mb-9">
             <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug">
               私たちが得意とする
               <br />
-              4つの領域
+              2つの領域
             </h2>
             <Link
               to="/business"
@@ -389,28 +386,30 @@ export default function Home5() {
               事業内容を詳しく見る <ArrowRight size={15} />
             </Link>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
             {BUSINESSES.map(({ icon, label, img, desc }) => (
               <div
                 key={label}
                 className="group rounded-2xl border border-border overflow-hidden bg-card hover:shadow-md transition-shadow duration-300 cursor-pointer"
                 onClick={() => navigate("/business")}
               >
-                <div className="aspect-[4/3] overflow-hidden bg-zinc-200">
+                <div className="aspect-[16/9] overflow-hidden bg-zinc-200">
                   <img
                     src={img}
                     alt={label}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <div className="p-4">
-                  <div className="w-9 h-9 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-3">
-                    {icon}
+                <div className="p-5 md:p-7">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-11 h-11 rounded-xl bg-accent/10 text-accent flex items-center justify-center flex-shrink-0">
+                      {icon}
+                    </div>
+                    <p className="font-black text-xl md:text-2xl text-foreground leading-snug">
+                      {label}
+                    </p>
                   </div>
-                  <p className="font-black text-lg text-foreground mb-1">
-                    {label}
-                  </p>
-                  <p className="text-xs leading-relaxed text-muted-foreground font-medium line-clamp-2">
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground font-medium">
                     {desc}
                   </p>
                 </div>
@@ -421,9 +420,9 @@ export default function Home5() {
       </section>
 
       {/* ── 工事実績ダイジェスト ─────────────────────────── */}
-      <section className="bg-background py-14 md:py-20">
+      <section className="bg-background py-14 md:py-20 border-t border-border">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 md:mb-9">
             <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug">
               主な施工事例
             </h2>
@@ -453,10 +452,10 @@ export default function Home5() {
                   {String(i + 1).padStart(2, "0")}
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <p className="text-white font-black text-base mb-1">
+                  <p className="text-white font-black text-base md:text-lg mb-1">
                     {work.label}
                   </p>
-                  <p className="text-white/70 text-xs leading-relaxed font-medium">
+                  <p className="text-white/75 text-sm leading-relaxed font-medium">
                     {work.desc}
                   </p>
                 </div>
@@ -467,10 +466,10 @@ export default function Home5() {
       </section>
 
       {/* ── 採用ダイジェスト ─────────────────────────────── */}
-      <section className="bg-background py-14 md:py-20">
+      <section className="bg-background py-14 md:py-20 border-t border-border">
         <div className="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug mb-6">
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug mb-6 md:mb-9">
               未経験から、
               <br />
               一人前の技術者へ。
@@ -532,8 +531,8 @@ export default function Home5() {
       </section>
 
       {/* ── Instagram フィード ───────────────────────────── */}
-      <section className="bg-background pt-14 md:pt-20">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+      <section className="bg-background pt-14 md:pt-20 border-t border-border">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 md:mb-9">
           <div>
             <p className="text-xs font-bold tracking-[0.35em] text-accent uppercase mb-2 hidden">
               Instagram

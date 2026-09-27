@@ -8,7 +8,7 @@ import signatureImg from "../../imports/__________2026-08-10_14.59.28-1.png";
 
 const COMPANY_INFO = [
   { label: "会社名", value: "株式会社いろは組" },
-  { label: "設立", value: "2008年4月" },
+  { label: "設立", value: "2013年3月15日" },
   { label: "代表取締役", value: "阿部 眞一郎" },
   { label: "所在地", value: "〒573-1163　大阪府枚方市甲斐田新町26-7" },
   { label: "電話番号", value: "TEL：072-848-7936 / FAX：072-865-3077" },
@@ -43,7 +43,7 @@ export default function Company() {
       {/* ── 代表メッセージ ───────────────────────────────── */}
       <section className="bg-background py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-black leading-snug tracking-tight mb-8">ごあいさつ</h2>
+          <h2 className="text-4xl md:text-5xl font-black leading-snug tracking-tight mb-6 md:mb-9">ごあいさつ</h2>
 
           <div className="w-full rounded-2xl overflow-hidden mb-10 shadow-sm">
             <img src={greetingImg} alt="技術を未来へ" className="w-full h-auto object-cover" />
@@ -81,9 +81,9 @@ export default function Company() {
       </section>
 
       {/* ── 会社情報 ─────────────────────────────────────── */}
-      <section className="bg-background py-14 md:py-20">
+      <section className="bg-background py-14 md:py-20 border-t border-border">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug mb-7 md:mb-10">会社情報</h2>
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug mb-6 md:mb-9">会社情報</h2>
           <div className="rounded-2xl border border-border overflow-hidden bg-card">
             {COMPANY_INFO.map(({ label, value }, i) => (
               <div
@@ -105,9 +105,9 @@ export default function Company() {
       </section>
 
       {/* ── アクセス ─────────────────────────────────────── */}
-      <section className="bg-background py-14 md:py-20">
+      <section className="bg-background py-14 md:py-20 border-t border-border">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug mb-7 md:mb-10">アクセス</h2>
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug mb-6 md:mb-9">アクセス</h2>
 
           {/* 本社 */}
           <div className="mb-10">

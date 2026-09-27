@@ -11,9 +11,13 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 import ContactBand from "../components/ContactBand";
-import topHeroImg from "../../imports/top_hero_04.jpg";
 import markOutlineImg from "../../imports/iroha_mark.png";
 import heroImg from "../../imports/DSCF3142_2K.jpg";
+import heroImg01 from "../../imports/top_hero_01.jpg";
+import heroImg04 from "../../imports/top_hero_04.jpg";
+import heroImg06 from "../../imports/top_hero_06.jpg";
+import heroImg07 from "../../imports/top_hero_07.jpg";
+import heroImg08 from "../../imports/top_hero_08.jpg";
 import warehouseImg from "../../imports/Position_trucks_around_warehouse_2K_202608101551.jpg";
 import truckImg from "../../imports/IMG_9515.jpeg";
 import work1Img from "../../imports/suetuke.jpg";
@@ -109,12 +113,29 @@ const HOME_WORKS = [
   },
 ];
 
-export default function Home2() {
+const HERO_SLIDES = [
+  { img: heroImg04, pos: "object-[40%_30%]" },
+  { img: heroImg, pos: "object-[35%_30%]" },
+  { img: heroImg06, pos: "object-[30%_center]" },
+  { img: heroImg07, pos: "object-[30%_center]" },
+  { img: heroImg08, pos: "object-[30%_center]" },
+  { img: work3Img, pos: "object-[30%_center]" },
+];
+
+export default function Home5() {
   const navigate = useNavigate();
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [igPhotos, setIgPhotos] = useState(() =>
     shuffle(IG_POOL).slice(0, IG_COUNT),
   );
   const [igVisible, setIgVisible] = useState(true);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -135,43 +156,58 @@ export default function Home2() {
         <style>{`
           .hero2-mark {
             position: absolute;
-            width: auto;
-            max-width: none;
-            height: 150vh;
-            top: -20vh;
-            left: -20vw;
+            width: 120vh;
+            height: auto;
+            top: 50%;
+            left: 25vw;
             transform: translate(-50%, -50%);
             z-index: 2;
           }
           @media (max-width: 640px) {
             .hero2-mark {
-              width: 200vw;
-              height: auto;
-              left: -40vw;
-              transform: translate(-50%, -50%);
-              top: 0;
+              width: 130vw;
+              left: 50vw;
             }
           }
         `}</style>
 
-        {/* 背景写真：わずかなズームアウトで登場 */}
-        <motion.img
-          src={topHeroImg}
-          alt=""
-          aria-hidden
-          className="absolute inset-0 w-full h-full object-cover object-[37%_65%] md:object-center"
-          style={{ zIndex: 0 }}
-          initial={{ scale: 1.06 }}
-          animate={{ scale: 1.0 }}
-          transition={{ duration: 8, ease: "easeOut" }}
-        />
+        {/* 背景写真：スライドショー */}
+        {HERO_SLIDES.map((slide, i) => (
+          // <img
+          //   key={slide.img}
+          //   src={slide.img}
+          //   alt=""
+          //   aria-hidden
+          //   className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${slide.pos} ${
+          //     i === currentSlide ? "opacity-100" : "opacity-0"
+          //   }`}
+          //   style={{ zIndex: 0 }}
+          // />
+          <motion.img
+            key={slide.img}
+            src={slide.img}
+            alt=""
+            aria-hidden
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${slide.pos} ${
+              i === currentSlide ? "opacity-100" : "opacity-0"
+            }`}
+            style={{ zIndex: 0 }}
+            initial={{ scale: 1.06 }}
+            animate={{ scale: i === currentSlide ? 1.0 : 1.06 }}
+            transition={
+              i === currentSlide
+                ? { duration: 8, ease: "easeOut" }
+                : { duration: 0, delay: 1 }
+            }
+          />
+        ))}
 
         {/* グリーンオーバーレイ #14351B 82% */}
         <div
           className="absolute inset-0"
           style={{
             backgroundColor: "#14351B",
-            opacity: 0.9,
+            opacity: 0,
             zIndex: 1,
           }}
         />
@@ -182,16 +218,16 @@ export default function Home2() {
           alt=""
           aria-hidden
           className="hero2-mark"
-          initial={{ opacity: 0, scale: 1 }}
-          animate={{ opacity: 0.75, scale: 1.02 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0 }}
           transition={{ duration: 1.0, ease: "easeOut" }}
         />
 
         {/* 左端のアクセントバー */}
-        {/* <div
+        <div
           className="absolute left-0 top-0 bottom-0 w-1.5 bg-yellow-400"
           style={{ zIndex: 3 }}
-        /> */}
+        />
 
         {/* 縦中央：白帯＋ボタン（ロゴの前面）
             ・top-20：固定ヘッダー（h-20）の下の領域で中央揃え
@@ -204,7 +240,7 @@ export default function Home2() {
           <div className="relative">
           {/* 白帯：画面幅いっぱい */}
           <motion.div
-            className="w-full bg-white/85 py-8 md:py-11"
+            className="w-full md:w-fit md:pr-16 bg-white/75 md:rounded-r-3xl py-8 md:py-11"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -213,22 +249,25 @@ export default function Home2() {
               ease: "easeOut",
             }}
           >
-            <div className="text-center px-4">
-              <p className="text-gray-500 text-2xl md:text-3xl font-medium mb-2 md:mb-3 tracking-wide">
-                運ぶ、吊る、据える
-              </p>
-              <h1 className="text-[2.75rem] md:text-6xl font-black text-foreground leading-tight tracking-tight">
-                すべての始まりは
-                <br className="md:hidden" />
-                <span className="text-accent">『いろは』</span>
-                から
+              {/* <h1 className="font-black tracking-tight leading-snug mb-10 text-halo"> */}
+              <h1 className="font-black tracking-tight leading-snug text-halo md:text-left md:pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))]">
+                <span className="text-2xl md:text-3xl block mb-3 text-foreground/70 font-bold tracking-[0.2em]">
+                  運ぶ、吊るす、据える
+                </span>
+                <span className="text-[2.75rem] md:text-6xl block leading-tight text-foreground/90">
+                  すべての始まりは
+                  <br />
+                  <span className="text-accent">
+                    『いろは』
+                  </span>
+                  から
+                </span>
               </h1>
-            </div>
           </motion.div>
 
           {/* ボタン：白帯直下、中央 */}
           <motion.div
-            className="absolute inset-x-0 top-full mt-5 flex flex-wrap gap-3 justify-center"
+            className="absolute inset-x-0 top-full mt-5 flex flex-wrap gap-3 justify-center md:justify-start md:pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
@@ -254,20 +293,36 @@ export default function Home2() {
           </div>
         </div>
 
-        {/* スクロール誘導 */}
+        {/* ドットナビ＋スクロール誘導 */}
         <div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/75"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
           style={{ zIndex: 3 }}
         >
-          <span className="text-[10px] tracking-widest uppercase">
-            Scroll
-          </span>
-          <ChevronDown size={14} className="animate-bounce" />
+          <div className="flex items-center gap-2">
+            {HERO_SLIDES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentSlide(i)}
+                aria-label={`スライド ${i + 1}`}
+                className={`rounded-full transition-all duration-300 ${
+                  i === currentSlide
+                    ? "w-8 h-2 bg-accent"
+                    : "w-2 h-2 bg-white/50 hover:bg-white/80"
+                }`}
+              />
+            ))}
+          </div>
+          <div className="flex flex-col items-center gap-1 text-white/75">
+            <span className="text-[10px] tracking-widest uppercase">
+              Scroll
+            </span>
+            <ChevronDown size={14} className="animate-bounce" />
+          </div>
         </div>
       </section>
 
       {/* ── 会社概要ダイジェスト ─────────────────────────── */}
-      <section className="bg-background py-14 md:py-20">
+      <section className="bg-background py-14 md:py-20 border-t border-border">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
           <div className="relative">
             <div className="aspect-[4/3] md:aspect-[4/5] overflow-hidden rounded-2xl bg-zinc-200">

@@ -263,7 +263,7 @@ export default function Home() {
       </section>
 
       {/* ── 会社概要ダイジェスト ─────────────────────────── */}
-      <section className="bg-background py-14 md:py-20">
+      <section className="bg-background py-14 md:py-20 border-t border-border">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
           <div className="relative">
             <div className="aspect-[4/3] md:aspect-[4/5] overflow-hidden rounded-2xl bg-zinc-200">
@@ -273,22 +273,19 @@ export default function Home() {
                 className="w-full h-full object-cover object-center"
               />
             </div>
-            <div className="absolute -bottom-5 -right-3 md:-right-8 bg-yellow-400 text-[#0c1f12] px-6 py-4 rounded-2xl shadow-lg">
+            {/* <div className="absolute -bottom-5 -right-3 md:-right-8 bg-yellow-400 text-[#0c1f12] px-6 py-4 rounded-2xl shadow-lg">
               <p className="text-xs font-black tracking-widest mb-1 opacity-60">
                 SINCE
               </p>
               <p className="text-4xl font-black leading-none">
                 2008
               </p>
-            </div>
+            </div> */}
           </div>
           <div>
             <h2 className="text-3xl md:text-4xl font-black leading-snug mb-6 tracking-tight">
-              自社機材×ワンストップ施工。
-              <br />
-              抜群の機動力が、
-              <br />
-              あらゆる現場を動かす。
+              自社機材×ワンストップ施工。<br />
+              抜群の機動力が、<br className="md:hidden"/>あらゆる現場を動かす。
             </h2>
             <div className="space-y-4 text-lg leading-relaxed text-muted-foreground font-medium">
               <p>

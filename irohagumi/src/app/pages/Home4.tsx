@@ -130,7 +130,7 @@ export default function Home2() {
   return (
     <>
       {/* ── Hero（背景写真＋グリーンオーバーレイ＋ロゴマーク） ── */}
-      <section className="relative h-screen min-h-[640px] overflow-hidden bg-[#14351B]">
+      <section className="relative h-svh min-h-[560px] md:min-h-[640px] overflow-hidden bg-[#14351B]">
         {/* レスポンシブ対応：ロゴマーク位置・サイズをメディアクエリで切替 */}
         <style>{`
           .hero2-mark {
@@ -189,14 +189,18 @@ export default function Home2() {
           style={{ zIndex: 3 }}
         />
 
-        {/* 縦中央：白帯＋ボタン（ロゴの前面） */}
+        {/* 縦中央：白帯＋ボタン（ロゴの前面）
+            ・top-20：固定ヘッダー（h-20）の下の領域で中央揃え
+            ・pb-16：視覚的中心に合わせて白帯を少し上げる
+            ・ボタンは白帯の直下に absolute 配置し、白帯そのものが中央に来るようにする */}
         <div
-          className="absolute inset-0 flex flex-col justify-center"
+          className="absolute inset-x-0 top-20 bottom-0 pb-16 flex flex-col justify-center"
           style={{ zIndex: 3 }}
         >
+          <div className="relative">
           {/* 白帯：画面幅いっぱい */}
           <motion.div
-            className="w-full bg-white/85 py-6 md:py-9"
+            className="w-full bg-white/85 py-8 md:py-11"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -206,10 +210,10 @@ export default function Home2() {
             }}
           >
             <div className="text-center px-4">
-              <p className="text-gray-500 text-base md:text-xl font-medium mb-2 md:mb-3 tracking-wide">
+              <p className="text-gray-500 text-2xl md:text-3xl font-medium mb-2 md:mb-3 tracking-wide">
                 運ぶ、吊る、据える
               </p>
-              <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-[3.5rem] font-black text-foreground leading-tight tracking-tight">
+              <h1 className="text-[2.75rem] md:text-6xl font-black text-foreground leading-tight tracking-tight">
                 すべての始まりは
                 <br className="md:hidden" />
                 <span className="text-accent">『いろは』</span>
@@ -220,7 +224,7 @@ export default function Home2() {
 
           {/* ボタン：白帯直下、中央 */}
           <motion.div
-            className="mt-5 flex flex-wrap gap-3 justify-center"
+            className="absolute inset-x-0 top-full mt-5 flex flex-wrap gap-3 justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
@@ -243,6 +247,7 @@ export default function Home2() {
               施工実績を見る
             </Link>
           </motion.div>
+          </div>
         </div>
 
         {/* スクロール誘導 */}

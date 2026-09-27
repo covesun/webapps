@@ -91,7 +91,7 @@ export default function Contact() {
           <div className="grid md:grid-cols-[1fr_420px] gap-16 items-start">
             {/* Left: intro */}
             <div>
-              <h2 className="text-4xl md:text-5xl font-black leading-snug tracking-tight mb-6">
+              <h2 className="text-4xl md:text-5xl font-black leading-snug tracking-tight mb-6 md:mb-9">
                 お問い合わせ・
                 <br />
                 お見積もり依頼

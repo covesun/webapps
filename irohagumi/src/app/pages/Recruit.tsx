@@ -40,11 +40,21 @@ export default function Recruit() {
 
       {/* ── 職種選択カード ────────────────────────────── */}
       <section className="bg-background py-14 md:py-20 border-t border-border">
-        <div className="max-w-5xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-black tracking-tight text-center mb-6 md:mb-9">
             募集職種を<br className="md:hidden" />選んでください
           </h2>
           <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+            <JobCard
+              to="/recruit/sales"
+              img={salesImg}
+              label="営業職"
+              catch_="現場を支え、信頼をつなぐ営業職"
+              desc="お客様との関係を大切にしながら、チームとともに最適な提案を届けます。"
+              btnText="営業職はこちら"
+              icon={<Briefcase size={18} />}
+              recruiting={true}
+            />
             <JobCard
               to="/recruit/field"
               img={fieldImg}
@@ -53,15 +63,7 @@ export default function Recruit() {
               desc="お客様に安心していただけるレベルの技術力・安全を届けます。"
               btnText="現場作業員・管理職はこちら"
               icon={<HardHat size={18} />}
-            />
-            <JobCard
-              to="/recruit/sales"
-              img={salesImg}
-              label="営業職"
-              catch_="現場を支え、信頼をつなぐ"
-              desc="お客様との関係を大切にしながら、チームとともに最適な提案を届けます。"
-              btnText="営業職はこちら"
-              icon={<Briefcase size={18} />}
+              recruiting={true}
             />
           </div>
         </div>
@@ -97,6 +99,7 @@ function JobCard({
   desc,
   btnText,
   icon,
+  recruiting = true,
 }: {
   to: string;
   img: string;
@@ -105,6 +108,7 @@ function JobCard({
   desc: string;
   btnText: string;
   icon: React.ReactNode;
+  recruiting?: boolean;
 }) {
   return (
     <div className="bg-card rounded-2xl border border-border overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
@@ -112,9 +116,13 @@ function JobCard({
       <div className="relative h-52 bg-zinc-200 overflow-hidden">
         <img src={img} alt={label} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-        <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-yellow-400 text-yellow-900 text-[10px] font-black tracking-[0.15em] uppercase px-3 py-1 rounded-full shadow">
-          <span className="w-1.5 h-1.5 rounded-full bg-yellow-700 animate-pulse" />
-          Recruiting Now
+        <span
+          className={`absolute top-4 left-4 inline-flex items-center gap-1.5 text-s font-black tracking-[0.15em] uppercase px-3 py-1 rounded-full shadow ${
+            recruiting ? "bg-yellow-400 text-yellow-900" : "bg-zinc-300 text-zinc-600"
+          }`}
+        >
+          {recruiting && <span className="w-1.5 h-1.5 rounded-full bg-yellow-700 animate-pulse" />}
+          {recruiting ? "募集中" : "募集停止中"}
         </span>
       </div>
 
@@ -122,13 +130,13 @@ function JobCard({
       <div className="flex flex-col flex-1 p-7 gap-4">
         <div className="flex items-center gap-2 text-accent">
           {icon}
-          <span className="text-xs font-black tracking-[0.15em] uppercase">{label}</span>
+          <span className="text-m font-black tracking-[0.15em] uppercase">{label}</span>
         </div>
         <h3 className="text-xl font-black text-foreground leading-snug">{catch_}</h3>
         <p className="text-base text-muted-foreground leading-relaxed font-medium flex-1">{desc}</p>
         <Link
           to={to}
-          className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-accent text-white font-black text-base hover:bg-green-800 transition-colors group mt-1"
+          className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-accent text-white font-black text-base hover:bg-green-800 transition-colors group mt-1"
         >
           {btnText}
           <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />

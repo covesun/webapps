@@ -38,9 +38,6 @@ export default function Equipment() {
       {/* ── リード：スカニア写真＋本文 ───────────────────── */}
       <section className="bg-background py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug mb-6 md:mb-9">
-            「いろは」の設備
-          </h2>
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-zinc-200">
               <img
@@ -50,11 +47,16 @@ export default function Equipment() {
               />
             </div>
             <div>
-              <h2 className="text-3xl md:text-4xl font-black leading-snug mb-6 tracking-tight">
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 md:mb-9">
+                <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug">
+                    「いろは」の設備
+                </h2>   
+              </div>
+              <h3 className="text-2xl md:text-3xl font-black text-accent leading-snug mb-6 tracking-tight">
                 自社保有の<br className="md:hidden" />スカニアOC-200Nほか、
                 <br />
                 現場を支える<br className="md:hidden" />圧倒的な機動力
-              </h2>
+              </h3>
               <div className="space-y-4 text-lg leading-relaxed text-muted-foreground font-medium">
                 <p>
                   他社では保有の少ない大型トラッククレーン「スカニアOC-200N」を自社完備。

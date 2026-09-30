@@ -84,7 +84,7 @@ export default function RecruitSales() {
               <p className="text-xs font-bold text-accent tracking-wide">株式会社いろは組 代表</p>
               {/* キャッチ（主役） */}
               <p className="mt-6 text-2xl md:text-3xl font-black text-foreground leading-snug tracking-tight border-l-4 border-accent pl-5">
-                営業職は現在採用準備中です。
+                営業職は現在採用中です。
               </p>
               <p className="mt-5 text-base md:text-lg leading-relaxed text-foreground/85 font-medium">
                 お客様と現場をつなぎ、信頼関係を育む大切な役割です。建設・機械業界の経験がある方はもちろん、人と話すことが好きな方からのご応募をお待ちしています。詳しい業務内容や待遇については、面接の際に直接ご説明します。

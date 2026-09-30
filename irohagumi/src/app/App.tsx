@@ -6,6 +6,7 @@ import Home3 from "./pages/Home3";
 import Home4 from "./pages/Home4";
 import Home5 from "./pages/Home5";
 import Home6 from "./pages/Home6";
+import Home7 from "./pages/Home7";
 import Company from "./pages/Company";
 import Equipment from "./pages/Equipment";
 import Business from "./pages/Business";
@@ -23,7 +24,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route index element={<Home5 />} />
+          <Route index element={<Home7 />} />
           <Route path="company" element={<Company />} />
           <Route path="equipment" element={<Equipment />} />  
           <Route path="business" element={<Business />} />
@@ -41,6 +42,7 @@ export default function App() {
           <Route path="home4" element={<Home4 />} />
           <Route path="home5" element={<Home5 />} />
           <Route path="home6" element={<Home6 />} />
+          <Route path="home7" element={<Home7 />} />
         </Route>
       </Routes>
     </BrowserRouter>

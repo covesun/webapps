@@ -8,13 +8,14 @@
     ・現在ページのナビ項目に "is-current" 相当の見た目（下線＋緑文字）を付けたい場合、
       該当の<a>のclassに "border-b-2 border-accent pb-0.5 text-accent" を追記してください
       （Reactではルーティングで自動判定していましたが、静的HTMLでは手動になります）
-    ・ロゴ画像パスは images/logo.png を仮定。ポケカン2にアップロード後、srcを差し替えてください
+    ・ロゴ画像パスは /images/website2/logo.png を仮定。ポケカン2にアップロード後、srcを差し替えてください
 -->
+<div>
 <header id="ig-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-sm">
   <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
     <a href="/" class="flex flex-col items-start">
       <span class="text-[10px] font-bold tracking-[0.2em] text-accent leading-none mb-1">機器設置工事のプロ集団</span>
-      <img src="images/logo.png" alt="株式会社いろは組" class="h-9 w-auto" />
+      <img src="/images/website2/logo.png" alt="株式会社いろは組" class="h-9 w-auto" />
     </a>
 
     <nav class="hidden md:flex items-center gap-8" aria-label="グローバルナビゲーション">
@@ -27,8 +28,8 @@
     </nav>
 
     <button type="button" id="ig-menu-btn" class="md:hidden text-foreground" aria-label="メニュー" aria-expanded="false">
-      <svg id="ig-icon-menu" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
-      <svg id="ig-icon-close" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      <svg id="ig-icon-menu" width="24" height="24" style="width:26px;height:26px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      <svg id="ig-icon-close" width="24" height="24" style="width:26px;height:26px;display:none" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </div>
 
@@ -41,4 +42,6 @@
     <a href="/contact/" class="text-base font-bold text-left transition-colors text-accent">お問い合わせ</a>
   </div>
 </header>
-<div class="h-20" aria-hidden="true"></div><!-- fixedヘッダー分のスペーサー（headerがposition:fixedのため本文が隠れないようにする隙間） -->
+</div>
+<!-- [2026-09-09] fixedヘッダー分のスペーサーdivは削除しました。モック(covesun.net)を全ページ確認した結果、
+     どのページもスペーサー無しでy=0からフルブリードに始まる設計だったため。詳細はtemplate.htmの★修正履歴参照。 -->

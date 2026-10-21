@@ -12,10 +12,99 @@
       をそのまま復元しました。本文パーツはBLOCK:MAINの中に配置してください。
     ・bodyのclassもdefault.htm同様 "column1" に戻しています（layout.css側のレイアウト分岐に
       使われている可能性があるため）。
+    ・id="header" / id="container" / id="footer" 直下にあったBootstrapの class="container"
+      （幅を750/970/1170px系に固定するクラス）を削除しました。新デザインのheader-nav.html等は
+      fixed full-widthのバー＋内側でmax-w-7xl mx-autoにより自前で幅制御する設計のため、外側で
+      さらにBootstrapのcontainerに収められると二重に幅が制限され、フル幅にならない不具合が
+      出ていました。id自体とBLOCK:HEADER/BLOCK:MAIN/BLOCK:FOOTERのCMSタグは変更していません。
+    ・元のReactではLayout.tsxのルート要素に style={{fontFamily:"'Noto Sans JP','Inter',sans-serif"}}
+      をインラインで直接指定しており、CSSではどこにもfont-familyを宣言していませんでした（＝実は
+      インラインstyleの優先度だけでフォントを担保していた）。今回の静的HTML化でこの指定が抜けて
+      いたため、ポケカン2の「フォント設定」画面で選んだフォントに上書きされていました。
+      対策として (1) <body>にインラインstyleでfont-familyを再指定 (2) 万一ポケカン2側のフォント
+      設定が!important付きで効いてくるケースに備えて、#wrapperにも!important付きの補強ルールを
+      <head>内に追加しています。それでも勝てない場合は、ポケカン2のフォント設定自体を「サイト
+      デフォルトに従う／指定なし」に変更してもらうのが一番確実です。
+    ・シナネン石油様サイト（同じポケカン2、responsive_type13_customではなくnew_designテンプレート）
+      で実測したところ<html>のfont-sizeが10pxになっており、上記の「フォント設定による上書き」の
+      正体はこれ（16px→10pxで62.5%に縮小）で確定。html[lang="ja"]{font-size:16px!important}の
+      対策で正しい方向。
+    ・Bootstrap 3のCSS/JSを撤去しました。理由: Bootstrapの.hidden{display:none!important;}が
+      Tailwindのhidden/md:flex（!important無し）と名前衝突し、header-nav.htmlのnavが
+      画面幅に関係なく常に非表示になる不具合が発生したため。jQueryのみ、CMS_SKIN_URL/js/contents.js
+      が依存している可能性を考慮して残しています。
+    ・footer内のpageTop（Back to topリンク）とaddress（{site[copyright]}）ブロックを削除しました。
+      footer.htmlパーツ側に既に著作権表示を含めており不要なため。
+    ・topicpath（パンくず）のdivとPHPロジックを丸ごと削除しました。新デザインのモックには
+      パンくずが無く、今回使わないと確定したため。
+    ・footer上部に薄いグレーの帯が見えていた不具合を修正。原因はlayout.cssの
+      #footer{padding:20px 0 0 0;background:#eee;}とwitans_custom.cssの
+      div#footer{margin-top:100px;}が、外枠#footer自体に残っていたこと。footer.htmlは
+      #footer直下の要素にスタイルを当てる設計のため外枠は素通りしていた。<head>の<style>に
+      html[lang="ja"] #footer{background:none!important;margin-top:0!important;
+      padding-top:0!important;}を追加して打ち消した。
+    ・フッター下に空白ができる不具合を修正。最初はfreeParts系のCSS(.box/.boxTop/.boxBottom)の
+      余白が原因だと推測してCSSで打ち消したが効果なし。本当の原因はそこではなく、
+      BLOCK:FOOTER（およびBLOCK:HEADER/BLOCK:MAINも同様）はポケカン2側が「このブロックには
+      このパーツが割り当てられている」という情報を持っていて、テンプレートの記述内容に関係なく
+      そのパーツの中身（freeParts/box/boxTop/boxBottomでラップされた古いfooter.htmlパーツ）を
+      強制的に注入してくる、という仕組みだったこと。BLOCK:FOOTERの中にfooter.htmlの中身を
+      直接書いても、CMSが割り当て済みのパーツで上書き・並存させてしまい、結果的に隙間や
+      二重表示につながっていた。対策として<footer>タグ本体をBLOCK:FOOTER/div#footerの外
+      （id="wrapper"の直下、footerセクションの後）に完全に移動し、BLOCK:FOOTERとdiv#footerは
+      中身が空のプレースホルダーとして残すことで、CMSのパーツ注入と競合しない静的な記述にした
+      （P氏による修正）。この教訓はBLOCK:HEADER/BLOCK:MAINにも当てはまるため、今後どこかの
+      ブロックを「パーツUIを使わずテンプレートに直書きしたい」場合は、必ずBLOCK:*タグの外に
+      置くこと。
+
+    ・css配下のresponsive_type13_customテーマCSS（reset/layout/contents_parts/base/color/
+      witans_custom.css）は、そもそも今回のデザインが元からReactで完全に独立したCSS
+      （css/irohagumi.css、Tailwindビルド）を持っており、これらの旧テーマCSSに一切依存していない
+      （フォーム・ボタン・見出し等の汎用スタイルも含め全部irohagumi.css側で完結している）ため、
+      読み込み自体を丸ごとやめました。実際に使うのは (1) ポケカン2システム側のeditor.css
+      （エディター画面の背景色。CMSの編集機能自体に紐づくため必要）と (2) css/irohagumi.css
+      （新デザイン本体）の2つだけです。
+      responsive_type13_custom側のオリジナルには一切手を付けていません（他のポケカンサイトへの
+      影響なし）。一度はreset/layout/contents_parts/base/color/witans_custom.cssをフォーク
+      （不具合の原因行だけ削除）した版も作りましたが、上記の理由で結局不要と判断し、
+      irohagumi-parts/css/配下からも削除、editor.cssだけを残しています。
+      <link>の参照先も css/style.css → css/editor.css に変更しています。
+      これに伴い、template.htm側の<head>にあった打ち消し用<style>（footer分）は丸ごと不要になり
+      削除しました。font-size/font-family対策のみcss/irohagumi.cssの先頭に移動しています。
+      ※注意点: contents_parts.cssにはポケカン2標準の「パーツ追加」UIが使うfreeParts/box/
+      boxTop/boxBottom等のクラスの見た目が定義されていますが、これは公開ページ側の見た目であって
+      管理画面のエディタ操作性そのものには影響しない想定です（style.css側のFOR_EDITORセクションは
+      元々空で、エディタ専用の上書きはeditor.cssのみに閉じている）。ただし実機のポケカン2エディタで
+      パーツ追加・並び替え等の操作性に異常が出た場合は、contents_parts.cssの復活を検討してください。
+    ・ヘッダー（header-nav.html）もfooterと同じ理由でBLOCK:HEADERの外にテンプレート直書きに変更。
+      理由: div#headerはBLOCK:HEADER経由でパーツ注入される箱のため、witans_custom.cssの
+      #header .freeParts{margin-top:20px}が乗って、ヒーローがy=100pxまで押し下げられる不具合が
+      あった（上記の通りCSS側でも削除済みだが、箱自体をBLOCK:HEADERの外に出すことで二重に対策）。
+      あわせて、header-nav.html本体にあった「fixedヘッダー分のスペーサーdiv」もモック
+      （covesun.net）の実装に合わせて削除しました（モックはどのページも同じくスペーサー無しで
+      y=0からフルブリードに始まる設計だったため）。
+
+    ・【2026-09-12】上記のヘッダー/フッターtemplate.htm直書きを撤回し、元通りBLOCK:HEADER/
+      BLOCK:FOOTERにパーツとして貼る方式に戻しました。理由: P氏より「ヘッダーとフッターをhtmlに
+      組み込むのもメンテナンス性が下がるからできればやめたい」との指摘。直書きにした本来の理由
+      だったfreeParts系CSSの不具合（witans_custom.css等の#header .freeParts{margin-top:20px}
+      や#footerのbackground/margin）は、上の「css配下のresponsive_type13_customテーマCSS...」
+      の項目の通り旧テーマCSSの読み込み自体を丸ごとやめたことで既に解消済みのため、直書きで
+      迂回する必要が無くなったと判断。
+      ただし、BLOCK:HEADER/BLOCK:FOOTERにパーツを貼り直す際は、ポケカン2エディタが「パーツを
+      認識した」時にルート要素のclass属性を独自の追跡用クラス（例: cms-content-parts-sinXXXX）
+      で丸ごと上書きしてしまう不具合が別途確認されているため（詳細はirohagumi.css側ではなく
+      home/01-hero-slideshow.html等のコメント参照）、header-nav.html / footer.htmlの両方とも
+      「外側は素の捨てdiv（class/id無し、CMSに好きに上書きされてよい）／内側に本来の
+      <header id="ig-header" class="...">・<footer class="...">を残す」という二重div構成に
+      変更済みです。BLOCK:HEADER/BLOCK:FOOTERへの貼り付け時は、この2段構成のままパーツとして
+      登録してください（内側のclass/idだけを抜き出して貼らないこと）。
+      あわせてBLOCK:HEADERに残っていた古いheader-navパーツ（h-20スペーサー入りの旧版）は、
+      新パーツと二重表示になるため削除が必要です。
 
   ★注意（推測を含みます。実際にポケカン2の管理画面で試してから本番反映してください）
-    ・bootstrap/jQuery、css/style.css、{CMS_SKIN_URL}系の読み込みはポケカン2システム側の都合の
-      可能性があるため残しています。動作確認の上で本当に不要なら削除可。
+    ・{CMS_SKIN_URL}系の読み込みはポケカン2システム側の都合の可能性があるため残しています。
+      動作確認の上で本当に不要なら削除可。
     ・topicpath（パンくず）・upper/bottom・opt1〜3・footer内のMODULEコメント群は、
       使わないなら残っていても害はない想定ですが、シンプルにしたい場合はopt/footerのMODULE行は
       削ってもらってOKです（BLOCK:MAINの構造だけは残してください）。
@@ -34,64 +123,54 @@
 <meta name="description" content="{site[description]}" />
 <meta name="keywords" content="{site[keyword]}" />
 
-<!-- bootstrap CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-<!-- bootstrap - jquery(1.9.1以上必要) -->
+<!--
+  Bootstrap 3のCSS/JSは撤去しました（2026-09-07）。
+  理由: BootstrapのCSSには .hidden{display:none!important;} という定義があり、Tailwindの
+  hidden/md:flex（!important無し）と完全に名前が衝突。うちのheader-nav.htmlのnavが
+  Bootstrapの!importantに常に負けて表示されない不具合が発生していたため。
+  jQueryはCMS_SKIN_URL/js/contents.js（ポケカン2システム側のスクリプト）が依存している
+  可能性があるため念のため残しています。もしcontents.jsもBootstrap前提でなければ、
+  jQueryも将来的に外して問題ないはずです。
+-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript">
 	$.noConflict();
 </script>
-<!-- bootstrap - js -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="<?php echo CMS_SKIN_URL ?>/js/contents.js"></script>
-<link type="text/css" rel="stylesheet" href="css/style.css" />
+<link type="text/css" rel="stylesheet" href="css/editor.css" />
 <link type="text/css" rel="stylesheet" href="<?php echo CMS_SKIN_URL ?>/contents_parts_2017.css" />
 
 <!-- ここから今回移植した新デザイン用の読み込み -->
 <link type="text/css" rel="stylesheet" href="css/irohagumi.css" />
+<!--
+  2026-09-09: font-size/font-family対策とfooter対策の<style>ブロックはここから撤去しました。
+  ・font-size/font-family対策 → css/irohagumi.cssの先頭に移動（ポケカン2の「フォント設定」機能に
+    対抗する必要があるため、これだけは今後も残る想定。詳細はirohagumi.css側のコメント参照）。
+  ・footer対策（layout.css/witans_custom.cssの#footer関連ルール打ち消し） → 旧テーマCSS
+    （layout.css/witans_custom.css等）自体の読み込みを丸ごとやめたため、打ち消し用の上書きが
+    そもそも不要になった。詳細は上の★修正履歴の「css配下のresponsive_type13_customテーマCSS...」
+    の項目を参照。
+  結果、このtemplate.htmにはCSSを直接書かない状態に整理しました。
+-->
 
 {login:h}
 {feed:h}
 
 </head>
 <body id="bootstrap_template" class="column1">
-<div id="wrapper">
+<div id="wrapper" style="font-family:'Noto Sans JP','Inter',sans-serif;">
 
 <!-- ************************************************** id="header"  ************************************************** -->
     <div id="header">
-        <div class="container">
         <!--BLOCK:HEADER-->
-            <!-- ↑この中に common/header-nav.html の中身をポケカン2の「パーツ」として差し込む -->
+        <!-- ここにheader-nav.htmlパーツを貼り付け -->
         <!--/BLOCK:HEADER-->
-        </div>
     </div>
 <!-- ************************************************** // id="header" ************************************************** -->
 
-	<!-- id="topicpath" -->
-	<div id="topicpath" class="container">
-		<?php
-			$count = count($t->site['topicpath']);
-			if($count > 0 ) {
-			    echo '<ol class="breadcrumb">';
-			    echo '<li id="topicpathFirst"><a href="'.$t->site[home_url].'">'.$t->site[top_title].'</a></li>';
-			    foreach( $t->site['topicpath'] as $url => $name) {
-			    if( $count == 1 ):
-			        echo "<li>$name</li>";
-			    else:
-			        echo '<li><a href="'.$url.'">'.$name.'</a></li>';
-			    endif;
-			    $count--;
-			    }
-			    echo "</ol>";
-			}
-		?>
-	</div>
-	<!-- // id="topicpath" -->
-
 <!-- ************************************************** id="container" ************************************************** -->
-	<div id="container" class="container">
+	<div id="container">
 
 <!-- ************************************************** id="contents" ************************************************** -->
 		<div id="contents">
@@ -127,22 +206,9 @@
 
 <!-- ************************************************** id="footer" ************************************************** -->
 	<div id="footer" class="clearfix">
-		<div class="container">
-			<!--BLOCK:FOOTER-->
-			<!-- ↑この中に common/footer.html の中身をポケカン2の「パーツ」として差し込む -->
-			<!--/BLOCK:FOOTER-->
-		</div>
-
-		<div class="pageTop clearfix">
-			<div class="container">
-				<a href="#header">Back to top</a>
-			</div>
-		</div>
-
-		<address>
-			<div class="container">{site[copyright]}</div>
-		</address>
-
+		<!--BLOCK:FOOTER-->
+		<!-- ここにfooter.htmlパーツを貼り付け -->
+		<!--/BLOCK:FOOTER-->
 	</div>
 <!-- ************************************************** // id="footer" ************************************************** -->
 

@@ -1,8 +1,8 @@
 import { Truck } from "lucide-react";
 import PageHero from "../components/PageHero";
 import ContactBand from "../components/ContactBand";
-import truckImg from "../../imports/IMG_9515.jpeg";
-import heroImg from "../../imports/DSCF3142_2K.jpg";
+import truckImg from "../../imports/equip_scania.jpg";
+import heroDarkArt from "../../imports/pagehero_dark_equipment.webp";
 
 // OC200 は主役カードと重複するため除外
 const VEHICLES = [
@@ -32,8 +32,8 @@ const MACHINES: { name: string; rows: { spec: string; qty: string }[] }[] = [
 export default function Equipment() {
   return (
     <>
-      {/* ヒーロー：heroImg を使用してブーム文字との重なりを回避 */}
-      <PageHero img={heroImg} en="" ja="設備機器" objectPos="35% 30%" />
+      {/* ヒーロー：線画（保有機材）*/}
+      <PageHero darkArt={heroDarkArt} ja="設備機器" />
 
       {/* ── リード：スカニア写真＋本文 ───────────────────── */}
       <section className="bg-background py-14 md:py-20">

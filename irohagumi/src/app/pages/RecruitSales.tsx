@@ -12,6 +12,7 @@ import {
 import PageHero from "../components/PageHero";
 import DayTimeline, { type TimelineItem } from "../components/DayTimeline";
 import heroImg from "../../imports/IMG_6008.jpg";
+import heroDarkArt from "../../imports/pagehero_dark_recruit_sales.webp";
 
 /* ── データ ─────────────────────────────────────── */
 
@@ -35,17 +36,20 @@ const BENEFITS = [
 ];
 
 const SALES_SPECS = [
-  { label: "募集職種",value: "営業職" },
-  { label: "応募資格", value: "学歴・経験不問。建設・機械業界の経験者・有資格者は優遇します。普通自動車免許必須。" },
+  { label: "募集職種", value: "営業職" },
+  { label: "応募資格", value: "学歴・経験不問。経験者は優遇します。" },
   { label: "給与",    value: "経験・能力を考慮のうえ決定します。詳細は面接時にご説明します。" },
   { label: "昇給",    value: "あり（能力・実績による）" },
   { label: "賞与",    value: "年2回（会社業績による）" },
-  { label: "諸手当",  value: "通勤手当、時間外手当、その他各種手当" },
-  { label: "勤務地",  value: "本社および各営業先（近畿圏内が中心）" },
+  { label: "諸手当",  value: "通勤手当、資格手当、時間外手当、その他各種手当" },
+  { label: "勤務地",  value: "各現場（現場により異なる）、尊延寺支店（大阪府枚方市大字尊延寺810-1）" },
   { label: "勤務時間", value: "9:00〜18:00" },
-  { label: "休日・休暇", value: "年間休日87日、日曜・祝日、会社カレンダーによる" },
+  { label: "休日・休暇", value: "基本土日祝休み（※稀に土曜出勤あり）、まずは週3日〜の勤務も相談可" },
   { label: "社会保険", value: "健康保険・厚生年金保険・雇用保険・労災保険" },
+  { label: "教育制度", value: "OJT研修、先輩社員による指導" },
+  { label: "求める人物像", value: "コミュニケーションを大切にできる方、自ら進んで物事に取り組める方" },
   { label: "選考方法", value: "面接（1回）" },
+  { label: "応募方法", value: "電話または応募フォームなどよりご応募ください" },
 ];
 
 /* ── コンポーネント ──────────────────────────────── */
@@ -53,12 +57,7 @@ const SALES_SPECS = [
 export default function RecruitSales() {
   return (
     <>
-      <PageHero
-        img={heroImg}
-        en="Sales"
-        ja="営業職"
-        objectPos="center"
-      />
+      <PageHero darkArt={heroDarkArt} ja="営業職" />
 
       {/* ── 一日の流れ ───────────────────────────── */}
       <section className="bg-background py-14 md:py-20">
@@ -168,10 +167,10 @@ export default function RecruitSales() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              to="/contact"
+              to="/recruit/apply?job=sales"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-accent font-black text-base hover:bg-yellow-50 transition-colors shadow-md"
             >
-              お問い合わせフォームへ
+              応募する
               <ArrowRight size={18} />
             </Link>
             <a

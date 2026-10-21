@@ -1,8 +1,9 @@
 import { Link } from "react-router";
 import { ArrowRight, HardHat, Briefcase } from "lucide-react";
-import heroImg from "../../imports/ph_recruit.jpg";
-import fieldImg from "../../imports/suetuke.jpg";
-import salesImg from "../../imports/IMG_6008.jpg";
+import heroImg from "../../imports/recruit_hero.jpg";
+import fieldImg from "../../imports/recruit_worker.jpg";
+import fieldImg2 from "../../imports/recruit_manager.jpg";
+import salesImg from "../../imports/recruit_sales.jpg";
 
 export default function Recruit() {
   return (
@@ -12,10 +13,9 @@ export default function Recruit() {
         <img
           src={heroImg}
           alt="いろは組の現場スタッフ"
-          className="absolute inset-0 w-full h-full object-cover object-[40%_50%]"
+          className="absolute inset-0 w-full h-full object-cover object-[50%_35%]"
         />
         <div className="absolute inset-x-0 bottom-0 h-60 md:h-[26rem] bg-gradient-to-t from-white/97 via-white/60 to-transparent" />
-        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-yellow-400" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pb-10 md:pb-20 text-center">
           <h1 className="text-4xl md:text-5xl font-black text-foreground/95 tracking-tight leading-tight text-halo">
             技術と信頼を、
@@ -35,6 +35,25 @@ export default function Recruit() {
           <p className="text-base leading-relaxed text-muted-foreground font-medium">
             いろは組では、現場を支える作業員・管理職から、お客様との橋渡しをする営業職まで、幅広い職種で採用を行っています。経験・学歴は問いません。一歩踏み出す意欲があれば、私たちが全力でサポートします。
           </p>
+        </div>
+      </section>
+
+      {/* ── サポート訴求 ────────────────────────────── */}
+      <section className="bg-background py-14 md:py-20 border-t border-border">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-3 gap-8 text-center">
+            {[
+              { num: "01", title: "未経験歓迎", body: "学歴・経験不問。入社後はOJT研修と先輩社員のマンツーマン指導があります。" },
+              { num: "02", title: "資格取得支援", body: "クレーン・玉掛・フォークリフトなど、現場で役立つ資格の取得費用をサポートします。" },
+              { num: "03", title: "安定した待遇", body: "社会保険完備・賞与年2回・退職金制度（中退共）で、長く安心して働けます。" },
+            ].map(({ num, title, body }) => (
+              <div key={num} className="flex flex-col items-center gap-3 px-4">
+                <span className="text-5xl font-black text-accent/15 leading-none">{num}</span>
+                <h3 className="text-xl font-black text-foreground">{title}</h3>
+                <p className="text-base text-muted-foreground leading-relaxed font-medium">{body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -58,6 +77,7 @@ export default function Recruit() {
             <JobCard
               to="/recruit/field"
               img={fieldImg}
+              img2={fieldImg2}
               label="現場作業員・管理職"
               catch_="安全と品質を支える現場のプロフェッショナル"
               desc="お客様に安心していただけるレベルの技術力・安全を届けます。"
@@ -68,25 +88,6 @@ export default function Recruit() {
           </div>
         </div>
       </section>
-
-      {/* ── サポート訴求 ────────────────────────────── */}
-      <section className="bg-background py-14 md:py-20 border-t border-border">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            {[
-              { num: "01", title: "未経験歓迎", body: "学歴・経験不問。入社後はOJT研修と先輩社員のマンツーマン指導があります。" },
-              { num: "02", title: "資格取得支援", body: "クレーン・玉掛・フォークリフトなど、現場で役立つ資格の取得費用をサポートします。" },
-              { num: "03", title: "安定した待遇", body: "社会保険完備・賞与年2回・退職金制度（中退共）で、長く安心して働けます。" },
-            ].map(({ num, title, body }) => (
-              <div key={num} className="flex flex-col items-center gap-3 px-4">
-                <span className="text-5xl font-black text-accent/15 leading-none">{num}</span>
-                <h3 className="text-xl font-black text-foreground">{title}</h3>
-                <p className="text-base text-muted-foreground leading-relaxed font-medium">{body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   );
 }
@@ -94,6 +95,7 @@ export default function Recruit() {
 function JobCard({
   to,
   img,
+  img2,
   label,
   catch_,
   desc,
@@ -103,6 +105,7 @@ function JobCard({
 }: {
   to: string;
   img: string;
+  img2?: string;
   label: string;
   catch_: string;
   desc: string;
@@ -114,7 +117,14 @@ function JobCard({
     <div className="bg-card rounded-2xl border border-border overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
       {/* Photo */}
       <div className="relative h-52 bg-zinc-200 overflow-hidden">
-        <img src={img} alt={label} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+        {img2 ? (
+          <div className="grid grid-cols-2 gap-0.5 w-full h-full">
+            <img src={img} alt={label} className="w-full h-full object-cover" />
+            <img src={img2} alt={label} className="w-full h-full object-cover" />
+          </div>
+        ) : (
+          <img src={img} alt={label} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
         <span
           className={`absolute top-4 left-4 inline-flex items-center gap-1.5 text-s font-black tracking-[0.15em] uppercase px-3 py-1 rounded-full shadow ${

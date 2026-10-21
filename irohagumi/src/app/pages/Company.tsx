@@ -2,6 +2,7 @@ import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import PageHero from "../components/PageHero";
 import ContactBand from "../components/ContactBand";
 import officeImg from "../../imports/ph_company.jpg";
+import heroPhoto from "../../imports/pagehero_company_photo.webp";
 import truckImg from "../../imports/IMG_9515.jpeg";
 import greetingImg from "../../imports/Creating_company_website_greetin__202608101712-1.jpeg";
 import signatureImg from "../../imports/__________2026-08-10_14.59.28-1.png";
@@ -38,7 +39,7 @@ const YARDS = [
 export default function Company() {
   return (
     <>
-      <PageHero img={officeImg} en="About" ja="会社概要" objectPos="center 72%" />
+      <PageHero img={heroPhoto} ja="会社概要" objectPos="center 82%" titleClass="text-[#14351B]" />
 
       {/* ── 代表メッセージ ───────────────────────────────── */}
       <section className="bg-background py-14 md:py-20">

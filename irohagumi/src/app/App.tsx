@@ -7,6 +7,7 @@ import Home4 from "./pages/Home4";
 import Home5 from "./pages/Home5";
 import Home6 from "./pages/Home6";
 import Home7 from "./pages/Home7";
+import Home8 from "./pages/Home8";
 import Company from "./pages/Company";
 import Equipment from "./pages/Equipment";
 import Business from "./pages/Business";
@@ -15,8 +16,8 @@ import Recruit from "./pages/Recruit";
 import Recruit2 from "./pages/Recruit2";
 import RecruitField from "./pages/RecruitField";
 import RecruitSales from "./pages/RecruitSales";
-import RecruitStaffDetail from "./pages/RecruitStaffDetail";
 import RecruitVoice from "./pages/RecruitVoice";
+import RecruitApply from "./pages/RecruitApply";
 import Contact from "./pages/Contact";
 
 export default function App() {
@@ -32,8 +33,8 @@ export default function App() {
           <Route path="recruit" element={<Recruit />} />
           <Route path="recruit2" element={<Recruit2 />} />
           <Route path="recruit/field" element={<RecruitField />} />
-          <Route path="recruit/field/:staffId" element={<RecruitStaffDetail />} />
           <Route path="recruit/sales" element={<RecruitSales />} />
+          <Route path="recruit/apply" element={<RecruitApply />} />
           <Route path="recruit/voice/:id" element={<RecruitVoice />} />
           <Route path="contact" element={<Contact />} />
           <Route path="home" element={<Home />} />
@@ -43,6 +44,7 @@ export default function App() {
           <Route path="home5" element={<Home5 />} />
           <Route path="home6" element={<Home6 />} />
           <Route path="home7" element={<Home7 />} />
+          <Route path="home8" element={<Home8 />} />
         </Route>
       </Routes>
     </BrowserRouter>

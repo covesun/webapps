@@ -230,7 +230,7 @@ export default function Home5() {
           >
             <div className="text-center px-4">
               <p className="text-gray-500 text-2xl md:text-3xl font-medium mb-2 md:mb-3 tracking-wide">
-                運ぶ、吊る、据える
+                運ぶ、吊るす、据える
               </p>
               <h1 className="text-[2.75rem] md:text-6xl font-black text-foreground leading-tight tracking-tight">
                 すべての始まりは

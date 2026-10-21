@@ -1,5 +1,6 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
-import { ArrowRight, Phone, Mail, Clock, CheckCircle } from "lucide-react";
+import { Link } from "react-router";
+import { ArrowRight, Phone, Mail, Clock, CheckCircle, UserPlus } from "lucide-react";
 import PageHero from "../components/PageHero";
 import officeImg from "../../imports/IMG_6008.jpg";
 
@@ -88,6 +89,21 @@ export default function Contact() {
       {/* Form section */}
       <section className="bg-background py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-6">
+          {/* 採用応募への誘導 */}
+          <Link
+            to="/recruit/apply"
+            className="group mb-10 md:mb-14 flex items-center gap-4 rounded-2xl border border-accent/30 bg-accent/5 px-5 py-4 md:px-7 md:py-5 hover:bg-accent/10 transition-colors"
+          >
+            <div className="w-10 h-10 rounded-full bg-accent/15 flex items-center justify-center flex-shrink-0">
+              <UserPlus size={18} className="text-accent" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="font-black text-base md:text-lg text-foreground">採用へのご応募の方はこちら</p>
+              <p className="text-xs md:text-sm text-muted-foreground font-medium">応募専用フォームからお送りください</p>
+            </div>
+            <ArrowRight size={20} className="text-accent flex-shrink-0 group-hover:translate-x-1 transition-transform" />
+          </Link>
+
           <div className="grid md:grid-cols-[1fr_420px] gap-16 items-start">
             {/* Left: intro */}
             <div>

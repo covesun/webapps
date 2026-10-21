@@ -1,15 +1,14 @@
-import { Settings, Weight } from "lucide-react";
 import PageHero from "../components/PageHero";
 import ContactBand from "../components/ContactBand";
-import work1Img from "../../imports/suetuke.jpg";
-import work3Img from "../../imports/IMG_0350.jpg";
+import bizPlantImg from "../../imports/biz_plant.jpg";
+import heroDarkArt from "../../imports/pagehero_dark_business.webp";
+import bizEquipImg from "../../imports/biz_equip.jpg";
 
 const DETAIL_ITEMS = [
   {
     en: "Plant Engineering",
-    ja: "プラント工事",
-    icon: <Settings size={32} strokeWidth={1.5} />,
-    img: work1Img,
+    ja: "プラント事業",
+    img: bizPlantImg,
     desc: "化学・食品・製薬プラントの設備据付から架台組立・配管工事まで、精密さが求められる工事を専門に手がけます。稼働中の既設設備への干渉を避けながら、高精度な位置決めと溶接品質を実現します。",
     points: [
       "大型架構・鉄骨フレームの組立",
@@ -20,9 +19,8 @@ const DETAIL_ITEMS = [
   },
   {
     en: "Heavy Load Installation",
-    ja: "重量物据付",
-    icon: <Weight size={32} strokeWidth={1.5} />,
-    img: work3Img,
+    ja: "機器据付事業",
+    img: bizEquipImg,
     desc: "数トン〜数十トン規模の大型機器・タンクの搬入・吊込み・精密据付。スライドレールや専用治具を駆使し、狭小経路や難条件下でも確実に仕上げます。",
     points: [
       "大型タンク・反応槽の搬入・据付",
@@ -36,18 +34,18 @@ const DETAIL_ITEMS = [
 export default function Business() {
   return (
     <>
-      <PageHero img={work1Img} en="" ja="事業内容" objectPos="center 30%" />
+      <PageHero darkArt={heroDarkArt} ja="事業内容" />
 
       {/* Overview */}
       <section className="bg-background py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug mb-6 md:mb-9">
             2つの専門領域で
-            <br />
+            <br className="md:hidden" />
             現場を支えます。
           </h2>
           <p className="text-lg leading-relaxed text-muted-foreground font-medium">
-            プラント設備・重量物据付のプロフェッショナルとして、搬入から精密据付まで一貫してお引き受けします。
+            プラント事業・機器据付事業のプロフェッショナルとして、搬入から精密据付まで一貫してお引き受けします。
             <br />
             自社クレーンと熟練職人の組み合わせが私たちの強みです。
           </p>
@@ -68,9 +66,6 @@ export default function Business() {
               </div>
               <div>
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="w-12 h-12 rounded-2xl bg-accent/10 text-accent flex items-center justify-center flex-shrink-0">
-                    {item.icon}
-                  </div>
                   <div>
                     <p className="text-xs font-bold tracking-[0.25em] text-accent uppercase hidden">{item.en}</p>
                     <h2 className="text-3xl md:text-4xl font-black text-foreground tracking-tight">{item.ja}</h2>

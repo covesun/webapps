@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router";
 import {
   ArrowRight,
@@ -7,11 +8,18 @@ import {
   Award,
   Coins,
   BookUser,
-  User,
 } from "lucide-react";
 import PageHero from "../components/PageHero";
 import DayTimeline, { type TimelineItem } from "../components/DayTimeline";
 import heroImg from "../../imports/ph_recruit.jpg";
+import heroDarkArt from "../../imports/pagehero_dark_recruit_field.webp";
+import voiceAvatar1 from "../../imports/voice_avatar_1.webp";
+import voiceAvatar2 from "../../imports/voice_avatar_2.webp";
+import voiceAvatar3 from "../../imports/voice_avatar_3.webp";
+import voiceAvatar4 from "../../imports/voice_avatar_4.webp";
+import voiceAvatar5 from "../../imports/voice_avatar_5.webp";
+import voiceAvatar6 from "../../imports/voice_avatar_6.webp";
+const VOICE_AVATARS = [voiceAvatar1, voiceAvatar2, voiceAvatar3, voiceAvatar4, voiceAvatar5, voiceAvatar6];
 
 /* ── データ ─────────────────────────────────────── */
 
@@ -29,48 +37,45 @@ const FIELD_SCHEDULE: TimelineItem[] = [
   { type: "between", title: "片付け・現場清掃・日報報告", desc: "現場を清掃し、道具を点検して作業終了。最後に本日の日報を記入して提出します。", img: heroImg },
 ];
 
-const FIELD_VOICES = [
+const VOICE_TABS = [
   {
-    id: "staff-a",
-    name: "H",
-    role: "社員",
-    year: "8年目",
-    catch: "大きな声で挨拶と返事ができれば、誰でも大歓迎！",
+    id: "q1",
+    no: "01",
+    label: "現場の雰囲気は？",
+    answers: [
+      "仕事中は真剣ですが、終わると社長も含めて全員で冗談を言い合って笑い合える、オンオフがはっきりした職場です。",
+      "従業員一同、本当に仲が良いです。経験問わず、一緒に楽しんで仕事ができる方をお待ちしています。",
+      "みんな面倒見がいいです。現場での動きを見てアドバイスをくれたり、最後は笑いになるようなコミュニケーションがあります。",
+      "みんなで色々と話し合いながら仕事が進められる、風通しの良い環境だと思います。",
+      "仕事中は厳しく指導することもありますが、休憩中になれば上下関係なくフランクに会話ができる職場です。",
+      "仕事中でも楽しくでき、危険な作業前には、指揮者が気を引き締めて作業に取り掛かり、メリハリの有る雰囲気です。",
+    ],
   },
   {
-    id: "staff-b",
-    name: "I",
-    role: "社員",
-    year: "6年目",
-    catch: "アットホームな会社です！特に20代の方、一緒に働きましょう！",
+    id: "q2",
+    no: "02",
+    label: "やりがいは？",
+    answers: [
+      "最初はわからない事ばかりでしたが、出来る事が増えて仕事を任された時に、確かな成長を感じられました。",
+      "練習を重ねた溶接技術を、実際の現場で活かして形にできた時に大きな達成感がありました。",
+      "最初は高所が怖かったですが、慣れて動けるようになりました。今でも安全確認を第一に仕事に取り組みました。",
+      "条件が厳しくて「うまくいくかな？」と心配だった現場でも、無事に施工を終えられた時に達成感を感じました。",
+      "初めて自分に現場を任された時、責任とともに大きなやりがいを感じました。",
+      "重量物や高所作業など様々な経験を通して成長できました。特に昨夏の愛知の現場での組み立て溶接は、やり切った達成感があり、良い経験になりました。",
+    ],
   },
   {
-    id: "staff-c",
-    name: "K",
-    role: "工事部部長",
-    year: "3年目",
-    catch: "面倒見のいい先輩たちが、しっかり技術を伝えます！",
-  },
-  {
-    id: "staff-d",
-    name: "O",
-    role: "工事部主任",
-    year: "10年目",
-    catch: "仲間と話し合いながら進める、チームワークの良さが自慢です",
-  },
-  {
-    id: "staff-e",
-    name: "K",
-    role: "工事部主任",
-    year: "8年目",
-    catch: "現場が休みの日には、みっちり技術を教えます！",
-  },
-  {
-    id: "staff-f",
-    name: "K",
-    role: "協力会社",
-    year: "",
-    catch: "未経験でもやる気があれば大歓迎！メリハリのある職場で共に成長しましょう！",
+    id: "q3",
+    no: "03",
+    label: "中途採用者へ向けたメッセージ",
+    answers: [
+      "最初は右も左もわからないのは当たり前です！そこは気にせず、まずは「大きい声であいさつ＆返事」ができる人なら誰でも大歓迎です！",
+      "未経験者、経験者問わず、楽しんで仕事できる方と働きたいです。特に20代が現在1名なので、是非一緒に働きましょう！",
+      "向上心があり、人の面倒が見れて、職人を目指す強い心を持った人を待っています！",
+      "新しく入ってきた仲間と一緒に、色々と話し合いながら協力して作業を進めていきたいです。",
+      "現場仕事なので作業中は教えられる時間が限られますが、現場が休みの日はみっちり教えられます。安心してください！",
+      "未経験でも向上心、やる気のある方と仕事を一緒にしていたいです。",
+    ],
   },
 ];
 
@@ -100,14 +105,10 @@ const FIELD_SPECS = [
 /* ── コンポーネント ──────────────────────────────── */
 
 export default function RecruitField() {
+  const [voiceTab, setVoiceTab] = useState(0);
   return (
     <>
-      <PageHero
-        img={heroImg}
-        en="Field Worker / Manager"
-        ja="現場作業員・管理職"
-        objectPos="40% 45%"
-      />
+      <PageHero darkArt={heroDarkArt} ja="現場作業員・管理職" />
 
       {/* ── 一日の流れ ───────────────────────────── */}
       <section className="bg-background py-14 md:py-20">
@@ -124,36 +125,41 @@ export default function RecruitField() {
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-snug mb-6 md:mb-9">社員の声</h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            {FIELD_VOICES.map((v) => (
-              <Link
-                key={v.id}
-                to={`/recruit/field/${v.id}`}
-                className="bg-card rounded-2xl p-7 shadow-sm border border-border flex flex-col gap-5 hover:shadow-md hover:border-accent/40 transition-all group"
+          {/* タブ */}
+          <div role="tablist" className="flex flex-col sm:flex-row gap-2 sm:gap-3 mb-8 md:mb-10">
+            {VOICE_TABS.map((t, i) => (
+              <button
+                key={t.id}
+                role="tab"
+                aria-selected={voiceTab === i}
+                onClick={() => setVoiceTab(i)}
+                className={`flex items-center gap-3 rounded-full px-5 py-3 text-left font-black text-base md:text-lg tracking-tight border transition-colors ${
+                  voiceTab === i
+                    ? "bg-accent text-white border-accent"
+                    : "bg-card text-foreground border-border hover:border-accent/40"
+                }`}
               >
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-accent/15 flex items-center justify-center flex-shrink-0 ring-2 ring-accent/20">
-                    <User size={28} className="text-accent/50" />
-                  </div>
-                  <div>
-                    <p className="font-black text-lg text-foreground tracking-tight">
-                      {v.name}
-                      <span className="text-muted-foreground font-medium text-base ml-1">さん</span>
-                    </p>
-                    <p className="text-xs text-accent font-bold mt-0.5">{v.role}</p>
-                    {v.year && <p className="text-xs text-muted-foreground font-medium">{v.year}</p>}
-                  </div>
+                <span className={`text-sm tabular-nums ${voiceTab === i ? "text-white/70" : "text-accent"}`}>{VOICE_TABS[i].no}</span>
+                {t.label}
+              </button>
+            ))}
+          </div>
+
+          {/* 吹き出し */}
+          <div role="tabpanel" className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6 md:gap-y-9">
+            {VOICE_TABS[voiceTab].answers.map((a, i) => (
+              <div key={`${voiceTab}-${i}`} className="flex items-start gap-3.5 md:gap-[18px]">
+                <div className="flex-shrink-0 w-14 h-14 md:w-[84px] md:h-[84px] rounded-full bg-[#e3eee6] ring-2 ring-accent/20 overflow-hidden">
+                  <img src={VOICE_AVATARS[i]} alt="" className="w-full h-full object-cover select-none" />
                 </div>
-                <div className="h-px bg-border" />
-                <blockquote className="text-lg md:text-xl leading-snug text-foreground font-bold tracking-tight relative flex-1 pl-5">
-                  <span className="absolute -top-2 left-0 text-5xl text-accent/30 font-black leading-none select-none">"</span>
-                  <span className="relative">{v.catch}</span>
-                </blockquote>
-                <span className="inline-flex items-center gap-2 text-sm font-black text-accent group-hover:text-green-800 transition-colors">
-                  詳しく見る
-                  <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform" />
-                </span>
-              </Link>
+                <div className="relative flex-1 mt-1.5 bg-card rounded-2xl border border-border shadow-sm px-[18px] py-4 md:px-6 md:py-[22px]">
+                  <span
+                    aria-hidden="true"
+                    className="absolute -left-2 top-[18px] md:top-[26px] w-[15px] h-[15px] rotate-45 bg-card border-l border-b border-border"
+                  />
+                  <p className="text-[15px] md:text-[17px] leading-[1.75] text-foreground font-medium">{a}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -230,10 +236,10 @@ export default function RecruitField() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              to="/contact"
+              to="/recruit/apply?job=field"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-accent font-black text-base hover:bg-yellow-50 transition-colors shadow-md"
             >
-              お問い合わせフォームへ
+              応募する
               <ArrowRight size={18} />
             </Link>
             <a

@@ -4,7 +4,7 @@ import { ArrowRight, X, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import PageHero from "../components/PageHero";
 import ContactBand from "../components/ContactBand";
 
-import work1Img from "../../imports/suetuke.jpg";
+import heroDarkArt from "../../imports/pagehero_dark_works.webp";
 
 // 工事実績写真（出典: docs/いろは組_作業実績_vol.2.xlsx）
 import kitahorie01 from "../../imports/works/kitahorie_01.jpg";
@@ -21,9 +21,9 @@ import ijttDust01 from "../../imports/works/ijtt_dust_01.jpg";
 import ijttDust02 from "../../imports/works/ijtt_dust_02.jpg";
 import ijttDust03 from "../../imports/works/ijtt_dust_03.jpg";
 
-type Category = "すべて" | "プラント工事" | "重量物据付" | "クレーン作業";
+type Category = "すべて" | "プラント事業" | "機器据付事業" | "クレーン作業";
 
-const CATEGORIES: Category[] = ["すべて", "プラント工事", "重量物据付", "クレーン作業"];
+const CATEGORIES: Category[] = ["すべて", "プラント事業", "機器据付事業", "クレーン作業"];
 
 // NOTE: 案件名は現在実名表記。公開前に伏せ字化の要否をクライアント確認（docs/工事実績_クライアント確認事項.md）
 const WORKS_DATA: {
@@ -38,8 +38,8 @@ const WORKS_DATA: {
   {
     id: 1,
     imgs: [kitahorie01, kitahorie02, kitahorie03],
-    category: "重量物据付",
-    title: "ファミール北堀江　増圧改修工事",
+    category: "機器据付事業",
+    title: "T社　給水ポンプ据付　既設ポンプ撤去",
     date: "2026年08月",
     location: "大阪府",
     description:
@@ -49,7 +49,7 @@ const WORKS_DATA: {
     id: 2,
     imgs: [hyogoCrane01, hyogoCrane02, hyogoCrane03],
     category: "クレーン作業",
-    title: "兵庫県 下水処理場　天井クレーン更新工事",
+    title: "下水処理場　天井クレーン更新工事",
     date: "2026年04月",
     location: "兵庫県",
     description:
@@ -58,8 +58,8 @@ const WORKS_DATA: {
   {
     id: 3,
     imgs: [hyogoHopper01, hyogoHopper02, hyogoHopper03],
-    category: "プラント工事",
-    title: "兵庫県 下水処理場　ケーキ貯留ホッパー設置工事",
+    category: "プラント事業",
+    title: "下水処理場　ケーキ貯留ホッパー設置工事",
     date: "2026年02月",
     location: "兵庫県",
     description:
@@ -68,8 +68,8 @@ const WORKS_DATA: {
   {
     id: 4,
     imgs: [lintecBoiler01],
-    category: "重量物据付",
-    title: "リンテック三島工場土居加工工場　廃熱ボイラー設置工事",
+    category: "機器据付事業",
+    title: "工場廃熱ボイラー設置工事",
     date: "2025年05月",
     location: "愛媛県",
     description:
@@ -78,8 +78,8 @@ const WORKS_DATA: {
   {
     id: 5,
     imgs: [ijttDust01, ijttDust02, ijttDust03],
-    category: "プラント工事",
-    title: "IJTT北上新鋳造工場　集塵設備工事",
+    category: "プラント事業",
+    title: "I社　集塵設備工事",
     date: "2025年05月",
     location: "岩手県",
     description:
@@ -88,8 +88,8 @@ const WORKS_DATA: {
   {
     id: 6,
     imgs: [], // 写真なし（クライアント確認中）
-    category: "重量物据付",
-    title: "静岡県Aクリーンセンター　盤搬入据付工事",
+    category: "機器据付事業",
+    title: "クリーンセンター　盤搬入据付工事",
     date: "2019年11月",
     location: "静岡県",
     description:
@@ -101,8 +101,8 @@ type WorkItem = (typeof WORKS_DATA)[number];
 
 const TAG_COLOR: Record<Category, string> = {
   すべて: "",
-  プラント工事: "bg-green-50 text-green-700",
-  重量物据付: "bg-yellow-50 text-yellow-700",
+  プラント事業: "bg-green-50 text-green-700",
+  機器据付事業: "bg-yellow-50 text-yellow-700",
   クレーン作業: "bg-sky-50 text-sky-700",
 };
 
@@ -279,7 +279,7 @@ export default function Works() {
         <WorkModal key={selectedWork.id} work={selectedWork} onClose={() => setSelectedWork(null)} />
       )}
 
-      <PageHero img={work1Img} en="Works" ja="工事実績" />
+      <PageHero darkArt={heroDarkArt} ja="工事実績" />
 
       <section className="bg-white border-b border-border sticky top-20 z-40">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center gap-3 overflow-x-auto">
